@@ -1,0 +1,473 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B20ABABA28EEBF6F00AA2FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20ABAB928EEBF6F00AA2FC9 /* AppDelegate.swift */; };
+		B20ABABC28EEBF6F00AA2FC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20ABABB28EEBF6F00AA2FC9 /* SceneDelegate.swift */; };
+		B20ABAC128EEBF6F00AA2FC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20ABABF28EEBF6F00AA2FC9 /* Main.storyboard */; };
+		B20ABAC328EEBF8400AA2FC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20ABAC228EEBF8400AA2FC9 /* Assets.xcassets */; };
+		B20ABAC628EEBF8400AA2FC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20ABAC428EEBF8400AA2FC9 /* LaunchScreen.storyboard */; };
+		B20ABACE28EEC39E00AA2FC9 /* SKVocabulariesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20ABACD28EEC39D00AA2FC9 /* SKVocabulariesTableViewController.swift */; };
+		B20ABAD228EED10D00AA2FC9 /* SKSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20ABAD128EED10D00AA2FC9 /* SKSplitViewController.swift */; };
+		B20ABAD528EF215400AA2FC9 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B20ABAD428EF215400AA2FC9 /* SQLite */; };
+		B20ABAD728EF21CC00AA2FC9 /* vocabulary.db in Resources */ = {isa = PBXBuildFile; fileRef = B20ABAD628EF21CA00AA2FC9 /* vocabulary.db */; };
+		B20ABAD928EF22AD00AA2FC9 /* SKVocabularyIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */; };
+		B27D996328FB11E60047CCBF /* SKLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996228FB11E60047CCBF /* SKLocalization.swift */; };
+		B27D996528FB341F0047CCBF /* SKAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996428FB341F0047CCBF /* SKAboutViewController.swift */; };
+		B27D996828FC92910047CCBF /* SKStarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996728FC92910047CCBF /* SKStarnikByController.swift */; };
+		B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */; };
+		B2FEFEE928F3634800675E49 /* SKAdditionalKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEE828F3634800675E49 /* SKAdditionalKeyboardView.swift */; };
+		B2FEFEEB28F3776E00675E49 /* SKSearchWordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */; };
+		B2FEFEED28F43DFF00675E49 /* SKStorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */; };
+		B2FEFEEF28F4E53600675E49 /* SKWordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */; };
+		B2FEFEF228F4E7A500675E49 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B2FEFEF128F4E7A500675E49 /* SwiftSoup */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B20ABAB628EEBF6F00AA2FC9 /* Skarnik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skarnik.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B20ABAB928EEBF6F00AA2FC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B20ABABB28EEBF6F00AA2FC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B20ABAC028EEBF6F00AA2FC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B20ABAC228EEBF8400AA2FC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B20ABAC528EEBF8400AA2FC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B20ABAC728EEBF8400AA2FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B20ABACD28EEC39D00AA2FC9 /* SKVocabulariesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKVocabulariesTableViewController.swift; sourceTree = "<group>"; };
+		B20ABACF28EEC55400AA2FC9 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/Main.strings; sourceTree = "<group>"; };
+		B20ABAD028EEC55500AA2FC9 /* be */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = be; path = be.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B20ABAD128EED10D00AA2FC9 /* SKSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSplitViewController.swift; sourceTree = "<group>"; };
+		B20ABAD628EF21CA00AA2FC9 /* vocabulary.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = vocabulary.db; sourceTree = "<group>"; };
+		B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKVocabularyIndex.swift; sourceTree = "<group>"; };
+		B27D996228FB11E60047CCBF /* SKLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLocalization.swift; sourceTree = "<group>"; };
+		B27D996428FB341F0047CCBF /* SKAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAboutViewController.swift; sourceTree = "<group>"; };
+		B27D996628FBB15E0047CCBF /* Skarnik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skarnik.entitlements; sourceTree = "<group>"; };
+		B27D996728FC92910047CCBF /* SKStarnikByController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStarnikByController.swift; sourceTree = "<group>"; };
+		B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSkarnikByController.swift; sourceTree = "<group>"; };
+		B2FEFEE828F3634800675E49 /* SKAdditionalKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAdditionalKeyboardView.swift; sourceTree = "<group>"; };
+		B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSearchWordsTableViewController.swift; sourceTree = "<group>"; };
+		B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStorageController.swift; sourceTree = "<group>"; };
+		B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B20ABAB328EEBF6F00AA2FC9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B20ABAD528EF215400AA2FC9 /* SQLite in Frameworks */,
+				B2FEFEF228F4E7A500675E49 /* SwiftSoup in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B20ABAAD28EEBF6F00AA2FC9 = {
+			isa = PBXGroup;
+			children = (
+				B20ABAB828EEBF6F00AA2FC9 /* Skarnik */,
+				B20ABAB728EEBF6F00AA2FC9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B20ABAB728EEBF6F00AA2FC9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B20ABAB628EEBF6F00AA2FC9 /* Skarnik.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B20ABAB828EEBF6F00AA2FC9 /* Skarnik */ = {
+			isa = PBXGroup;
+			children = (
+				B27D996628FBB15E0047CCBF /* Skarnik.entitlements */,
+				B20ABAB928EEBF6F00AA2FC9 /* AppDelegate.swift */,
+				B20ABABB28EEBF6F00AA2FC9 /* SceneDelegate.swift */,
+				B20ABAD128EED10D00AA2FC9 /* SKSplitViewController.swift */,
+				B20ABACD28EEC39D00AA2FC9 /* SKVocabulariesTableViewController.swift */,
+				B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */,
+				B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */,
+				B2FEFEE828F3634800675E49 /* SKAdditionalKeyboardView.swift */,
+				B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */,
+				B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */,
+				B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */,
+				B27D996728FC92910047CCBF /* SKStarnikByController.swift */,
+				B27D996428FB341F0047CCBF /* SKAboutViewController.swift */,
+				B27D996228FB11E60047CCBF /* SKLocalization.swift */,
+				B20ABABF28EEBF6F00AA2FC9 /* Main.storyboard */,
+				B20ABAC428EEBF8400AA2FC9 /* LaunchScreen.storyboard */,
+				B20ABAC228EEBF8400AA2FC9 /* Assets.xcassets */,
+				B20ABAC728EEBF8400AA2FC9 /* Info.plist */,
+				B20ABAD628EF21CA00AA2FC9 /* vocabulary.db */,
+			);
+			path = Skarnik;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B20ABAB528EEBF6F00AA2FC9 /* Skarnik */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B20ABACA28EEBF8400AA2FC9 /* Build configuration list for PBXNativeTarget "Skarnik" */;
+			buildPhases = (
+				B20ABAB228EEBF6F00AA2FC9 /* Sources */,
+				B20ABAB328EEBF6F00AA2FC9 /* Frameworks */,
+				B20ABAB428EEBF6F00AA2FC9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Skarnik;
+			packageProductDependencies = (
+				B20ABAD428EF215400AA2FC9 /* SQLite */,
+				B2FEFEF128F4E7A500675E49 /* SwiftSoup */,
+			);
+			productName = Skarnik;
+			productReference = B20ABAB628EEBF6F00AA2FC9 /* Skarnik.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B20ABAAE28EEBF6F00AA2FC9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				CLASSPREFIX = SK;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				ORGANIZATIONNAME = Skarnik;
+				TargetAttributes = {
+					B20ABAB528EEBF6F00AA2FC9 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+				};
+			};
+			buildConfigurationList = B20ABAB128EEBF6F00AA2FC9 /* Build configuration list for PBXProject "Skarnik" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = be;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				be,
+			);
+			mainGroup = B20ABAAD28EEBF6F00AA2FC9;
+			packageReferences = (
+				B20ABAD328EF215200AA2FC9 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				B2FEFEF028F4E7A400675E49 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
+			productRefGroup = B20ABAB728EEBF6F00AA2FC9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B20ABAB528EEBF6F00AA2FC9 /* Skarnik */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B20ABAB428EEBF6F00AA2FC9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B20ABAC628EEBF8400AA2FC9 /* LaunchScreen.storyboard in Resources */,
+				B20ABAD728EF21CC00AA2FC9 /* vocabulary.db in Resources */,
+				B20ABAC328EEBF8400AA2FC9 /* Assets.xcassets in Resources */,
+				B20ABAC128EEBF6F00AA2FC9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B20ABAB228EEBF6F00AA2FC9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2FEFEED28F43DFF00675E49 /* SKStorageController.swift in Sources */,
+				B20ABACE28EEC39E00AA2FC9 /* SKVocabulariesTableViewController.swift in Sources */,
+				B27D996528FB341F0047CCBF /* SKAboutViewController.swift in Sources */,
+				B20ABABA28EEBF6F00AA2FC9 /* AppDelegate.swift in Sources */,
+				B27D996328FB11E60047CCBF /* SKLocalization.swift in Sources */,
+				B2FEFEEF28F4E53600675E49 /* SKWordDetailsViewController.swift in Sources */,
+				B2FEFEE928F3634800675E49 /* SKAdditionalKeyboardView.swift in Sources */,
+				B20ABABC28EEBF6F00AA2FC9 /* SceneDelegate.swift in Sources */,
+				B20ABAD928EF22AD00AA2FC9 /* SKVocabularyIndex.swift in Sources */,
+				B20ABAD228EED10D00AA2FC9 /* SKSplitViewController.swift in Sources */,
+				B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */,
+				B2FEFEEB28F3776E00675E49 /* SKSearchWordsTableViewController.swift in Sources */,
+				B27D996828FC92910047CCBF /* SKStarnikByController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B20ABABF28EEBF6F00AA2FC9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B20ABAC028EEBF6F00AA2FC9 /* Base */,
+				B20ABACF28EEC55400AA2FC9 /* be */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B20ABAC428EEBF8400AA2FC9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B20ABAC528EEBF8400AA2FC9 /* Base */,
+				B20ABAD028EEC55500AA2FC9 /* be */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B20ABAC828EEBF8400AA2FC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B20ABAC928EEBF8400AA2FC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B20ABACB28EEBF8400AA2FC9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Skarnik/Skarnik.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6K8SQJWKKV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Skarnik/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Skarnik;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = by.skarnik.Skarnik;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B20ABACC28EEBF8400AA2FC9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Skarnik/Skarnik.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6K8SQJWKKV;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Skarnik/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Skarnik;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = by.skarnik.Skarnik;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B20ABAB128EEBF6F00AA2FC9 /* Build configuration list for PBXProject "Skarnik" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B20ABAC828EEBF8400AA2FC9 /* Debug */,
+				B20ABAC928EEBF8400AA2FC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B20ABACA28EEBF8400AA2FC9 /* Build configuration list for PBXNativeTarget "Skarnik" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B20ABACB28EEBF8400AA2FC9 /* Debug */,
+				B20ABACC28EEBF8400AA2FC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B20ABAD328EF215200AA2FC9 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
+		B2FEFEF028F4E7A400675E49 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B20ABAD428EF215400AA2FC9 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B20ABAD328EF215200AA2FC9 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		B2FEFEF128F4E7A500675E49 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2FEFEF028F4E7A400675E49 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = B20ABAAE28EEBF6F00AA2FC9 /* Project object */;
+}
