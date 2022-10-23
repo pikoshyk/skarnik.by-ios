@@ -77,7 +77,11 @@ class SKVocabulariesTableViewController: UIViewController {
             wordDetailsViewController = self.splitViewController?.viewController(for: .secondary) as? SKWordDetailsViewController
         } else {
             let controllers: [UIViewController]? = self.splitViewController?.viewControllers
-            if controllers?.count ?? 0 == 2 {
+            let countControllers = controllers?.count ?? 0
+            if countControllers == 1 {
+                wordDetailsViewController = self.storyboard?.instantiateViewController(withIdentifier: "SKWordDetailsViewController") as? SKWordDetailsViewController
+            }
+            else if countControllers >= 2 {
                 wordDetailsViewController = controllers?.last as? SKWordDetailsViewController
             }
         }

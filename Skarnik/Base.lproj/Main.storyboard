@@ -354,7 +354,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Skarnik" largeTitleDisplayMode="never" id="JHs-lj-9dC">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="VIY-ST-z80"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="VIY-ST-z80"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="info.circle" catalog="system" id="V2I-1d-30X">
                             <connections>
                                 <segue destination="erb-gm-9WE" kind="presentation" modalPresentationStyle="formSheet" id="Rdv-W0-727"/>

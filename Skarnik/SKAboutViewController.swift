@@ -30,6 +30,7 @@ class SKAboutViewController: UIViewController {
         let color = UIColor.label.webHexString()
         let text = SKLocalization.aboutSupportHtml
         let html = "<html><body style=\"font-size: \(fontSize); color: \(color); font-family: -apple-system;\">" + text + "</body></html>"
+        self.textViewSupport.text = ""
         if let textData = html.data(using: .utf8) {
             DispatchQueue.main.async {
                 let attributedString = try? NSAttributedString(data: textData, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: NSUTF8StringEncoding ], documentAttributes: nil)

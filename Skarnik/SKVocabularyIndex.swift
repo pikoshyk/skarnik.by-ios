@@ -86,7 +86,7 @@ class SKVocabularyIndex {
             return count
         }
 
-        var count: Int64 = 0
+        var count: Int64?
         
         var sqlQuery: String?
         if vocabularyType == .all {
@@ -104,9 +104,17 @@ class SKVocabularyIndex {
             }
         }
 
+        guard let sqlQuery = sqlQuery else {
+            return 0
+        }
+
         do {
-            count = try self.db.scalar(sqlQuery!) as! Int64
+            count = try self.db.scalar(sqlQuery) as? Int64
         } catch {
+        }
+
+        guard let count = count else {
+            return 0
         }
 
         let intCount = Int(count)
@@ -150,14 +158,16 @@ class SKVocabularyIndex {
                     let firstChar = String(preprocessedQuery.prefix(1))
                     rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? AND word_mask LIKE ? ORDER BY lword LIMIT 1 OFFSET ?", vocabularyType.rawValue, firstChar, "\(preprocessedQuery)%",  index)
                 }
-
-                
             }
         } catch {
         }
         
+        guard let rows = rows else {
+            return []
+        }
+        
         var lang_id = vocabularyType
-        for row in rows! {
+        for row in rows {
             if vocabularyType == .all {
                 lang_id = ESKVocabularyType(rawValue: Int(row[2] as! Int64))!
             }
