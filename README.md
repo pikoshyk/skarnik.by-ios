@@ -11,5 +11,5 @@
 Па пытаннях слоўніка можна звяртацца ў Twitter да [@skarnikby](https://twitter.com/skarnikby), па iOS аплікацыі да [@pikoshyk](https://twitter.com/pikoshyk).
 
 ```
-Праекту патрэбна дапамога. Dev, ML, UI, Marketing.
+Праекту патрэбна дапамога: Dev, ML, PR, UI/UX, ...
 ```
