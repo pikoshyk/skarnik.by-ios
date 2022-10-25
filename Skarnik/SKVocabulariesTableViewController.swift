@@ -137,6 +137,28 @@ extension SKVocabulariesTableViewController: UITableViewDelegate {
 }
 
 extension SKVocabulariesTableViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if self.selectedVocabularyType == .history {
+            return true
+        }
+
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return SKLocalization.cellDeleteActionTitle
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle:   UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            SKStorageController.shared.removeWord(index: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .middle)
+            tableView.endUpdates()
+        }
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         let vocabularyType = self.selectedVocabularyType
         var count = 0

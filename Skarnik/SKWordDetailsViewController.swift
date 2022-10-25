@@ -101,24 +101,26 @@ class SKWordDetailsViewController: UIViewController {
         self.textView.attributedText = nil
         self.translation = nil
         self.showLoadingIndicator = true
-        Task {
+        Task { @MainActor [weak self] in
             var translation: SKSkarnikTranslation?
             do {
                 translation = try await SKSkarnikByController.wordTranslation(word)
             } catch SKSkarnikError.networkError {
-                self.showLoadingIndicator = false
-                self.textView.text = SKLocalization.errorNetworkErrorTryAgainLater
+                self?.showLoadingIndicator = false
+                self?.textView.text = SKLocalization.errorNetworkErrorTryAgainLater
                 return
             }
 
             guard let translation = translation else {
-                self.showLoadingIndicator = false
-                self.textView.text = SKLocalization.errorWordNotFound
+                self?.showLoadingIndicator = false
+                self?.textView.text = SKLocalization.errorWordNotFound
                 return
             }
-            if self.word?.word_id == translation.word.word_id {
-                self.showLoadingIndicator = false
-                self.translation = translation
+            if self?.word?.word_id == translation.word.word_id {
+                self?.showLoadingIndicator = false
+                self?.translation = translation
+                
+                SKAppstoreReviewController.requestReview()
             }
         }
     }
@@ -127,14 +129,19 @@ class SKWordDetailsViewController: UIViewController {
         guard let word = self.translation?.word.word else {
             return
         }
-        
-        Task {
+
+        self.showLoadingIndicator = true
+
+        Task { @MainActor [weak self] in
             guard let word = await SKStarnikByController.spellingWordSuggestions(belWord: word)?.first else {
+                self?.showLoadingIndicator = false
                 return
             }
             guard let url = word.url else {
+                self?.showLoadingIndicator = false
                 return
             }
+            self?.showLoadingIndicator = false
             _ = await UIApplication.shared.open(url)
         }
     }
