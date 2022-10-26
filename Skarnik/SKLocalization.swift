@@ -12,6 +12,7 @@ class SKLocalization: Any {
     class var searchbarSearchWords: String { "Пошук слоў" }
     class var searchbarCancel: String { "Адмена" }
 
+    class var vocabulariesAdvancedSearch: String { "Спецпошук" }
     class var segmentHistory: String { "Гісторыя" }
     class var segmentRusBel: String { "Рус-Бел" }
     class var segmentBelRus: String { "Бел-Рус" }

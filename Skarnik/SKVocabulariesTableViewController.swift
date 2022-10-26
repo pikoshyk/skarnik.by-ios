@@ -18,10 +18,16 @@ class SKVocabulariesTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.extendedLayoutIncludesOpaqueBars = true
+        self.updateTitleBar()
         self.updateSegments()
         self.addKeyboardObserver()
         self.assignSearchBarController()
         self.addAdditionKeyboardButtons()
+    }
+    
+    func updateTitleBar() {
+        let buttonItem = UIBarButtonItem(title: SKLocalization.vocabulariesAdvancedSearch, style: .plain, target: self, action: #selector(onOpenStarnikBy))
+        self.navigationItem.rightBarButtonItem = buttonItem
     }
     
     func updateSegments() {

@@ -360,11 +360,6 @@
                                 <segue destination="erb-gm-9WE" kind="presentation" modalPresentationStyle="formSheet" id="Rdv-W0-727"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="starnik.by" id="Wox-uM-FYe">
-                            <connections>
-                                <action selector="onOpenStarnikBy" destination="c9U-m8-TRc" id="Fe9-Ml-vqN"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="Fvc-IG-bh8" id="pxM-Sj-TQx"/>
