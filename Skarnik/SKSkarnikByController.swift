@@ -27,7 +27,19 @@ struct SKSkarnikTranslation {
     
     var belWords: [String] {
         get {
-            
+
+            func parseWord(_ word: String) -> [String] {
+                var words: [String] = []
+                words = word.components(separatedBy: ",").compactMap { word in
+                    let word = word.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                    if word.contains(" ") {
+                        return nil
+                    }
+                    return word
+                }
+                return words
+            }
+
             func isCorrectWord(_ word: String) -> Bool {
                 if word.contains(" ") {
                     return false
@@ -52,10 +64,13 @@ struct SKSkarnikTranslation {
                         if let colorValue = try? fontContent.attr("color") {
                             if colorValue.lowercased() == "831b03".lowercased() {
                                 if let word = try? fontContent.text().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
-                                    if isCorrectWord(word) {
-                                        if foundWords.contains(word) == false {
-                                            if SKVocabularyIndex.shared.word(word, vocabularyType: .bel_definition) != nil {
-                                                foundWords.append(word)
+                                    let parsedWords = parseWord(word)
+                                    for parsedWord in parsedWords {
+                                        if foundWords.contains(parsedWord) == false {
+                                            if SKVocabularyIndex.shared.word(parsedWord, vocabularyType: .bel_definition) != nil {
+                                                foundWords.append(parsedWord)
+                                            } else if SKVocabularyIndex.shared.word(parsedWord, vocabularyType: .bel_rus) != nil {
+                                                foundWords.append(parsedWord)
                                             }
                                         }
                                     }
