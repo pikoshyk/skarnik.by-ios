@@ -84,7 +84,9 @@
                             <constraint firstItem="u3T-dg-jeL" firstAttribute="bottom" secondItem="s9p-eZ-hv5" secondAttribute="bottom" id="tU8-s8-bvX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ohB-ok-e3Y"/>
+                    <navigationItem key="navigationItem" id="ohB-ok-e3Y">
+                        <barButtonItem key="backBarButtonItem" title=" " id="GOW-V7-y6f"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="nem-Ud-UFq" id="kN1-8O-ayq"/>
@@ -113,7 +115,7 @@
             </objects>
             <point key="canvasLocation" x="67" y="-1292"/>
         </scene>
-        <!--Skarnik-->
+        <!--SKARNIK-->
         <scene sceneID="OXu-Wz-sxK">
             <objects>
                 <viewController id="wzL-v9-7TO" customClass="SKAboutViewController" customModule="Skarnik" customModuleProvider="target" sceneMemberID="viewController">
@@ -188,21 +190,14 @@
                                                             <constraint firstAttribute="height" constant="44" id="RV9-cV-3iS"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6y-qI-pST">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Support" translatesAutoresizingMaskIntoConstraints="NO" id="W6y-qI-pST">
                                                         <rect key="frame" x="0.0" y="120" width="300" height="80"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="80" id="9am-SK-d0Y"/>
                                                         </constraints>
-                                                        <attributedString key="attributedText">
-                                                            <fragment content="Support">
-                                                                <attributes>
-                                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                                    <font key="NSFont" size="16" name="PTSans-Regular"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                </attributes>
-                                                            </fragment>
-                                                        </attributedString>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <fontDescription key="fontDescription" name="PTSans-Regular" family="PT Sans" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
@@ -229,7 +224,9 @@
                             <constraint firstItem="Kah-6X-79V" firstAttribute="trailing" secondItem="obM-pP-E2w" secondAttribute="trailing" constant="16" id="zPf-jS-ybE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Skarnik" id="nVT-Eq-S4Y"/>
+                    <navigationItem key="navigationItem" title="SKARNIK" id="nVT-Eq-S4Y">
+                        <barButtonItem key="backBarButtonItem" title=" " id="BfV-a8-nAC"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="labelDescription" destination="pY2-KY-eGF" id="cXJ-ep-MFf"/>
                         <outlet property="labelSubscriptionCreator" destination="QQc-OI-wCi" id="zuG-0O-p9r"/>
@@ -260,7 +257,7 @@
             </objects>
             <point key="canvasLocation" x="-626" y="-467"/>
         </scene>
-        <!--Skarnik-->
+        <!--SKARNIK-->
         <scene sceneID="IdQ-hM-Fxh">
             <objects>
                 <viewController id="c9U-m8-TRc" customClass="SKVocabulariesTableViewController" customModule="Skarnik" customModuleProvider="target" sceneMemberID="viewController">
@@ -353,7 +350,7 @@
                             <constraint firstItem="7C4-Jh-bAP" firstAttribute="top" secondItem="uZV-Cn-fdd" secondAttribute="top" id="tpe-VA-4mz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Skarnik" largeTitleDisplayMode="never" id="JHs-lj-9dC">
+                    <navigationItem key="navigationItem" title="SKARNIK" largeTitleDisplayMode="never" id="JHs-lj-9dC">
                         <barButtonItem key="backBarButtonItem" title=" " id="VIY-ST-z80"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="info.circle" catalog="system" id="V2I-1d-30X">
                             <connections>

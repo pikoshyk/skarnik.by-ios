@@ -28,6 +28,7 @@ class SKLocalization: Any {
     class var wordDetailsSubtitleBelRus: String { "Пераклад на рускую мову" }
     class var wordDetailsSubtitleDenifition: String { "Тлумачэнне слова" }
     class var wordDetailsSpelling: String { "Націск" }
+    class var wordDetailsSpellingCancel: String { "Адмена" }
 
     class var errorWordNotFound: String { "Слова не знойдзена." }
     class var errorNetworkErrorTryAgainLater: String { "Памылка сеткі. Паспрабуйце пазней." }

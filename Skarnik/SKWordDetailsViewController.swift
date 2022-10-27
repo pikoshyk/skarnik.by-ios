@@ -41,17 +41,33 @@ class SKWordDetailsViewController: UIViewController {
                 translation.attributedString(resultBlock: { attributedString in
                     self.textView.attributedText = attributedString
                 })
-                if translation.word.lang_id == .bel_definition || translation.word.lang_id == .bel_rus {
-                    let buttonItem = UIBarButtonItem(title: SKLocalization.wordDetailsSpelling, style: .plain, target: self, action: #selector(onSpelling))
-                    buttonItem.tintColor = UIColor.systemRed
-                    self.navigationItem.rightBarButtonItem = buttonItem
-                } else {
-                    self.navigationItem.rightBarButtonItem = nil
-                }
+                self.spellingWords = translation.belWords
             } else {
-                self.navigationItem.rightBarButtonItem = nil
+                self.spellingWords = []
                 self.labelUrl.text = " "
                 self.textView.attributedText = nil
+            }
+        }
+    }
+    
+    var spellingWords: [String]? {
+        didSet {
+            if (self.spellingWords?.count ?? 0) > 0 {
+                self.showSpellButton = true
+            } else {
+                self.showSpellButton = false
+            }
+        }
+    }
+    
+    var showSpellButton: Bool? {
+        didSet {
+            if self.showSpellButton ?? false {
+                let buttonItem = UIBarButtonItem(title: SKLocalization.wordDetailsSpelling, style: .plain, target: self, action: #selector(onSpelling))
+                buttonItem.tintColor = UIColor.systemRed
+                self.navigationItem.rightBarButtonItem = buttonItem
+            } else {
+                self.navigationItem.rightBarButtonItem = nil
             }
         }
     }
@@ -125,11 +141,7 @@ class SKWordDetailsViewController: UIViewController {
         }
     }
     
-    @objc func onSpelling() {
-        guard let word = self.translation?.word.word else {
-            return
-        }
-
+    func openSpellingWord(_ word: String) {
         self.showLoadingIndicator = true
 
         Task { @MainActor [weak self] in
@@ -144,6 +156,34 @@ class SKWordDetailsViewController: UIViewController {
             self?.showLoadingIndicator = false
             _ = await UIApplication.shared.open(url)
         }
+    }
+    
+    @objc func onSpelling() {
+        guard let spellingWords = self.spellingWords else {
+            return
+        }
+        if spellingWords.count == 1 {
+            if let word = spellingWords.first {
+                self.openSpellingWord(word)
+            }
+        } else {
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alertController.modalPresentationStyle = .popover
+            alertController.view.tintColor = UIColor.systemRed
+            let popPresenter = alertController.popoverPresentationController
+            popPresenter?.barButtonItem = self.navigationItem.rightBarButtonItem
+            for spellingWord in spellingWords {
+                let action = UIAlertAction(title: spellingWord, style: .default, handler: { action in
+                    if let word = action.title {
+                        self.openSpellingWord(word)
+                    }
+                })
+                alertController.addAction(action)
+            }
+            alertController.addAction(UIAlertAction(title: SKLocalization.wordDetailsSpellingCancel, style: .cancel))
+            self.present(alertController, animated: true)
+        }
+        
     }
     
 

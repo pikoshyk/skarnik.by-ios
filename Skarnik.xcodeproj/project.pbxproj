@@ -98,16 +98,16 @@
 				B20ABABB28EEBF6F00AA2FC9 /* SceneDelegate.swift */,
 				B20ABAD128EED10D00AA2FC9 /* SKSplitViewController.swift */,
 				B20ABACD28EEC39D00AA2FC9 /* SKVocabulariesTableViewController.swift */,
-				B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */,
-				B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */,
-				B2FEFEE828F3634800675E49 /* SKAdditionalKeyboardView.swift */,
 				B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */,
 				B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */,
+				B2FEFEE828F3634800675E49 /* SKAdditionalKeyboardView.swift */,
+				B27D996428FB341F0047CCBF /* SKAboutViewController.swift */,
+				B2362A8F290697E50059B13C /* SKAppstoreReviewController.swift */,
+				B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */,
+				B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */,
 				B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */,
 				B27D996728FC92910047CCBF /* SKStarnikByController.swift */,
-				B27D996428FB341F0047CCBF /* SKAboutViewController.swift */,
 				B27D996228FB11E60047CCBF /* SKLocalization.swift */,
-				B2362A8F290697E50059B13C /* SKAppstoreReviewController.swift */,
 				B2C557D9290898A700FEB28A /* Task+Skarnik.swift */,
 				B2C557DB2908991300FEB28A /* Array+Skarnik.swift */,
 				B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */,
@@ -371,7 +371,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -388,7 +388,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -411,7 +411,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -428,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

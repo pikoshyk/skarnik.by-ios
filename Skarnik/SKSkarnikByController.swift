@@ -24,6 +24,55 @@ struct SKSkarnikTranslation {
             }
         }
     }
+    
+    var belWords: [String] {
+        get {
+            
+            func isCorrectWord(_ word: String) -> Bool {
+                if word.contains(" ") {
+                    return false
+                }
+                return true
+            }
+            let word = self.word
+            
+            var words: [String] = []
+            
+            if word.lang_id == .bel_rus || word.lang_id == .bel_definition {
+                if isCorrectWord(word.word) {
+                    words = [word.word]
+                }
+            } else if word.lang_id == .rus_bel {
+                let html = self.html
+                var foundWords: [String] = []
+                do {
+                    let doc = try SwiftSoup.parse(html)
+                    let fonts: Elements = try doc.select("font")
+                    for fontContent in fonts {
+                        if let colorValue = try? fontContent.attr("color") {
+                            if colorValue.lowercased() == "831b03".lowercased() {
+                                if let word = try? fontContent.text().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
+                                    if isCorrectWord(word) {
+                                        if foundWords.contains(word) == false {
+                                            foundWords.append(word)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    words = foundWords
+                } catch {
+                    
+                }
+
+            }
+            words = words.sorted { str1, str2 in
+                return str1.lowercased().compare(str2.lowercased()) == .orderedAscending
+            }
+            return words
+        }
+    }
 }
 
 enum SKSkarnikError: Error {
