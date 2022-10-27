@@ -167,7 +167,7 @@ class SKWordDetailsViewController: UIViewController {
                 self.openSpellingWord(word)
             }
         } else {
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            let alertController = UIAlertController(title: SKLocalization.wordDetailsSpellingTitle, message: SKLocalization.wordDetailsSpellingMessage, preferredStyle: .actionSheet)
             alertController.modalPresentationStyle = .popover
             alertController.view.tintColor = UIColor.systemRed
             let popPresenter = alertController.popoverPresentationController

@@ -139,6 +139,23 @@ class SKVocabularyIndex {
         return SKVocabularyIndex.abcBe
     }
     
+    func word(_ word: String, vocabularyType: ESKVocabularyType) -> SKWord? {
+        let query = word.lowercased()
+        var rows: Statement?
+        do {
+            rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND lword=?", vocabularyType.rawValue, "\(query)")
+        } catch {
+        }
+
+        guard let row = rows?.next() else {
+            return nil
+        }
+        
+
+        let word = SKWord(word_id: row[0] as! Int64, word: row[1] as! String, lang_id: vocabularyType)
+        return word
+    }
+    
     func word(index: Int, query: String, vocabularyType: ESKVocabularyType, limit: Int = 1) -> [SKWord] {
         let preprocessedQuery = self.preprocessQuery(query, vocabularyType: vocabularyType)
         var words: [SKWord] = []

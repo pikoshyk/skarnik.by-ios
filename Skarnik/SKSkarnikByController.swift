@@ -54,7 +54,9 @@ struct SKSkarnikTranslation {
                                 if let word = try? fontContent.text().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
                                     if isCorrectWord(word) {
                                         if foundWords.contains(word) == false {
-                                            foundWords.append(word)
+                                            if SKVocabularyIndex.shared.word(word, vocabularyType: .bel_definition) != nil {
+                                                foundWords.append(word)
+                                            }
                                         }
                                     }
                                 }
