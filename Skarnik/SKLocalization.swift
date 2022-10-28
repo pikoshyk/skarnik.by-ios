@@ -29,7 +29,7 @@ class SKLocalization: Any {
     class var wordDetailsSubtitleDenifition: String { "Тлумачэнне слова" }
     class var wordDetailsSpelling: String { "Націск" }
     class var wordDetailsSpellingTitle: String { "Націск і марфалогія" }
-    class var wordDetailsSpellingMessage: String { "калі ласка, абярыце слова" }
+    class var wordDetailsSpellingMessage: String { "для прагляду, калі ласка, абярыце слова" }
     class var wordDetailsSpellingCancel: String { "Адмена" }
 
     class var errorWordNotFound: String { "Слова не знойдзена." }

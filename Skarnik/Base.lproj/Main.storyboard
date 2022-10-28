@@ -27,17 +27,42 @@
                                                 <rect key="frame" x="167.33333333333334" y="8" width="28.666666666666657" height="34.333333333333336"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OW-hc-PKe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="28.666666666666668" height="21.666666666666668"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="28.666666666666668" height="23.666666666666668"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jl4-4s-jMv">
-                                                        <rect key="frame" x="0.0" y="21.666666666666657" width="28.666666666666668" height="12.666666666666664"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="10.5"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4y5-lj-rsQ">
+                                                        <rect key="frame" x="0.0" y="23.666666666666657" width="28.666666666666668" height="10.666666666666664"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="4yT-pS-Qg0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="10.666666666666666" height="10.666666666666666"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="700" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jl4-4s-jMv">
+                                                                <rect key="frame" x="12.666666666666657" y="0.0" width="3.3333333333333339" height="10.666666666666666"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="10.5"/>
+                                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="external-link-icon" translatesAutoresizingMaskIntoConstraints="NO" id="32A-YQ-Dq5">
+                                                                <rect key="frame" x="17" y="0.0" width="10.333333333333336" height="10.666666666666666"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="32A-YQ-Dq5" secondAttribute="height" multiplier="1:1" id="uBw-B2-33j"/>
+                                                                    <constraint firstAttribute="height" constant="10.5" id="whb-xs-urD"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="maQ-gu-MaH">
+                                                                <rect key="frame" x="18" y="0.0" width="10.666666666666664" height="10.666666666666666"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="maQ-gu-MaH" firstAttribute="width" secondItem="4yT-pS-Qg0" secondAttribute="width" id="BBG-BQ-Bi4"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecc-tE-ZDo">
@@ -70,7 +95,7 @@
                                 </subviews>
                             </stackView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nem-Ud-UFq">
-                                <rect key="frame" x="16" y="111.66666666666667" width="20" height="20.000000000000014"/>
+                                <rect key="frame" x="16" y="112.66666666666667" width="20" height="20.000000000000014"/>
                             </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s9p-eZ-hv5"/>
@@ -91,6 +116,7 @@
                     <connections>
                         <outlet property="activityIndicatorView" destination="nem-Ud-UFq" id="kN1-8O-ayq"/>
                         <outlet property="labelUrl" destination="jl4-4s-jMv" id="0gB-6v-XuY"/>
+                        <outlet property="labelUrlIcon" destination="32A-YQ-Dq5" id="FXz-Be-Gii"/>
                         <outlet property="labelVocabulary" destination="2OW-hc-PKe" id="eGp-iP-wx6"/>
                         <outlet property="textView" destination="Pte-mP-RzY" id="ZEq-3q-4le"/>
                     </connections>
@@ -622,6 +648,7 @@
     </scenes>
     <color key="tintColor" systemColor="systemRedColor"/>
     <resources>
+        <image name="external-link-icon" width="12" height="12"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="twitter-icon" width="24" height="24"/>
         <systemColor name="labelColor">
