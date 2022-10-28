@@ -32,11 +32,11 @@
                                                         <color key="textColor" systemColor="secondaryLabelColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="4y5-lj-rsQ">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="4y5-lj-rsQ">
                                                         <rect key="frame" x="0.0" y="23.666666666666657" width="28.666666666666668" height="10.666666666666664"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="4yT-pS-Qg0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="10.666666666666666" height="10.666666666666666"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="9.6666666666666661" height="10.666666666666666"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="700" verticalHuggingPriority="251" horizontalCompressionResistancePriority="900" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jl4-4s-jMv">
@@ -46,7 +46,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="external-link-icon" translatesAutoresizingMaskIntoConstraints="NO" id="32A-YQ-Dq5">
-                                                                <rect key="frame" x="17" y="0.0" width="10.333333333333336" height="10.666666666666666"/>
+                                                                <rect key="frame" x="17.333333333333314" y="0.0" width="10.666666666666664" height="10.666666666666666"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" systemColor="secondaryLabelColor"/>
                                                                 <constraints>
@@ -55,7 +55,7 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <view contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="maQ-gu-MaH">
-                                                                <rect key="frame" x="18" y="0.0" width="10.666666666666664" height="10.666666666666666"/>
+                                                                <rect key="frame" x="19" y="0.0" width="9.6666666666666643" height="10.666666666666666"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
                                                         </subviews>
