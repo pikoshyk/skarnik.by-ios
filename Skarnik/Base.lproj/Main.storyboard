@@ -178,7 +178,7 @@
                                                                 <color key="tintColor" systemColor="systemCyanColor"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" title="@skarnikby" imagePadding="8">
-                                                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="onCreator" destination="wzL-v9-7TO" eventType="touchUpInside" id="Z1j-Ec-Brk"/>
@@ -204,7 +204,7 @@
                                                                 <color key="tintColor" systemColor="systemCyanColor"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" title="@pikoshyk" imagePadding="8">
-                                                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="onDeveloper" destination="wzL-v9-7TO" eventType="touchUpInside" id="4rg-3A-wG3"/>

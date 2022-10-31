@@ -28,7 +28,7 @@ class SKLocalization: Any {
     class var wordDetailsSubtitleBelRus: String { "Пераклад на рускую мову" }
     class var wordDetailsSubtitleDenifition: String { "Тлумачэнне слова" }
     class var wordDetailsSpelling: String { "Націск" }
-    class var wordDetailsSpellingTitle: String { "Націск і марфалогія" }
+    class var wordDetailsSpellingTitle: String { "Націск і арфаграфія" }
     class var wordDetailsSpellingMessage: String { "для прагляду, калі ласка, абярыце слова" }
     class var wordDetailsSpellingCancel: String { "Адмена" }
 
