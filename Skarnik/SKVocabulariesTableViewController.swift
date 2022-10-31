@@ -10,6 +10,7 @@ import UIKit
 class SKVocabulariesTableViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var viewForSegmentedControl: UIView!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var viewAdditionKeyboardButtons: SKAdditionalKeyboardView!
     var viewAdditionKeyboardButtonsHidden: Bool?
@@ -347,6 +348,16 @@ extension SKVocabulariesTableViewController: UISearchBarDelegate {
         searchBar.setValue(SKLocalization.searchbarCancel, forKey: "cancelButtonText")
     }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.viewForSegmentedControl.isHidden = true
+        self.tableView.isHidden = true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        self.viewForSegmentedControl.isHidden = false
+        self.tableView.isHidden = false
+    }
+    
     var isSearchBarEmpty: Bool {
         return self.navigationItem.searchController?.searchBar.text?.isEmpty ?? true
     }
@@ -360,11 +371,13 @@ extension SKVocabulariesTableViewController: UISearchControllerDelegate {
         }
         searchResultsTableViewController.delegate = self
         let searchController = UISearchController(searchResultsController: searchResultsTableViewController)
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.automaticallyShowsCancelButton = true
         searchController.searchResultsUpdater = searchResultsTableViewController
-        searchController.obscuresBackgroundDuringPresentation = true
+//        searchController.obscuresBackgroundDuringPresentation = true
         self.updateSearchBar(searchController.searchBar)
         self.navigationItem.searchController = searchController
-        searchController.showsSearchResultsController = true
-        self.definesPresentationContext = true
+//        searchController.showsSearchResultsController = true
+//        self.definesPresentationContext = true
     }
 }

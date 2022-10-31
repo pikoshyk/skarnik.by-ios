@@ -177,8 +177,14 @@
                                                                 <rect key="frame" x="158" y="0.0" width="142" height="44"/>
                                                                 <color key="tintColor" systemColor="systemCyanColor"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" title="@skarnikby" imagePadding="8">
-                                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                                                <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" imagePadding="8">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="@skarnikby">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="14" name="SFMono-Regular"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="onCreator" destination="wzL-v9-7TO" eventType="touchUpInside" id="Z1j-Ec-Brk"/>
@@ -203,8 +209,14 @@
                                                                 <rect key="frame" x="158" y="0.0" width="142" height="44"/>
                                                                 <color key="tintColor" systemColor="systemCyanColor"/>
                                                                 <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" title="@pikoshyk" imagePadding="8">
-                                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                                                <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" imagePadding="8">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="@pikoshyk">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="14" name="SFMono-Regular"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
                                                                 </buttonConfiguration>
                                                                 <connections>
                                                                     <action selector="onDeveloper" destination="wzL-v9-7TO" eventType="touchUpInside" id="4rg-3A-wG3"/>
@@ -388,6 +400,7 @@
                         <outlet property="segmentedControl" destination="Fvc-IG-bh8" id="pxM-Sj-TQx"/>
                         <outlet property="tableView" destination="eg0-Jz-bBu" id="LKG-Am-2di"/>
                         <outlet property="viewAdditionKeyboardButtons" destination="Y3J-ZQ-0jy" id="Z1E-pe-kzr"/>
+                        <outlet property="viewForSegmentedControl" destination="7C4-Jh-bAP" id="mf1-7f-JUG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5LS-zB-BUB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -630,7 +643,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="743" y="-469"/>
+            <point key="canvasLocation" x="740" y="-468"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="vlO-fb-u0p">
