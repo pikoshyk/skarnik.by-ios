@@ -42,7 +42,7 @@ class SKAppstoreReviewController: Any {
 
                 if let windowScene = await UIApplication.shared.connectedScenes.first as? UIWindowScene {
                     if #available(iOS 14.0, *) {
-                        await SKStoreReviewController.requestReview(in: windowScene)
+                        SKStoreReviewController.requestReview(in: windowScene)
                     } else {
                         SKStoreReviewController.requestReview()
                     }
