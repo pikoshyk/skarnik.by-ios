@@ -22,6 +22,8 @@
 		B27D996528FB341F0047CCBF /* SKAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996428FB341F0047CCBF /* SKAboutViewController.swift */; };
 		B27D996828FC92910047CCBF /* SKStarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996728FC92910047CCBF /* SKStarnikByController.swift */; };
 		B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */; };
+		B2AF0839291482DD0005E3E6 /* NSAttributedString+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */; };
+		B2AF083B29148AF00005E3E6 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF083A29148AEF0005E3E6 /* URLSession.swift */; };
 		B2C557DA290898A700FEB28A /* Task+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C557D9290898A700FEB28A /* Task+Skarnik.swift */; };
 		B2C557DC2908991300FEB28A /* Array+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C557DB2908991300FEB28A /* Array+Skarnik.swift */; };
 		B2C557DE2908996500FEB28A /* UIColor+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */; };
@@ -52,6 +54,8 @@
 		B27D996628FBB15E0047CCBF /* Skarnik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skarnik.entitlements; sourceTree = "<group>"; };
 		B27D996728FC92910047CCBF /* SKStarnikByController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStarnikByController.swift; sourceTree = "<group>"; };
 		B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSkarnikByController.swift; sourceTree = "<group>"; };
+		B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Skarnik.swift"; sourceTree = "<group>"; };
+		B2AF083A29148AEF0005E3E6 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		B2C557D9290898A700FEB28A /* Task+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Skarnik.swift"; sourceTree = "<group>"; };
 		B2C557DB2908991300FEB28A /* Array+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Skarnik.swift"; sourceTree = "<group>"; };
 		B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Skarnik.swift"; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				B2C557D9290898A700FEB28A /* Task+Skarnik.swift */,
 				B2C557DB2908991300FEB28A /* Array+Skarnik.swift */,
 				B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */,
+				B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */,
+				B2AF083A29148AEF0005E3E6 /* URLSession.swift */,
 				B20ABABF28EEBF6F00AA2FC9 /* Main.storyboard */,
 				B20ABAC428EEBF8400AA2FC9 /* LaunchScreen.storyboard */,
 				B20ABAC228EEBF8400AA2FC9 /* Assets.xcassets */,
@@ -208,10 +214,12 @@
 				B2C557DE2908996500FEB28A /* UIColor+Skarnik.swift in Sources */,
 				B27D996528FB341F0047CCBF /* SKAboutViewController.swift in Sources */,
 				B20ABABA28EEBF6F00AA2FC9 /* AppDelegate.swift in Sources */,
+				B2AF083B29148AF00005E3E6 /* URLSession.swift in Sources */,
 				B2362A90290697E50059B13C /* SKAppstoreReviewController.swift in Sources */,
 				B27D996328FB11E60047CCBF /* SKLocalization.swift in Sources */,
 				B2FEFEEF28F4E53600675E49 /* SKWordDetailsViewController.swift in Sources */,
 				B2FEFEE928F3634800675E49 /* SKAdditionalKeyboardView.swift in Sources */,
+				B2AF0839291482DD0005E3E6 /* NSAttributedString+Skarnik.swift in Sources */,
 				B20ABABC28EEBF6F00AA2FC9 /* SceneDelegate.swift in Sources */,
 				B20ABAD928EF22AD00AA2FC9 /* SKVocabularyIndex.swift in Sources */,
 				B2C557DC2908991300FEB28A /* Array+Skarnik.swift in Sources */,
@@ -370,10 +378,12 @@
 				CODE_SIGN_ENTITLEMENTS = Skarnik/Skarnik.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Skarnik/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skarnik;
@@ -388,14 +398,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Skarnik Development";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,7 +422,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -428,14 +439,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Skarnik AppStore";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

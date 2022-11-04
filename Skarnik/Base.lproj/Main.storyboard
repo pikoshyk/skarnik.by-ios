@@ -65,7 +65,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecc-tE-ZDo">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecc-tE-ZDo">
                                                 <rect key="frame" x="167.33333333333334" y="8" width="28.666666666666657" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=" "/>
@@ -115,6 +115,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="nem-Ud-UFq" id="kN1-8O-ayq"/>
+                        <outlet property="buttonUrl" destination="ecc-tE-ZDo" id="R4C-qD-61a"/>
                         <outlet property="labelUrl" destination="jl4-4s-jMv" id="0gB-6v-XuY"/>
                         <outlet property="labelUrlIcon" destination="32A-YQ-Dq5" id="FXz-Be-Gii"/>
                         <outlet property="labelVocabulary" destination="2OW-hc-PKe" id="eGp-iP-wx6"/>

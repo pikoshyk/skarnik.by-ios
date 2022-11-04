@@ -10,6 +10,7 @@ import UIKit
 class SKWordDetailsViewController: UIViewController {
     
     @IBOutlet var labelVocabulary: UILabel!
+    @IBOutlet var buttonUrl: UIButton!
     @IBOutlet var labelUrl: UILabel!
     @IBOutlet var labelUrlIcon: UIImageView!
     @IBOutlet var textView: UITextView!
@@ -40,6 +41,7 @@ class SKWordDetailsViewController: UIViewController {
             if let translation = self.translation {
                 self.labelUrl.text = translation.url
                 self.labelUrlIcon.isHidden = false
+                self.buttonUrl.isHidden = false
                 translation.attributedString(resultBlock: { attributedString in
                     self.textView.attributedText = attributedString
                 })
@@ -48,6 +50,7 @@ class SKWordDetailsViewController: UIViewController {
                 self.spellingWords = []
                 self.labelUrl.text = " "
                 self.labelUrlIcon.isHidden = true
+                self.buttonUrl.isHidden = true
                 self.textView.attributedText = nil
             }
         }

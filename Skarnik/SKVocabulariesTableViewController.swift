@@ -354,8 +354,12 @@ extension SKVocabulariesTableViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        self.viewForSegmentedControl.isHidden = false
-        self.tableView.isHidden = false
+#if targetEnvironment(macCatalyst)
+            // don't show because show in willDismissSearchController()
+#elseif os(iOS)
+            self.viewForSegmentedControl.isHidden = false
+            self.tableView.isHidden = false
+#endif
     }
     
     var isSearchBarEmpty: Bool {
@@ -365,12 +369,20 @@ extension SKVocabulariesTableViewController: UISearchBarDelegate {
 
 extension SKVocabulariesTableViewController: UISearchControllerDelegate {
 
+    func willDismissSearchController(_ searchController: UISearchController) {
+#if targetEnvironment(macCatalyst)
+            self.viewForSegmentedControl.isHidden = false
+            self.tableView.isHidden = false
+#endif
+    }
+
     func assignSearchBarController() {
         guard let searchResultsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "SKSearchWordsTableViewController") as? SKSearchWordsTableViewController else {
             return
         }
         searchResultsTableViewController.delegate = self
         let searchController = UISearchController(searchResultsController: searchResultsTableViewController)
+        searchController.delegate = self
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.automaticallyShowsCancelButton = true
         searchController.searchResultsUpdater = searchResultsTableViewController

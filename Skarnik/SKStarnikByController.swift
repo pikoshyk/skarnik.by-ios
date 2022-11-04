@@ -46,7 +46,7 @@ class SKStarnikByController {
             return nil
         }
         
-        let data = await self.download(urlStr: urlStr)
+        let data = await URLSession.skarnikDownload(urlStr: urlStr)
         guard let data = data else {
             return nil
         }
@@ -78,30 +78,6 @@ class SKStarnikByController {
 
         let strUrl = "https://starnik.by/wordlist?lem=\(escapedBelWord)"
         return strUrl
-    }
-    
-    class private func download(urlStr: String) async -> Data? {
-        
-        guard let url = URL(string: urlStr) else {
-            return nil
-        }
-        
-        var data: Data?
-        do {
-            var retrievedData: Data?
-            var response: URLResponse?
-            (retrievedData, response) = try await URLSession.shared.data(from: url)
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    if retrievedData?.count ?? 0 > 0 {
-                        data = retrievedData
-                    }
-                }
-            }
-        } catch {
-        }
-
-        return data
     }
 }
 

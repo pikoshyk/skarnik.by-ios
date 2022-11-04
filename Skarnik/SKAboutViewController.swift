@@ -33,7 +33,7 @@ class SKAboutViewController: UIViewController {
         self.textViewSupport.text = ""
         if let textData = html.data(using: .utf8) {
             DispatchQueue.main.async {
-                let attributedString = try? NSAttributedString(data: textData, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: NSUTF8StringEncoding ], documentAttributes: nil)
+                let attributedString = try? NSAttributedString.string(htmlData: textData)
                 self.textViewSupport.attributedText = attributedString
             }
         }

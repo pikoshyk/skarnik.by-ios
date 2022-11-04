@@ -6,7 +6,7 @@
 //  Copyright © 2022 Skarnik. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension Task where Success == Never, Failure == Never {
     static func sleep(seconds: Double) async throws {

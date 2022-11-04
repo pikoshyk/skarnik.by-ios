@@ -19,7 +19,7 @@ struct SKSkarnikTranslation {
         let html = "<html><body style=\"font-size: \(fontSize); color: \(color); font-family: -apple-system; line-height: 150%;\">" + self.html + "</body></html>"
         if let textData = html.data(using: .utf8) {
             DispatchQueue.main.async {
-                let attributedString = try? NSAttributedString(data: textData, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: NSUTF8StringEncoding ], documentAttributes: nil)
+                let attributedString = try? NSAttributedString.string(htmlData: textData)
                 resultBlock(attributedString)
             }
         }
@@ -104,7 +104,7 @@ class SKSkarnikByController: Any {
             return nil
         }
 
-        guard let data = await self.download(url: urlStr) else {
+        guard let data = await URLSession.skarnikDownload(urlStr: urlStr) else {
             throw SKSkarnikError.networkError
         }
 
@@ -133,30 +133,6 @@ class SKSkarnikByController: Any {
         }
         let urlStr = "https://www.skarnik.by/\(vocabularySkarnikId)/\(wordId)"
         return urlStr
-    }
-
-    class private func download(url: String) async -> Data? {
-        
-        guard let url = URL(string: url) else {
-            return nil
-        }
-        
-        var data: Data?
-        do {
-            var retrievedData: Data?
-            var response: URLResponse?
-            (retrievedData, response) = try await URLSession.shared.data(from: url)
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode == 200 {
-                    if retrievedData?.count ?? 0 > 0 {
-                        data = retrievedData
-                    }
-                }
-            }
-        } catch {
-        }
-
-        return data
     }
 
     class private func parseHtml(data: Data) throws -> String? {
