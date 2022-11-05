@@ -41,19 +41,11 @@ class SKAppstoreReviewController: Any {
                 }
 
                 if let windowScene = await UIApplication.shared.connectedScenes.first as? UIWindowScene {
-#if targetEnvironment(macCatalyst)
-                    if #available(macCatalyst 14.0, *) {
-                        SKStoreReviewController.requestReview(in: windowScene)
-                    } else {
-                        SKStoreReviewController.requestReview()
-                    }
-#else
-                    if #available(iOS 14.0, *) {
+                    if #available(iOS 14.0, macCatalyst 14.0, *) {
                         await SKStoreReviewController.requestReview(in: windowScene)
                     } else {
                         SKStoreReviewController.requestReview()
                     }
-#endif
                     UserDefaults.standard.set(0, forKey: self.wordsCompletedCountKey)
                     UserDefaults.standard.set(currentVersion, forKey: self.lastVersionPromptedKey)
                     UserDefaults.standard.synchronize()
