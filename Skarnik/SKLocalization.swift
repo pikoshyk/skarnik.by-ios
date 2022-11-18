@@ -11,6 +11,7 @@ import UIKit
 class SKLocalization: Any {
     class var searchbarSearchWords: String { "Пошук слоў" }
     class var searchbarCancel: String { "Адмена" }
+    class var searchHeaderAdditionalRules: String{ "Пошук з аўтаматычнай\nпадменай і|и, ў|щ, ‘|ъ|ь, е|ё" }
 
     class var vocabulariesAdvancedSearch: String { "Спецпошук" }
     class var segmentHistory: String { "Гісторыя" }

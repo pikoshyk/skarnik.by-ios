@@ -15,7 +15,7 @@ class SKSearchWordsTableViewController: UITableViewController, UISearchResultsUp
     
     @IBOutlet var viewSearchHeaderAdditionalRules: UIView!
     @IBOutlet var labelSearchHeaderAdditionalRulesHeader: UILabel!
-
+    
     var delegate: SKSearchWordsTableViewControllerDelegate?
     var searchText: String?
     private var words: [SKWord] = []
@@ -25,11 +25,18 @@ class SKSearchWordsTableViewController: UITableViewController, UISearchResultsUp
         super.viewDidLoad()
         self.backgroundSearchQueue.maxConcurrentOperationCount = 1
         self.backgroundSearchQueue.qualityOfService = .background
+        self.labelSearchHeaderAdditionalRulesHeader.text = SKLocalization.searchHeaderAdditionalRules
+
         self.tableView.contentInset.bottom = 60.0 // Additional Keyboard Size
+
+        if #available(iOS 15.0, *) {
+            self.tableView.sectionHeaderTopPadding = 0
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
         if let indexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRow(at: indexPath, animated: false)
         }
@@ -37,17 +44,28 @@ class SKSearchWordsTableViewController: UITableViewController, UISearchResultsUp
 
     // MARK: - Table view data source
     
-//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard let text = self.searchText else {
-//            return nil
-//        }
-//
-//        if SKVocabularyIndex.shared.requiredAdditionalSearchRules(queryLength: text.count) {
-//            return self.viewSearchHeaderAdditionalRules
-//        }
-//
-//        return nil
-//    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let text = self.searchText else {
+            return nil
+        }
+
+        if SKVocabularyIndex.shared.requiredAdditionalSearchRules(queryLength: text.count, vocabularyType: .all) {
+            return self.viewSearchHeaderAdditionalRules
+        }
+
+        return nil
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let text = self.searchText else {
+            return 0
+        }
+
+        if SKVocabularyIndex.shared.requiredAdditionalSearchRules(queryLength: text.count, vocabularyType: .all) {
+            return 60.0
+        }
+        return 0
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

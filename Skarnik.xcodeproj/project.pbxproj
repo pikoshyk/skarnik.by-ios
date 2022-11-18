@@ -18,6 +18,7 @@
 		B20ABAD728EF21CC00AA2FC9 /* vocabulary.db in Resources */ = {isa = PBXBuildFile; fileRef = B20ABAD628EF21CA00AA2FC9 /* vocabulary.db */; };
 		B20ABAD928EF22AD00AA2FC9 /* SKVocabularyIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */; };
 		B2362A90290697E50059B13C /* SKAppstoreReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2362A8F290697E50059B13C /* SKAppstoreReviewController.swift */; };
+		B2462E6D2927AE9F005C8D33 /* String+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2462E6C2927AE9F005C8D33 /* String+Skarnik.swift */; };
 		B27D996328FB11E60047CCBF /* SKLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996228FB11E60047CCBF /* SKLocalization.swift */; };
 		B27D996528FB341F0047CCBF /* SKAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996428FB341F0047CCBF /* SKAboutViewController.swift */; };
 		B27D996828FC92910047CCBF /* SKStarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996728FC92910047CCBF /* SKStarnikByController.swift */; };
@@ -49,6 +50,7 @@
 		B20ABAD628EF21CA00AA2FC9 /* vocabulary.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = vocabulary.db; sourceTree = "<group>"; };
 		B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKVocabularyIndex.swift; sourceTree = "<group>"; };
 		B2362A8F290697E50059B13C /* SKAppstoreReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAppstoreReviewController.swift; sourceTree = "<group>"; };
+		B2462E6C2927AE9F005C8D33 /* String+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Skarnik.swift"; sourceTree = "<group>"; };
 		B27D996228FB11E60047CCBF /* SKLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLocalization.swift; sourceTree = "<group>"; };
 		B27D996428FB341F0047CCBF /* SKAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAboutViewController.swift; sourceTree = "<group>"; };
 		B27D996628FBB15E0047CCBF /* Skarnik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skarnik.entitlements; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				B27D996228FB11E60047CCBF /* SKLocalization.swift */,
 				B2C557D9290898A700FEB28A /* Task+Skarnik.swift */,
 				B2C557DB2908991300FEB28A /* Array+Skarnik.swift */,
+				B2462E6C2927AE9F005C8D33 /* String+Skarnik.swift */,
 				B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */,
 				B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */,
 				B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */,
@@ -224,6 +227,7 @@
 				B20ABAD928EF22AD00AA2FC9 /* SKVocabularyIndex.swift in Sources */,
 				B2C557DC2908991300FEB28A /* Array+Skarnik.swift in Sources */,
 				B20ABAD228EED10D00AA2FC9 /* SKSplitViewController.swift in Sources */,
+				B2462E6D2927AE9F005C8D33 /* String+Skarnik.swift in Sources */,
 				B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */,
 				B2FEFEEB28F3776E00675E49 /* SKSearchWordsTableViewController.swift in Sources */,
 				B27D996828FC92910047CCBF /* SKStarnikByController.swift in Sources */,
@@ -380,7 +384,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -398,7 +402,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -423,7 +427,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -441,7 +445,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

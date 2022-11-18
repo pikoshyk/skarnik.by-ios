@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJM-JY-GBU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jJM-JY-GBU">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -174,10 +174,19 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9H-36-7ot">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9H-36-7ot">
                                                                 <rect key="frame" x="158" y="0.0" width="142" height="44"/>
                                                                 <color key="tintColor" systemColor="systemCyanColor"/>
-                                                                <state key="normal" title="Button"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                                <state key="normal" title="Button" image="twitter-icon">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="@skarnikby">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="14" name="SFMono-Regular"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
+                                                                </state>
                                                                 <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" imagePadding="8">
                                                                     <attributedString key="attributedTitle">
                                                                         <fragment content="@skarnikby">
@@ -206,10 +215,19 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOD-dP-Hgx">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HOD-dP-Hgx">
                                                                 <rect key="frame" x="158" y="0.0" width="142" height="44"/>
                                                                 <color key="tintColor" systemColor="systemCyanColor"/>
-                                                                <state key="normal" title="Button"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                                <state key="normal" title="Button" image="twitter-icon">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="@pikoshyk">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="14" name="SFMono-Regular"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
+                                                                </state>
                                                                 <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" imagePadding="8">
                                                                     <attributedString key="attributedTitle">
                                                                         <fragment content="@pikoshyk">
@@ -422,13 +440,12 @@
                                                 <constraint firstAttribute="height" constant="44" id="YiO-dC-xyz"/>
                                                 <constraint firstAttribute="width" constant="44" id="toD-9C-07f"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                             <color key="tintColor" systemColor="labelColor"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="и">
-                                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="19"/>
-                                                <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
-                                            </buttonConfiguration>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="и">
+                                                <color key="titleColor" systemColor="labelColor"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="22"/>
@@ -445,13 +462,12 @@
                                                 <constraint firstAttribute="height" constant="44" id="0t1-ns-cFA"/>
                                                 <constraint firstAttribute="width" constant="44" id="mRc-Hw-UAb"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                             <color key="tintColor" systemColor="labelColor"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="щ">
-                                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="19"/>
-                                                <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
-                                            </buttonConfiguration>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="щ">
+                                                <color key="titleColor" systemColor="labelColor"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="22"/>
@@ -468,13 +484,12 @@
                                                 <constraint firstAttribute="height" constant="44" id="FWR-dD-ZN8"/>
                                                 <constraint firstAttribute="width" constant="44" id="PNt-uc-5Yb"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                             <color key="tintColor" systemColor="labelColor"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="ъ">
-                                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="19"/>
-                                                <color key="baseForegroundColor" systemColor="labelColor"/>
-                                                <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
-                                            </buttonConfiguration>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="ъ">
+                                                <color key="titleColor" systemColor="labelColor"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="22"/>
@@ -496,13 +511,12 @@
                                                 <constraint firstAttribute="height" constant="44" id="rk8-up-DFZ"/>
                                                 <constraint firstAttribute="width" constant="44" id="y83-Hg-C7Y"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="i">
-                                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="19"/>
-                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                            </buttonConfiguration>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="i">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="22"/>
@@ -519,13 +533,12 @@
                                                 <constraint firstAttribute="height" constant="44" id="Bfl-Nk-TUL"/>
                                                 <constraint firstAttribute="width" constant="44" id="XeD-bX-lJd"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="ў">
-                                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="19"/>
-                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                            </buttonConfiguration>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="ў">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="22"/>
@@ -542,13 +555,12 @@
                                                 <constraint firstAttribute="height" constant="44" id="90F-4D-Crr"/>
                                                 <constraint firstAttribute="width" constant="44" id="bdx-vZ-Szi"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="filled" title="‘">
-                                                <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="19"/>
-                                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                            </buttonConfiguration>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="‘">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="22"/>
@@ -622,25 +634,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAu-Kb-bbD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="eBX-TZ-vnZ">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пошук з аўтаматычнай канверсія і|и, ў|щ, ‘|ъ, е|ё" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="16" translatesAutoresizingMaskIntoConstraints="NO" id="Epn-xN-Y28">
-                            <rect key="frame" x="8" y="14" width="377" height="16"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="16" id="tGe-KK-WtS"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="600" verticalCompressionResistancePriority="900" text="Пошук з аўтаматычнай канверсіяй і|и, ў|щ, ‘|ъ, е|ё" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="16" translatesAutoresizingMaskIntoConstraints="NO" id="Epn-xN-Y28">
+                            <rect key="frame" x="16" y="8" width="361" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" systemColor="secondaryLabelColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="H6U-9a-4wd"/>
-                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
                     <constraints>
-                        <constraint firstItem="Epn-xN-Y28" firstAttribute="leading" secondItem="eBX-TZ-vnZ" secondAttribute="leading" constant="8" id="BaC-pf-0KA"/>
-                        <constraint firstItem="Epn-xN-Y28" firstAttribute="top" secondItem="eBX-TZ-vnZ" secondAttribute="top" constant="14" id="WJg-hr-t0I"/>
-                        <constraint firstItem="H6U-9a-4wd" firstAttribute="bottom" secondItem="Epn-xN-Y28" secondAttribute="bottom" constant="14" id="YoT-5S-56c"/>
-                        <constraint firstAttribute="trailing" secondItem="Epn-xN-Y28" secondAttribute="trailing" constant="8" id="xOh-an-pYc"/>
+                        <constraint firstItem="Epn-xN-Y28" firstAttribute="leading" secondItem="eBX-TZ-vnZ" secondAttribute="leading" constant="16" id="BaC-pf-0KA"/>
+                        <constraint firstItem="Epn-xN-Y28" firstAttribute="top" secondItem="eBX-TZ-vnZ" secondAttribute="top" constant="8" id="WJg-hr-t0I"/>
+                        <constraint firstItem="H6U-9a-4wd" firstAttribute="bottom" secondItem="Epn-xN-Y28" secondAttribute="bottom" constant="8" id="YoT-5S-56c"/>
+                        <constraint firstAttribute="trailing" secondItem="Epn-xN-Y28" secondAttribute="trailing" constant="16" id="xOh-an-pYc"/>
                     </constraints>
                 </view>
             </objects>
@@ -668,8 +677,8 @@
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="quaternarySystemFillColor">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.50196078431372548" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

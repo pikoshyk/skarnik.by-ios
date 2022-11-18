@@ -12,11 +12,27 @@ struct SKSkarnikTranslation {
     let word: SKWord
     let url: String
     let html: String
+    
+    var recoloredHtml: String {
+        get {
+            var html = self.html
+            if [.bel_rus, .rus_bel].contains(word.lang_id) {
+                html = html.regexSub(pattern: "color=\"831b03\"", template: "color=\"ff0000\"")
+                html = html.regexSub(pattern: "color=\"008000\"", template: "color=\"5f5f5f\"")
+            } else if word.lang_id == .bel_definition {
+                html = html.regexSub(pattern: "color=\"0000A0\"", template: "color=\"00aaff\"")
+                html = html.regexSub(pattern: "color=\"151B54\"", template: "color=\"880000\"")
+                html = html.regexSub(pattern: "color=\"5f5f5f\"", template: "color=\"aa0000\"")
+                html = html.regexSub(pattern: "color=\"A52A2A\"", template: "color=\"5f5f5f\"")
+            }
+            return html
+        }
+    }
 
     func attributedString(resultBlock: @escaping (_ : NSAttributedString?) -> Void) {
         let fontSize = UIFont.preferredFont(forTextStyle: .body).pointSize
         let color = UIColor.label.webHexString()
-        let html = "<html><body style=\"font-size: \(fontSize); color: \(color); font-family: -apple-system; line-height: 150%;\">" + self.html + "</body></html>"
+        let html = "<html><body style=\"font-size: \(fontSize); color: \(color); font-family: -apple-system; line-height: 150%;\">" + self.recoloredHtml + "</body></html>"
         if let textData = html.data(using: .utf8) {
             DispatchQueue.main.async {
                 let attributedString = try? NSAttributedString.string(htmlData: textData)
