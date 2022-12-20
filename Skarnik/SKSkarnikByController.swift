@@ -12,26 +12,78 @@ struct SKSkarnikTranslation {
     let word: SKWord
     let url: String
     let html: String
-    
+
+    let colorConversions = [
+        ["initial": "FFFFFF", "light": "F2F2F7", "dark": "1C1C1E"],
+        
+        ["initial": "831b03", "light": "F44C3E", "dark": "F44C3E"],
+        ["initial": "0000A0", "light": "F44C3E", "dark": "F44C3E"],
+        ["initial": "4863A0", "light": "F44C3E", "dark": "F44C3E"],
+        
+        ["initial": "008000", "light": "5856D6", "dark": "5E5CE6"],
+        ["initial": "A52A2A", "light": "5856D6", "dark": "5E5CE6"],
+        ["initial": "CC33FF", "light": "5856D6", "dark": "5E5CE6"],
+        
+        ["initial": "000000", "light": "000000", "dark": "FFFFFF"],
+        
+        ["initial": "5f5f5f", "light": "68686E", "dark": "98989F"],
+        ["initial": "151B54", "light": "68686E", "dark": "98989F"]
+    ]
+
+    var labelColorHex: String {
+        let filteredColors = self.colorConversions.filter {$0["initial"] == "000000"}
+        guard let colorLight = filteredColors.first?["light"],
+              let colorDark = filteredColors.first?["dark"] else {
+            return UIColor.label.webHexString()
+        }
+        var color = colorLight
+        if #available(iOS 13.0, *) {
+            if UITraitCollection.current.userInterfaceStyle == .dark {
+                color = colorDark
+            }
+        }
+        
+        return color
+    }
+
+
     var recoloredHtml: String {
         get {
             var html = self.html
-            if [.bel_rus, .rus_bel].contains(word.lang_id) {
-                html = html.regexSub(pattern: "color=\"831b03\"", template: "color=\"ff0000\"")
-                html = html.regexSub(pattern: "color=\"008000\"", template: "color=\"5f5f5f\"")
-            } else if word.lang_id == .bel_definition {
-                html = html.regexSub(pattern: "color=\"0000A0\"", template: "color=\"00aaff\"")
-                html = html.regexSub(pattern: "color=\"151B54\"", template: "color=\"880000\"")
-                html = html.regexSub(pattern: "color=\"5f5f5f\"", template: "color=\"aa0000\"")
-                html = html.regexSub(pattern: "color=\"A52A2A\"", template: "color=\"5f5f5f\"")
+            
+            
+            for colorPair in self.colorConversions {
+                guard let colorInitial = colorPair["initial"],
+                      let colorLight = colorPair["light"],
+                      let colorDark = colorPair["dark"] else {
+                    continue
+                }
+                
+                var color = colorLight
+                if #available(iOS 13.0, *) {
+                    if UITraitCollection.current.userInterfaceStyle == .dark {
+                        color = colorDark
+                    }
+                }
+
+                html = html.regexSub(pattern: "color=\"\(colorInitial)\"", template: "color=\"\(color)\"", options: [.caseInsensitive])
             }
+//            if [.bel_rus, .rus_bel].contains(word.lang_id) {
+//                html = html.regexSub(pattern: "color=\"831b03\"", template: "color=\"ff0000\"")
+//                html = html.regexSub(pattern: "color=\"008000\"", template: "color=\"5f5f5f\"")
+//            } else if word.lang_id == .bel_definition {
+//                html = html.regexSub(pattern: "color=\"0000A0\"", template: "color=\"00aaff\"")
+//                html = html.regexSub(pattern: "color=\"151B54\"", template: "color=\"880000\"")
+//                html = html.regexSub(pattern: "color=\"5f5f5f\"", template: "color=\"aa0000\"")
+//                html = html.regexSub(pattern: "color=\"A52A2A\"", template: "color=\"5f5f5f\"")
+//            }
             return html
         }
     }
 
     func attributedString(resultBlock: @escaping (_ : NSAttributedString?) -> Void) {
         let fontSize = UIFont.preferredFont(forTextStyle: .body).pointSize
-        let color = UIColor.label.webHexString()
+        let color = self.labelColorHex
         let html = "<html><body style=\"font-size: \(fontSize); color: \(color); font-family: -apple-system; line-height: 150%;\">" + self.recoloredHtml + "</body></html>"
         if let textData = html.data(using: .utf8) {
             DispatchQueue.main.async {

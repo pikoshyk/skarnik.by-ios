@@ -70,7 +70,7 @@ class SKWordDetailsViewController: UIViewController {
         didSet {
             if self.showSpellButton ?? false {
                 let buttonItem = UIBarButtonItem(title: SKLocalization.wordDetailsSpelling, style: .plain, target: self, action: #selector(onSpelling))
-                buttonItem.tintColor = UIColor.systemRed
+                buttonItem.tintColor = UIColor(named: "AccentColor")
                 self.navigationItem.rightBarButtonItem = buttonItem
             } else {
                 self.navigationItem.rightBarButtonItem = nil
@@ -175,7 +175,7 @@ class SKWordDetailsViewController: UIViewController {
         } else {
             let alertController = UIAlertController(title: SKLocalization.wordDetailsSpellingTitle, message: SKLocalization.wordDetailsSpellingMessage, preferredStyle: .actionSheet)
             alertController.modalPresentationStyle = .popover
-            alertController.view.tintColor = UIColor.systemRed
+            alertController.view.tintColor = UIColor(named: "AccentColor")
             let popPresenter = alertController.popoverPresentationController
             popPresenter?.barButtonItem = self.navigationItem.rightBarButtonItem
             for spellingWord in spellingWords {
