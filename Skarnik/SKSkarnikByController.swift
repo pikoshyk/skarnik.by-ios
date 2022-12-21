@@ -37,7 +37,7 @@ struct SKSkarnikTranslation {
             return UIColor.label.webHexString()
         }
         var color = colorLight
-        if #available(iOS 13.0, *) {
+        if #available(iOS 13.0, macCatalyst 13.0, *) {
             if UITraitCollection.current.userInterfaceStyle == .dark {
                 color = colorDark
             }
@@ -60,7 +60,7 @@ struct SKSkarnikTranslation {
                 }
                 
                 var color = colorLight
-                if #available(iOS 13.0, *) {
+                if #available(iOS 13.0, macCatalyst 13.0, *) {
                     if UITraitCollection.current.userInterfaceStyle == .dark {
                         color = colorDark
                     }
