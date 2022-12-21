@@ -12,6 +12,7 @@ class SKAboutViewController: UIViewController {
     
     @IBOutlet var labelSubscriptionCreator: UILabel!
     @IBOutlet var labelSubscriptionDeveloper: UILabel!
+    @IBOutlet var labelSubscriptionDesigner: UILabel!
     @IBOutlet var labelDescription: UILabel!
     @IBOutlet var textViewSupport: UITextView!
 
@@ -21,16 +22,19 @@ class SKAboutViewController: UIViewController {
 
         self.labelSubscriptionCreator.text = SKLocalization.aboutSubscriptionCreator
         self.labelSubscriptionDeveloper.text = SKLocalization.aboutSubscriptionDeveloper
+        self.labelSubscriptionDesigner.text = SKLocalization.aboutSubscriptionDesigner
         self.labelDescription.text = SKLocalization.aboutDescription
         self.updateSupportText()
     }
     
     func updateSupportText() {
         let fontSize = 15.0
-        let color = UIColor.label.webHexString()
+        let color = UIColor.secondaryLabel.webHexString()
+        let opacity = UIColor.secondaryLabel.alpha
         let text = SKLocalization.aboutSupportHtml
         let html = "<html><body style=\"font-size: \(fontSize); color: \(color); font-family: -apple-system;\">" + text + "</body></html>"
         self.textViewSupport.text = ""
+        self.textViewSupport.alpha = opacity
         if let textData = html.data(using: .utf8) {
             DispatchQueue.main.async {
                 let attributedString = try? NSAttributedString.string(htmlData: textData)
@@ -56,6 +60,10 @@ class SKAboutViewController: UIViewController {
     
     @IBAction func onDeveloper() {
         self.openTwitterAccount(account: "pikoshyk")
+    }
+    
+    @IBAction func onDesigner() {
+        self.openTwitterAccount(account: "AlenaBakanouska")
     }
     
 

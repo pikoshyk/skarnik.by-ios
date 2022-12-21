@@ -152,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="obM-pP-E2w">
-                                <rect key="frame" x="16" y="64" width="361" height="234"/>
+                                <rect key="frame" x="16" y="64" width="361" height="294"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pY2-KY-eGF">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="18"/>
@@ -161,10 +161,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAS-Zk-U3d">
-                                        <rect key="frame" x="0.0" y="34" width="361" height="200"/>
+                                        <rect key="frame" x="0.0" y="34" width="361" height="260"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="gZb-8L-FIU">
-                                                <rect key="frame" x="30.666666666666657" y="0.0" width="300" height="200"/>
+                                                <rect key="frame" x="30.666666666666657" y="0.0" width="300" height="260"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="05U-Gy-7N8">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
@@ -190,9 +190,10 @@
                                                                 </state>
                                                                 <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" imagePadding="8">
                                                                     <attributedString key="attributedTitle">
-                                                                        <fragment content="@skarnikby">
+                                                                        <fragment content="                      ">
                                                                             <attributes>
                                                                                 <font key="NSFont" size="14" name="SFMono-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -231,9 +232,10 @@
                                                                 </state>
                                                                 <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" imagePadding="8">
                                                                     <attributedString key="attributedTitle">
-                                                                        <fragment content="@pikoshyk">
+                                                                        <fragment content="                      ">
                                                                             <attributes>
                                                                                 <font key="NSFont" size="14" name="SFMono-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
@@ -248,8 +250,50 @@
                                                             <constraint firstAttribute="height" constant="44" id="RV9-cV-3iS"/>
                                                         </constraints>
                                                     </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="BYF-oi-aPW">
+                                                        <rect key="frame" x="0.0" y="120" width="300" height="44"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvl-X9-JfR">
+                                                                <rect key="frame" x="0.0" y="0.0" width="142" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSI-ua-mee">
+                                                                <rect key="frame" x="158" y="0.0" width="142" height="44"/>
+                                                                <color key="tintColor" systemColor="systemCyanColor"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                                <state key="normal" title="Button" image="twitter-icon">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="@pikoshyk">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="14" name="SFMono-Regular"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
+                                                                </state>
+                                                                <buttonConfiguration key="configuration" style="tinted" image="twitter-icon" imagePadding="8">
+                                                                    <attributedString key="attributedTitle">
+                                                                        <fragment content="                      ">
+                                                                            <attributes>
+                                                                                <font key="NSFont" size="14" name="SFMono-Regular"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                            </attributes>
+                                                                        </fragment>
+                                                                    </attributedString>
+                                                                </buttonConfiguration>
+                                                                <connections>
+                                                                    <action selector="onDesigner" destination="wzL-v9-7TO" eventType="touchUpInside" id="FOo-zJ-O72"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="AHy-tI-unt"/>
+                                                        </constraints>
+                                                    </stackView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Support" translatesAutoresizingMaskIntoConstraints="NO" id="W6y-qI-pST">
-                                                        <rect key="frame" x="0.0" y="120" width="300" height="80"/>
+                                                        <rect key="frame" x="0.0" y="180" width="300" height="80"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="80" id="9am-SK-d0Y"/>
@@ -263,12 +307,39 @@
                                                     <constraint firstAttribute="width" constant="300" id="Nlh-iJ-clZ"/>
                                                 </constraints>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@skarnikby" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvn-Ud-94D">
+                                                <rect key="frame" x="233.66666666666663" y="13.666666666666671" width="89" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemCyanColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="151" verticalHuggingPriority="251" text="@pikoshyk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gc-j5-fDn">
+                                                <rect key="frame" x="233.66666666666663" y="73.666666666666657" width="89" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemCyanColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@AlenaBakanouska" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpt-Ff-aUJ">
+                                                <rect key="frame" x="233.66666666666663" y="133.66666666666666" width="89" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemCyanColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="HOD-dP-Hgx" firstAttribute="trailing" secondItem="3gc-j5-fDn" secondAttribute="trailing" constant="8" id="1lM-dn-SRe"/>
                                             <constraint firstAttribute="bottom" secondItem="gZb-8L-FIU" secondAttribute="bottom" id="AmO-AN-sIQ"/>
                                             <constraint firstItem="gZb-8L-FIU" firstAttribute="top" secondItem="cAS-Zk-U3d" secondAttribute="top" id="Gno-XI-ZdQ"/>
+                                            <constraint firstItem="LSI-ua-mee" firstAttribute="centerY" secondItem="xpt-Ff-aUJ" secondAttribute="centerY" id="J88-e3-7UK"/>
                                             <constraint firstItem="gZb-8L-FIU" firstAttribute="centerX" secondItem="cAS-Zk-U3d" secondAttribute="centerX" id="Uki-eo-EK6"/>
+                                            <constraint firstItem="F9H-36-7ot" firstAttribute="centerY" secondItem="Pvn-Ud-94D" secondAttribute="centerY" id="cXS-jo-3U7"/>
+                                            <constraint firstItem="LSI-ua-mee" firstAttribute="leading" secondItem="xpt-Ff-aUJ" secondAttribute="leading" constant="-45" id="gkv-gr-yAq"/>
+                                            <constraint firstItem="HOD-dP-Hgx" firstAttribute="leading" secondItem="3gc-j5-fDn" secondAttribute="leading" constant="-45" id="hKh-LV-A3v"/>
+                                            <constraint firstItem="HOD-dP-Hgx" firstAttribute="centerY" secondItem="3gc-j5-fDn" secondAttribute="centerY" id="ifG-g8-BgV"/>
+                                            <constraint firstItem="F9H-36-7ot" firstAttribute="leading" secondItem="Pvn-Ud-94D" secondAttribute="leading" constant="-45" id="kje-P8-4Qj"/>
+                                            <constraint firstItem="F9H-36-7ot" firstAttribute="trailing" secondItem="Pvn-Ud-94D" secondAttribute="trailing" constant="8" id="l4X-P3-WBI"/>
+                                            <constraint firstItem="xpt-Ff-aUJ" firstAttribute="trailing" secondItem="LSI-ua-mee" secondAttribute="trailing" constant="-8" id="tcF-lh-u7g"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -288,13 +359,14 @@
                     <connections>
                         <outlet property="labelDescription" destination="pY2-KY-eGF" id="cXJ-ep-MFf"/>
                         <outlet property="labelSubscriptionCreator" destination="QQc-OI-wCi" id="zuG-0O-p9r"/>
+                        <outlet property="labelSubscriptionDesigner" destination="yvl-X9-JfR" id="a9o-75-Q2G"/>
                         <outlet property="labelSubscriptionDeveloper" destination="Eap-op-Jbc" id="x9Y-FM-dm9"/>
                         <outlet property="textViewSupport" destination="W6y-qI-pST" id="b0z-M9-Cav"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcZ-Xy-2fg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740.57971014492762" y="-1292.4107142857142"/>
+            <point key="canvasLocation" x="739.69465648854964" y="-1292.9577464788733"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sfl-ju-VZm">
