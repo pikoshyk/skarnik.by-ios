@@ -80,6 +80,16 @@ struct SKSkarnikTranslation {
             return html
         }
     }
+    
+    var attributedString: NSAttributedString? {
+        get async {
+            await withCheckedContinuation { continuation in
+                self.attributedString { attributedString in
+                    continuation.resume(returning: attributedString)
+                }
+            }
+        }
+    }
 
     func attributedString(resultBlock: @escaping (_ : NSAttributedString?) -> Void) {
         let fontSize = UIFont.preferredFont(forTextStyle: .body).pointSize

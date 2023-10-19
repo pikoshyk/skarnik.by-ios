@@ -6,7 +6,7 @@
 //
 
 import SQLite
-import UIKit
+import Foundation
 
 enum ESKVocabularyType: Int, Codable {
     case history = 0
@@ -193,5 +193,20 @@ class SKVocabularyIndex {
         }
 
         return words
+    }
+    
+    func randomWord(vocabularyType: ESKVocabularyType) -> SKWord? {
+        var rows: Statement?
+        do {
+            rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? ORDER BY random() LIMIT 1", vocabularyType.rawValue)
+        } catch {
+        }
+        
+        guard let row = rows?.next() else {
+            return nil
+        }
+        
+        let word = SKWord(word_id: row[0] as! Int64, word: row[1] as! String, lang_id: vocabularyType)
+        return word
     }
 }

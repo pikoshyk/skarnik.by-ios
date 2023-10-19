@@ -22,6 +22,26 @@
 		B27D996328FB11E60047CCBF /* SKLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996228FB11E60047CCBF /* SKLocalization.swift */; };
 		B27D996528FB341F0047CCBF /* SKAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996428FB341F0047CCBF /* SKAboutViewController.swift */; };
 		B27D996828FC92910047CCBF /* SKStarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996728FC92910047CCBF /* SKStarnikByController.swift */; };
+		B284FE582AE0A455009CA21D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B284FE572AE0A455009CA21D /* WidgetKit.framework */; };
+		B284FE5A2AE0A455009CA21D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B284FE592AE0A455009CA21D /* SwiftUI.framework */; };
+		B284FE5D2AE0A455009CA21D /* SKWordWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284FE5C2AE0A455009CA21D /* SKWordWidgetBundle.swift */; };
+		B284FE5F2AE0A455009CA21D /* SKWordWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284FE5E2AE0A455009CA21D /* SKWordWidget.swift */; };
+		B284FE612AE0A456009CA21D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B284FE602AE0A456009CA21D /* Assets.xcassets */; };
+		B284FE652AE0A456009CA21D /* WordWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B284FE552AE0A455009CA21D /* WordWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B284FE6F2AE0A527009CA21D /* SKWordWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284FE6B2AE0A527009CA21D /* SKWordWidgetEntry.swift */; };
+		B284FE702AE0A527009CA21D /* SKWordWidgetConfigurationIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284FE6C2AE0A527009CA21D /* SKWordWidgetConfigurationIntent.swift */; };
+		B284FE712AE0A527009CA21D /* SKWordTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284FE6D2AE0A527009CA21D /* SKWordTimelineProvider.swift */; };
+		B284FE722AE0A527009CA21D /* SKWordWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B284FE6E2AE0A527009CA21D /* SKWordWidgetView.swift */; };
+		B284FE732AE0A54C009CA21D /* SKLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996228FB11E60047CCBF /* SKLocalization.swift */; };
+		B284FE742AE0A556009CA21D /* NSAttributedString+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */; };
+		B284FE752AE0A565009CA21D /* URLSession+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */; };
+		B284FE762AE0A582009CA21D /* UIColor+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */; };
+		B284FE772AE0A589009CA21D /* String+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2462E6C2927AE9F005C8D33 /* String+Skarnik.swift */; };
+		B284FE782AE0A5A0009CA21D /* SKSkarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */; };
+		B284FE792AE0A5A4009CA21D /* SKVocabularyIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */; };
+		B284FE7B2AE0A6AD009CA21D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B284FE7A2AE0A6AD009CA21D /* UIKit.framework */; };
+		B284FE7D2AE0A6B1009CA21D /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B284FE7C2AE0A6B1009CA21D /* SwiftSoup */; };
+		B284FE7F2AE0A6B6009CA21D /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B284FE7E2AE0A6B6009CA21D /* SQLite */; };
 		B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */; };
 		B2AF0839291482DD0005E3E6 /* NSAttributedString+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */; };
 		B2AF083B29148AF00005E3E6 /* URLSession+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */; };
@@ -34,6 +54,30 @@
 		B2FEFEEF28F4E53600675E49 /* SKWordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */; };
 		B2FEFEF228F4E7A500675E49 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B2FEFEF128F4E7A500675E49 /* SwiftSoup */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B284FE632AE0A456009CA21D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B20ABAAE28EEBF6F00AA2FC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B284FE542AE0A455009CA21D;
+			remoteInfo = WordWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B284FE672AE0A456009CA21D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B284FE652AE0A456009CA21D /* WordWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B20ABAB628EEBF6F00AA2FC9 /* Skarnik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skarnik.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +99,19 @@
 		B27D996428FB341F0047CCBF /* SKAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAboutViewController.swift; sourceTree = "<group>"; };
 		B27D996628FBB15E0047CCBF /* Skarnik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skarnik.entitlements; sourceTree = "<group>"; };
 		B27D996728FC92910047CCBF /* SKStarnikByController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStarnikByController.swift; sourceTree = "<group>"; };
+		B284FE552AE0A455009CA21D /* WordWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WordWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B284FE572AE0A455009CA21D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B284FE592AE0A455009CA21D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B284FE5C2AE0A455009CA21D /* SKWordWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordWidgetBundle.swift; sourceTree = "<group>"; };
+		B284FE5E2AE0A455009CA21D /* SKWordWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordWidget.swift; sourceTree = "<group>"; };
+		B284FE602AE0A456009CA21D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B284FE622AE0A456009CA21D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B284FE662AE0A456009CA21D /* WordWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WordWidgetExtension.entitlements; sourceTree = "<group>"; };
+		B284FE6B2AE0A527009CA21D /* SKWordWidgetEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKWordWidgetEntry.swift; sourceTree = "<group>"; };
+		B284FE6C2AE0A527009CA21D /* SKWordWidgetConfigurationIntent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKWordWidgetConfigurationIntent.swift; sourceTree = "<group>"; };
+		B284FE6D2AE0A527009CA21D /* SKWordTimelineProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKWordTimelineProvider.swift; sourceTree = "<group>"; };
+		B284FE6E2AE0A527009CA21D /* SKWordWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKWordWidgetView.swift; sourceTree = "<group>"; };
+		B284FE7A2AE0A6AD009CA21D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSkarnikByController.swift; sourceTree = "<group>"; };
 		B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Skarnik.swift"; sourceTree = "<group>"; };
 		B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Skarnik.swift"; sourceTree = "<group>"; };
@@ -77,13 +134,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B284FE522AE0A455009CA21D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B284FE7F2AE0A6B6009CA21D /* SQLite in Frameworks */,
+				B284FE5A2AE0A455009CA21D /* SwiftUI.framework in Frameworks */,
+				B284FE7D2AE0A6B1009CA21D /* SwiftSoup in Frameworks */,
+				B284FE7B2AE0A6AD009CA21D /* UIKit.framework in Frameworks */,
+				B284FE582AE0A455009CA21D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		B20ABAAD28EEBF6F00AA2FC9 = {
 			isa = PBXGroup;
 			children = (
+				B284FE662AE0A456009CA21D /* WordWidgetExtension.entitlements */,
 				B20ABAB828EEBF6F00AA2FC9 /* Skarnik */,
+				B284FE5B2AE0A455009CA21D /* WordWidget */,
+				B284FE562AE0A455009CA21D /* Frameworks */,
 				B20ABAB728EEBF6F00AA2FC9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				B20ABAB628EEBF6F00AA2FC9 /* Skarnik.app */,
+				B284FE552AE0A455009CA21D /* WordWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,6 +202,31 @@
 			path = Skarnik;
 			sourceTree = "<group>";
 		};
+		B284FE562AE0A455009CA21D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B284FE7A2AE0A6AD009CA21D /* UIKit.framework */,
+				B284FE572AE0A455009CA21D /* WidgetKit.framework */,
+				B284FE592AE0A455009CA21D /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B284FE5B2AE0A455009CA21D /* WordWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B284FE5C2AE0A455009CA21D /* SKWordWidgetBundle.swift */,
+				B284FE5E2AE0A455009CA21D /* SKWordWidget.swift */,
+				B284FE6D2AE0A527009CA21D /* SKWordTimelineProvider.swift */,
+				B284FE6C2AE0A527009CA21D /* SKWordWidgetConfigurationIntent.swift */,
+				B284FE6B2AE0A527009CA21D /* SKWordWidgetEntry.swift */,
+				B284FE6E2AE0A527009CA21D /* SKWordWidgetView.swift */,
+				B284FE602AE0A456009CA21D /* Assets.xcassets */,
+				B284FE622AE0A456009CA21D /* Info.plist */,
+			);
+			path = WordWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,10 +237,12 @@
 				B20ABAB228EEBF6F00AA2FC9 /* Sources */,
 				B20ABAB328EEBF6F00AA2FC9 /* Frameworks */,
 				B20ABAB428EEBF6F00AA2FC9 /* Resources */,
+				B284FE672AE0A456009CA21D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B284FE642AE0A456009CA21D /* PBXTargetDependency */,
 			);
 			name = Skarnik;
 			packageProductDependencies = (
@@ -153,6 +253,27 @@
 			productReference = B20ABAB628EEBF6F00AA2FC9 /* Skarnik.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B284FE542AE0A455009CA21D /* WordWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B284FE6A2AE0A456009CA21D /* Build configuration list for PBXNativeTarget "WordWidgetExtension" */;
+			buildPhases = (
+				B284FE512AE0A455009CA21D /* Sources */,
+				B284FE522AE0A455009CA21D /* Frameworks */,
+				B284FE532AE0A455009CA21D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WordWidgetExtension;
+			packageProductDependencies = (
+				B284FE7C2AE0A6B1009CA21D /* SwiftSoup */,
+				B284FE7E2AE0A6B6009CA21D /* SQLite */,
+			);
+			productName = WordWidgetExtension;
+			productReference = B284FE552AE0A455009CA21D /* WordWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,12 +282,15 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				CLASSPREFIX = SK;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = Skarnik;
 				TargetAttributes = {
 					B20ABAB528EEBF6F00AA2FC9 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					B284FE542AE0A455009CA21D = {
+						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
@@ -188,6 +312,7 @@
 			projectRoot = "";
 			targets = (
 				B20ABAB528EEBF6F00AA2FC9 /* Skarnik */,
+				B284FE542AE0A455009CA21D /* WordWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -201,6 +326,14 @@
 				B20ABAD728EF21CC00AA2FC9 /* vocabulary.db in Resources */,
 				B20ABAC328EEBF8400AA2FC9 /* Assets.xcassets in Resources */,
 				B20ABAC128EEBF6F00AA2FC9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B284FE532AE0A455009CA21D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B284FE612AE0A456009CA21D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +367,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B284FE512AE0A455009CA21D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B284FE702AE0A527009CA21D /* SKWordWidgetConfigurationIntent.swift in Sources */,
+				B284FE792AE0A5A4009CA21D /* SKVocabularyIndex.swift in Sources */,
+				B284FE6F2AE0A527009CA21D /* SKWordWidgetEntry.swift in Sources */,
+				B284FE782AE0A5A0009CA21D /* SKSkarnikByController.swift in Sources */,
+				B284FE742AE0A556009CA21D /* NSAttributedString+Skarnik.swift in Sources */,
+				B284FE752AE0A565009CA21D /* URLSession+Skarnik.swift in Sources */,
+				B284FE722AE0A527009CA21D /* SKWordWidgetView.swift in Sources */,
+				B284FE5D2AE0A455009CA21D /* SKWordWidgetBundle.swift in Sources */,
+				B284FE732AE0A54C009CA21D /* SKLocalization.swift in Sources */,
+				B284FE762AE0A582009CA21D /* UIColor+Skarnik.swift in Sources */,
+				B284FE772AE0A589009CA21D /* String+Skarnik.swift in Sources */,
+				B284FE712AE0A527009CA21D /* SKWordTimelineProvider.swift in Sources */,
+				B284FE5F2AE0A455009CA21D /* SKWordWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B284FE642AE0A456009CA21D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B284FE542AE0A455009CA21D /* WordWidgetExtension */;
+			targetProxy = B284FE632AE0A456009CA21D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B20ABABF28EEBF6F00AA2FC9 /* Main.storyboard */ = {
@@ -377,6 +538,7 @@
 		B20ABACB28EEBF8400AA2FC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Skarnik/Skarnik.entitlements;
@@ -420,6 +582,7 @@
 		B20ABACC28EEBF8400AA2FC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Skarnik/Skarnik.entitlements;
@@ -460,6 +623,83 @@
 			};
 			name = Release;
 		};
+		B284FE682AE0A456009CA21D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WordWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WordWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WordWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Skarnik. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik.WordWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B284FE692AE0A456009CA21D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = WordWidgetExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WordWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WordWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Skarnik. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik.WordWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -477,6 +717,15 @@
 			buildConfigurations = (
 				B20ABACB28EEBF8400AA2FC9 /* Debug */,
 				B20ABACC28EEBF8400AA2FC9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B284FE6A2AE0A456009CA21D /* Build configuration list for PBXNativeTarget "WordWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B284FE682AE0A456009CA21D /* Debug */,
+				B284FE692AE0A456009CA21D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -504,6 +753,16 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		B20ABAD428EF215400AA2FC9 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B20ABAD328EF215200AA2FC9 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+		B284FE7C2AE0A6B1009CA21D /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2FEFEF028F4E7A400675E49 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		B284FE7E2AE0A6B6009CA21D /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B20ABAD328EF215200AA2FC9 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
 			productName = SQLite;

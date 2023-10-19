@@ -41,6 +41,23 @@ struct SKStarnikSpellingWord {
 
 class SKStarnikByController {
     
+    struct WordList: Codable {
+        struct WordListBody: Codable {
+            let lemma: String
+            let id: Int
+            let table_name: String
+            let meaning: String
+        }
+        struct FormListBody: Codable {
+            let lemma: String
+            let id: Int
+            let state: String
+        }
+
+        let word_list: [WordListBody]
+        let form_list: [FormListBody]
+    }
+
     class func spellingWordSuggestions(belWord: String) async -> [SKStarnikSpellingWord]? {
         guard let urlStr = self.spellingWordUrlStr(belWord: belWord) else {
             return nil
@@ -57,16 +74,11 @@ class SKStarnikByController {
     }
     
     class private func spellingWordSuggestions(data: Data) -> [SKStarnikSpellingWord]? {
-        guard let array = try? JSONDecoder().decode([String].self, from: data) else {
+        guard let wordList = try? JSONDecoder().decode(WordList.self, from: data) else {
             return nil
         }
-        let chunks = array.chunked(into: 4)
-        var words: [SKStarnikSpellingWord] = []
-        for chunk in chunks {
-            let word = SKStarnikSpellingWord(word: chunk[0], wordIdStr: chunk[1], wordType: chunk[2], unknownParam1: chunk[3])
-            if word.isValid {
-                words.append(word)
-            }
+        let words: [SKStarnikSpellingWord] = wordList.word_list.compactMap { word in
+            SKStarnikSpellingWord(word: word.lemma, wordIdStr: String(word.id), wordType: word.table_name, unknownParam1: word.meaning)
         }
         return words.count > 0 ? words : nil
     }
@@ -76,7 +88,7 @@ class SKStarnikByController {
             return nil
         }
 
-        let strUrl = "https://starnik.by/wordlist?lem=\(escapedBelWord)"
+        let strUrl = "https://starnik.by/api/wordList?lemma=\(escapedBelWord)"
         return strUrl
     }
 }
