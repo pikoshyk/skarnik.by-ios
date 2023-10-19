@@ -18,5 +18,8 @@ struct SKWordWidget: Widget {
             SKWordWidgetView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
+        .configurationDisplayName(SKLocalization.widgetWordTitle)
+        .description(SKLocalization.widgetWordDescriptioon)
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }

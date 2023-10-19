@@ -14,15 +14,20 @@ struct SKWordWidgetView : View {
     var entry: SKWordTimelineProvider.Entry
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(entry.word)
-                .font(.headline)
-                .foregroundStyle(Color.accentColor)
-            Spacer(minLength: 4)
-            Text(entry.wordTranslation)
-                .font(.subheadline)
-                .foregroundStyle(.primary)
+        HStack(alignment: .top, spacing: 0) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(entry.word.uppercased())
+                    .lineLimit(2)
+                    .font(.system(size: 12))
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.accent)
+                Text(entry.wordTranslation)
+                    .font(.system(size: 14))
+                    .fontWeight(.regular)
+                    .foregroundStyle(.secondary)
+            }
             Spacer(minLength: 0)
         }
+        Spacer(minLength: 0)
     }
 }
