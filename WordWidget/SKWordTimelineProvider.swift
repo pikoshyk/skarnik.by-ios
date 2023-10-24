@@ -26,25 +26,19 @@ struct SKWordTimelineProvider: AppIntentTimelineProvider {
                           wordTranslation: SKLocalization.widgetWordSampleTranslation)
     }
     
+    private var wordFetchService = SKWordFetchService()
+    
     func timeline(for configuration: SKWordWidgetConfigurationIntent, in context: Context) async -> Timeline<SKWordWidgetEntry> {
 
-        guard let word = SKVocabularyIndex.shared.randomWord(vocabularyType: .bel_rus) else {
+        guard let word = await self.wordFetchService.fetchWord(.bel_rus) else {
             return Timeline(entries: [], policy: .atEnd)
         }
-        
-        guard let translation = try? await SKSkarnikByController.wordTranslation(word) else {
-            return Timeline(entries: [], policy: .atEnd)
-        }
-        let attributedString = await translation.attributedString
-        guard let wordTranslation = attributedString?.string else {
-            return Timeline(entries: [], policy: .atEnd)
-        }
-        
-        
-        let entry = SKWordWidgetEntry(date: Date(),
+        #warning("TODO: change second to hour, and remove similarity")
+        let date = Calendar.current.date(byAdding: .second, value: 1, to: Date()) ?? Date()
+        let entry = SKWordWidgetEntry(date: date,
                                       configuration: configuration,
-                                      word: word.word,
-                                      wordTranslation: wordTranslation)
+                                      word: word.word + " \(String(format: "%.02f", word.similarity))",
+                                      wordTranslation: word.translation)
 
         return Timeline(entries: [entry], policy: .atEnd)
     }
