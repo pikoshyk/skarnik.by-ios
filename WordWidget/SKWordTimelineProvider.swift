@@ -33,11 +33,10 @@ struct SKWordTimelineProvider: AppIntentTimelineProvider {
         guard let word = await self.wordFetchService.fetchWord(.bel_rus) else {
             return Timeline(entries: [], policy: .atEnd)
         }
-        #warning("TODO: change second to hour, and remove similarity")
-        let date = Calendar.current.date(byAdding: .second, value: 1, to: Date()) ?? Date()
+        let date = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
         let entry = SKWordWidgetEntry(date: date,
                                       configuration: configuration,
-                                      word: word.word + " \(String(format: "%.02f", word.similarity))",
+                                      word: word.word,
                                       wordTranslation: word.translation)
 
         return Timeline(entries: [entry], policy: .atEnd)

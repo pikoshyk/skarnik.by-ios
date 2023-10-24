@@ -45,7 +45,7 @@ extension SKWordFetchEntry {
         
         func replaceLetters(str: String) -> String {
             var newStr = str
-            let replacers = [["o":"a"], ["и":"і"], ["щ":"шч"], ["ъ":"'"], ["ў":"у"], ["❛":"'"], ["❜":"'"], ["`":"'"], ["‛":"'"], ["’":"'"], ["‘":"'"]]
+            let replacers = [["o":"a"], ["щ":"шч"], ["ъ":"'"], ["ў":"у"], ["❛":"'"], ["❜":"'"], ["`":"'"], ["‛":"'"], ["’":"'"], ["‘":"'"], ["ся":"ца"], ["ый":"і"], ["ы":"і"], ["ий":"і"], ["и":"і"], ["т":"ц"], ["ё": "e"]]
             for pair in replacers {
                 let key = pair.keys.first!
                 let value = pair.values.first!
@@ -54,12 +54,19 @@ extension SKWordFetchEntry {
             return newStr
         }
         
-        guard let translation = self.translation.components(separatedBy: CharacterSet(charactersIn: "­­–‑—-‒-")).first?.trimmingCharacters(in: .whitespacesAndNewlines) else {
-            return 0
+        let wordA = replaceLetters(str: self.word.trimmingCharacters(in: .whitespacesAndNewlines).lowercased())
+        let translations = self.translation.lowercased().components(separatedBy: .newlines)
+        var maxDistance: Int = 0
+        for translation in translations {
+            if let translationWord = translation.components(separatedBy: CharacterSet(charactersIn: "­­–‑—‒")).first?.trimmingCharacters(in: .whitespacesAndNewlines) {
+                let wordB = replaceLetters(str: translationWord)
+                let levenshtein = levenshtein(aStr: wordA, bStr: wordB)
+                if levenshtein > maxDistance {
+                    maxDistance = levenshtein
+                }
+            }
         }
-        let wordA = replaceLetters(str: self.word.lowercased())
-        let wordB = replaceLetters(str: translation.lowercased())
-        return levenshtein(aStr: wordA, bStr: wordB)
+        return maxDistance
     }
 
 }
@@ -136,7 +143,7 @@ class SKWordFetchService: Any {
     init() {
     }
     
-    public func fetchWord(_ vocabularyType: ESKVocabularyType, maxTries: Int = 20) async -> SKWordFetchEntry? {
+    public func fetchWord(_ vocabularyType: ESKVocabularyType, maxTries: Int = 30) async -> SKWordFetchEntry? {
         var loop = 0
         while true {
             loop += 1
