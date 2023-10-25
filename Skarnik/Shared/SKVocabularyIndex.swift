@@ -143,7 +143,7 @@ class SKVocabularyIndex {
         let query = word.lowercased()
         var rows: Statement?
         do {
-            rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND lword=?", vocabularyType.rawValue, "\(query)")
+            rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND lword=? LIMIT 1", vocabularyType.rawValue, "\(query)")
         } catch {
         }
 

@@ -30,7 +30,7 @@ struct SKWordTimelineProvider: AppIntentTimelineProvider {
     
     func timeline(for configuration: SKWordWidgetConfigurationIntent, in context: Context) async -> Timeline<SKWordWidgetEntry> {
 
-        guard let word = await self.wordFetchService.fetchWord(.bel_rus) else {
+        guard let word = await self.wordFetchService.fetchRandomWord(.bel_rus) else {
             return Timeline(entries: [], policy: .atEnd)
         }
         let date = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
