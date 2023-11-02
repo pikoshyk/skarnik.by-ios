@@ -11,9 +11,32 @@ import WidgetKit
 
 struct SKWordWidgetEntry: TimelineEntry {
     let date: Date
-    let configuration: SKWordWidgetConfigurationIntent
+    
+    private var _configuration: Any? = nil
+    @available(iOSApplicationExtension 17.0, *)
+    var configuration: SKWordWidgetConfigurationIntent? {
+        get {
+            return _configuration as? SKWordWidgetConfigurationIntent
+        }
+        set {
+            _configuration = newValue
+        }
+    }
     
     let word: String
     let wordTranslation: String
-
+    
+    init(date: Date, word: String, wordTranslation: String) {
+        self.date = date
+        self.word = word
+        self.wordTranslation = wordTranslation
+    }
+    
+    @available(iOSApplicationExtension 17.0, *)
+    init(date: Date, configuration: SKWordWidgetConfigurationIntent, word: String, wordTranslation: String) {
+        self.date = date
+        self._configuration = configuration
+        self.word = word
+        self.wordTranslation = wordTranslation
+    }
 }

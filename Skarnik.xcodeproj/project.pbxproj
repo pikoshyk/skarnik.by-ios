@@ -600,12 +600,12 @@
 				CODE_SIGN_ENTITLEMENTS = Skarnik/Skarnik.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 19;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Skarnik/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skarnik;
@@ -625,7 +625,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Skarnik Development";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Mac Development";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -700,7 +700,7 @@
 				INFOPLIST_FILE = WordWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WordWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Skarnik. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -743,7 +743,7 @@
 				INFOPLIST_FILE = WordWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WordWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2023 Skarnik. All rights reserved.";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
