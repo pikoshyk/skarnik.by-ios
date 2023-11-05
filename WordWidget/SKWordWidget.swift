@@ -26,7 +26,7 @@ struct SKWordWidget: Widget {
         } else {
             return StaticConfiguration(kind: kindStatic, provider: SKWordTimelineProvider(), content: { entry in
                 SKWordWidgetView(entry: entry)
-                    .background(.tertiary)
+                    .padding(12)
             })
                 .configurationDisplayName(SKLocalization.widgetWordTitle)
                 .description(SKLocalization.widgetWordDescriptioon)
