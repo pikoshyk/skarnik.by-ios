@@ -93,3 +93,47 @@ class SKStarnikByController {
     }
 }
 
+import SwiftSoup
+
+class SKStarnikParserByController {
+    
+    
+    struct StarnikTableElement: Identifiable {
+        let id = UUID()
+        let titleHtml: String
+        let contentHtml: String
+    }
+    
+    class func wordContent(url: String) async -> [StarnikTableElement]? {
+        let data = await URLSession.skarnikDownload(urlStr: url)
+        guard let data = data else {
+            return nil
+        }
+        
+        let starnikTable = try? Self.parseHtml(data: data)
+        return starnikTable
+    }
+    
+    class func parseHtml(data: Data) throws -> [StarnikTableElement] {
+        var starnikTable: [StarnikTableElement] = []
+
+        let html = String(data: data, encoding: .utf8) ?? ""
+        let doc = try SwiftSoup.parse(html)
+        let elementDivWrappers = try doc.getElementsByClass("wrapper")
+        let elementTable = (try elementDivWrappers.compactMap { try $0.getElementsByTag("table").first }).first
+        let elementRows = try elementTable?.getElementsByTag("tr")
+        for elementRow in elementRows?.array() ?? [] {
+            let elementColumns = try elementRow.getElementsByTag("td")
+            if elementColumns.count != 2 {
+                continue
+            }
+            guard let elementTitleHtml = try elementColumns.first()?.html(),
+                  let elementValueHtml = try elementColumns.last()?.html() else {
+                continue
+            }
+            let starnikTableElement = StarnikTableElement(titleHtml: elementTitleHtml, contentHtml: elementValueHtml)
+            starnikTable.append(starnikTableElement)
+        }
+        return starnikTable
+    }
+}
