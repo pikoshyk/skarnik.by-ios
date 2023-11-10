@@ -5,6 +5,7 @@
 //  Created by Logout on 11.10.22.
 //
 
+import SwiftUI
 import UIKit
 
 class SKWordDetailsViewController: UIViewController {
@@ -155,12 +156,17 @@ class SKWordDetailsViewController: UIViewController {
                 self?.showLoadingIndicator = false
                 return
             }
-            guard let url = word.url else {
+            guard let wordId = word.wordId else {
                 self?.showLoadingIndicator = false
                 return
             }
             self?.showLoadingIndicator = false
-            _ = await UIApplication.shared.open(url)
+            let wordStressViewModel = SKWordStressViewModel(word)
+            let wordStressView = SKWordStressView(viewModel: wordStressViewModel)
+            let wordStressViewController = UIHostingController(rootView: wordStressView)
+            DispatchQueue.main.async {
+                self?.navigationController?.pushViewController(wordStressViewController, animated: true)
+            }
         }
     }
     

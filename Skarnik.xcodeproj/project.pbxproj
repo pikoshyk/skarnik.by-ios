@@ -31,7 +31,6 @@
 		B251A3832AF1AFCB00E78923 /* SKSwiftUiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B251A3822AF1AFCB00E78923 /* SKSwiftUiViewController.swift */; };
 		B25728E92AFD9631007ADCF5 /* SKWordStressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25728E82AFD9631007ADCF5 /* SKWordStressView.swift */; };
 		B25728EB2AFD9682007ADCF5 /* SKWordStressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25728EA2AFD9682007ADCF5 /* SKWordStressViewModel.swift */; };
-		B25728F02AFD9A37007ADCF5 /* starnik.html in Resources */ = {isa = PBXBuildFile; fileRef = B25728EF2AFD970A007ADCF5 /* starnik.html */; };
 		B25728F22AFDA1D2007ADCF5 /* SKHtmlTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25728F12AFDA1D2007ADCF5 /* SKHtmlTextView.swift */; };
 		B27D996328FB11E60047CCBF /* SKLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996228FB11E60047CCBF /* SKLocalization.swift */; };
 		B27D996528FB341F0047CCBF /* SKAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996428FB341F0047CCBF /* SKAboutViewController.swift */; };
@@ -64,6 +63,7 @@
 		B2C557DA290898A700FEB28A /* Task+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C557D9290898A700FEB28A /* Task+Skarnik.swift */; };
 		B2C557DC2908991300FEB28A /* Array+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C557DB2908991300FEB28A /* Array+Skarnik.swift */; };
 		B2C557DE2908996500FEB28A /* UIColor+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */; };
+		B2C81E042AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C81E032AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift */; };
 		B2FEFEE928F3634800675E49 /* SKAdditionalKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEE828F3634800675E49 /* SKAdditionalKeyboardView.swift */; };
 		B2FEFEEB28F3776E00675E49 /* SKSearchWordsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */; };
 		B2FEFEED28F43DFF00675E49 /* SKStorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */; };
@@ -119,7 +119,6 @@
 		B255CD622AE745E90086F5A0 /* SKLevenshtein.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLevenshtein.swift; sourceTree = "<group>"; };
 		B25728E82AFD9631007ADCF5 /* SKWordStressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordStressView.swift; sourceTree = "<group>"; };
 		B25728EA2AFD9682007ADCF5 /* SKWordStressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordStressViewModel.swift; sourceTree = "<group>"; };
-		B25728EF2AFD970A007ADCF5 /* starnik.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = starnik.html; sourceTree = "<group>"; };
 		B25728F12AFDA1D2007ADCF5 /* SKHtmlTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHtmlTextView.swift; sourceTree = "<group>"; };
 		B27D996228FB11E60047CCBF /* SKLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLocalization.swift; sourceTree = "<group>"; };
 		B27D996428FB341F0047CCBF /* SKAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAboutViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +143,7 @@
 		B2C557D9290898A700FEB28A /* Task+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Skarnik.swift"; sourceTree = "<group>"; };
 		B2C557DB2908991300FEB28A /* Array+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Skarnik.swift"; sourceTree = "<group>"; };
 		B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Skarnik.swift"; sourceTree = "<group>"; };
+		B2C81E032AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKDeprecatedView+Modifiers.swift"; sourceTree = "<group>"; };
 		B2FEFEE828F3634800675E49 /* SKAdditionalKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAdditionalKeyboardView.swift; sourceTree = "<group>"; };
 		B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSearchWordsTableViewController.swift; sourceTree = "<group>"; };
 		B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStorageController.swift; sourceTree = "<group>"; };
@@ -256,6 +256,7 @@
 				B251A3802AF1AE5C00E78923 /* SKWidgetIntroView.swift */,
 				B251A3822AF1AFCB00E78923 /* SKSwiftUiViewController.swift */,
 				B25728F12AFDA1D2007ADCF5 /* SKHtmlTextView.swift */,
+				B2C81E032AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -263,7 +264,6 @@
 		B25728EE2AFD9702007ADCF5 /* WordStress */ = {
 			isa = PBXGroup;
 			children = (
-				B25728EF2AFD970A007ADCF5 /* starnik.html */,
 				B25728EA2AFD9682007ADCF5 /* SKWordStressViewModel.swift */,
 				B25728E82AFD9631007ADCF5 /* SKWordStressView.swift */,
 			);
@@ -391,7 +391,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B25728F02AFD9A37007ADCF5 /* starnik.html in Resources */,
 				B20ABAC628EEBF8400AA2FC9 /* LaunchScreen.storyboard in Resources */,
 				B20ABAD728EF21CC00AA2FC9 /* vocabulary.db in Resources */,
 				B20ABAC328EEBF8400AA2FC9 /* Assets.xcassets in Resources */,
@@ -443,6 +442,7 @@
 				B2462E6D2927AE9F005C8D33 /* String+Skarnik.swift in Sources */,
 				B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */,
 				B2FEFEEB28F3776E00675E49 /* SKSearchWordsTableViewController.swift in Sources */,
+				B2C81E042AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift in Sources */,
 				B27D996828FC92910047CCBF /* SKStarnikByController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,28 +11,49 @@ import SwiftUI
 struct SKWordStressView: View {
     @ObservedObject var viewModel: SKWordStressViewModel
     var body: some View {
+        ZStack {
+            self.background
+            Group {
+                if self.viewModel.isLoading {
+                    if #available(iOS 14.0, *) {
+                        ProgressView()
+                    } else {
+                        Text(self.viewModel.presentLoadingLabel)
+                            .font(.body)
+                    }
+                } else {
+                    if let error = self.viewModel.error {
+                        Text(error)
+                            .font(.body)
+                            .frame(maxWidth: 300)
+                            .padding()
+                    } else {
+                        self.list
+                    }
+                }
+            }
+        }
+        .combinedNavigationTitle(self.viewModel.presentTitle)
+    }
+    
+    var background: some View {
         Group {
-            if self.viewModel.isLoading {
-                if #available(iOS 14.0, *) {
-                    ProgressView()
-                } else {
-                    Text("Пачакайце, калі-ласка")
-                }
+            if #available(iOS 15.0, *) {
+                Color(uiColor: UIColor.secondarySystemBackground)
+                    .ignoresSafeArea()
             } else {
-                if let error = viewModel.error {
-                    Text(error)
-                } else {
-                    self.list
-                }
+                Color(UIColor.secondarySystemBackground)
+                    .edgesIgnoringSafeArea(.all)
             }
         }
     }
     
     var list: some View {
         List {
-            ForEach(viewModel.table) { row in
+            ForEach(self.viewModel.table) { row in
                 self.row(row)
             }
+            .listRowBackground(Color.clear)
         }
         .listStyle(.plain)
     }
@@ -40,14 +61,13 @@ struct SKWordStressView: View {
     @ViewBuilder
     func row(_ element: SKStarnikParserByController.StarnikTableElement) -> some View {
         HStack(content: {
-            SKHtmlTextView(element.titleHtml)
+            SKHtmlTextView(html: element.titleHtml)
                 .frame(minWidth: 0, maxWidth: .infinity)
-            SKHtmlTextView(element.contentHtml)
-                .frame(minWidth: 0, maxWidth: .infinity)
-        })
-    }
-}
 
-#Preview {
-    SKWordStressView(viewModel: SKWordStressViewModel())
+            SKHtmlTextView(html: element.contentHtml)
+                .frame(minWidth: 0, maxWidth: .infinity)
+
+        })
+        .combinedVerticalPadding()
+    }
 }

@@ -13,7 +13,7 @@ struct SKSkarnikTranslation {
     let url: String
     let html: String
 
-    let colorConversions = [
+    static let colorConversions = [
         ["initial": "FFFFFF", "light": "F2F2F7", "dark": "1C1C1E"],
         
         ["initial": "831b03", "light": "F44C3E", "dark": "F44C3E"],
@@ -31,7 +31,7 @@ struct SKSkarnikTranslation {
     ]
 
     var labelColorHex: String {
-        let filteredColors = self.colorConversions.filter {$0["initial"] == "000000"}
+        let filteredColors = Self.colorConversions.filter {$0["initial"] == "000000"}
         guard let colorLight = filteredColors.first?["light"],
               let colorDark = filteredColors.first?["dark"] else {
             return UIColor.label.webHexString()
@@ -52,7 +52,7 @@ struct SKSkarnikTranslation {
             var html = self.html
             
             
-            for colorPair in self.colorConversions {
+            for colorPair in Self.colorConversions {
                 guard let colorInitial = colorPair["initial"],
                       let colorLight = colorPair["light"],
                       let colorDark = colorPair["dark"] else {

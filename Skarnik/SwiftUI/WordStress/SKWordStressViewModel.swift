@@ -13,17 +13,22 @@ class SKWordStressViewModel: ObservableObject {
     @Published var table: [SKStarnikParserByController.StarnikTableElement] = []
     @Published var error: String?
     @Published var isLoading: Bool
+    private let starnikWord: SKStarnikSpellingWord
     
-    init() {
+    init(_ starnikWord: SKStarnikSpellingWord) {
+        self.starnikWord = starnikWord
         self.isLoading = true
-        self.fetchWord(48920)
+        self.fetchWord((starnikWord.wordId!)) // 48920
     }
+    
+    var presentLoadingLabel: String { SKLocalization.wordStressLoadingLabel }
+    var presentTitle: String { SKLocalization.wordStressTitle }
     
     func fetchWord(_ starnikWordId: Int) {
         Task {
             guard let content = await SKStarnikParserByController.wordContent(url: "https://starnik.by/pravapis/\(starnikWordId)") else {
                 DispatchQueue.main.async {
-                    self.error = "Нешта пайшло не так, мо праблемы з інтэрнэтам ці серверам."
+                    self.error = SKLocalization.wordStressError
                     self.isLoading = false
                 }
                 return
