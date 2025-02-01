@@ -90,3 +90,7 @@ fastlane/test_output
 iOSInjectionProject/
 .DS_Store
 
+# IDE specific folder
+.vscode/
+.idea/
+
