@@ -144,7 +144,21 @@ class SKWordDetailsViewController: UIViewController {
                 self?.translation = translation
                 
                 SKAppstoreReviewController.requestReview()
+            } else {
+                self?.showLoadingIndicator = false
+                self?.toast(text: "Перанакіравана з «‎\(word.word)»")
+                self?.word = translation.word
+                self?.translation = translation
             }
+        }
+    }
+
+    func toast(text: String) {
+        let alertDisapperTimeInSeconds = 2.0
+        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
+        self.present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + alertDisapperTimeInSeconds) {
+            alert.dismiss(animated: true)
         }
     }
     
@@ -156,7 +170,7 @@ class SKWordDetailsViewController: UIViewController {
                 self?.showLoadingIndicator = false
                 return
             }
-            guard let wordId = word.wordId else {
+            guard word.wordId != nil else {
                 self?.showLoadingIndicator = false
                 return
             }

@@ -190,8 +190,9 @@ class SKSkarnikByController: Any {
         do {
             html = try self.parseHtml(data: data)
         } catch SKSkarnikError.nextWordIndexRequired {
-            var nextWord = word
-            nextWord.word_id += 1
+            guard let nextWord = SKVocabularyIndex.shared.word(id: word.word_id + 1, vocabularyType: word.lang_id) else {
+                return nil
+            }
             return try await self.wordTranslation(nextWord)
         } catch {
             throw error
