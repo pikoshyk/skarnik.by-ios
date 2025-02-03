@@ -94,3 +94,6 @@ iOSInjectionProject/
 .vscode/
 .idea/
 
+# Firebase
+GoogleService-Info.plist
+

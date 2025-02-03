@@ -69,6 +69,12 @@
 		B2FEFEED28F43DFF00675E49 /* SKStorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */; };
 		B2FEFEEF28F4E53600675E49 /* SKWordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */; };
 		B2FEFEF228F4E7A500675E49 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B2FEFEF128F4E7A500675E49 /* SwiftSoup */; };
+		F229B9CF2D5134B000B2463E /* SKAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CB2D5134B000B2463E /* SKAnalyticsService.swift */; };
+		F229B9D02D5134B000B2463E /* SKAnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CA2D5134B000B2463E /* SKAnalyticsManager.swift */; };
+		F229B9D12D5134B000B2463E /* SKFirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CD2D5134B000B2463E /* SKFirebaseAnalytics.swift */; };
+		F229B9D22D5134B000B2463E /* SKDebugAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CC2D5134B000B2463E /* SKDebugAnalytics.swift */; };
+		F268C3D12D50DD4B004B7BE4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F268C3D02D50DD4B004B7BE4 /* FirebaseAnalytics */; };
+		F268C3D32D50DF5F004B7BE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +154,11 @@
 		B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSearchWordsTableViewController.swift; sourceTree = "<group>"; };
 		B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStorageController.swift; sourceTree = "<group>"; };
 		B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewController.swift; sourceTree = "<group>"; };
+		F229B9CA2D5134B000B2463E /* SKAnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAnalyticsManager.swift; sourceTree = "<group>"; };
+		F229B9CB2D5134B000B2463E /* SKAnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAnalyticsService.swift; sourceTree = "<group>"; };
+		F229B9CC2D5134B000B2463E /* SKDebugAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDebugAnalytics.swift; sourceTree = "<group>"; };
+		F229B9CD2D5134B000B2463E /* SKFirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFirebaseAnalytics.swift; sourceTree = "<group>"; };
+		F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +168,7 @@
 			files = (
 				B20ABAD528EF215400AA2FC9 /* SQLite in Frameworks */,
 				B29000B62AF735780032532D /* UIKit.framework in Frameworks */,
+				F268C3D12D50DD4B004B7BE4 /* FirebaseAnalytics in Frameworks */,
 				B2FEFEF228F4E7A500675E49 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,6 +195,7 @@
 				B284FE5B2AE0A455009CA21D /* WordWidget */,
 				B284FE562AE0A455009CA21D /* Frameworks */,
 				B20ABAB728EEBF6F00AA2FC9 /* Products */,
+				F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,6 +211,7 @@
 		B20ABAB828EEBF6F00AA2FC9 /* Skarnik */ = {
 			isa = PBXGroup;
 			children = (
+				F229B9CE2D5134B000B2463E /* Analytics */,
 				B251A37F2AF1AE3E00E78923 /* SwiftUI */,
 				B251A3652AE9947C00E78923 /* Shared */,
 				B20ABAB928EEBF6F00AA2FC9 /* AppDelegate.swift */,
@@ -296,6 +310,17 @@
 			path = WordWidget;
 			sourceTree = "<group>";
 		};
+		F229B9CE2D5134B000B2463E /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				F229B9CA2D5134B000B2463E /* SKAnalyticsManager.swift */,
+				F229B9CB2D5134B000B2463E /* SKAnalyticsService.swift */,
+				F229B9CC2D5134B000B2463E /* SKDebugAnalytics.swift */,
+				F229B9CD2D5134B000B2463E /* SKFirebaseAnalytics.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -317,6 +342,7 @@
 			packageProductDependencies = (
 				B20ABAD428EF215400AA2FC9 /* SQLite */,
 				B2FEFEF128F4E7A500675E49 /* SwiftSoup */,
+				F268C3D02D50DD4B004B7BE4 /* FirebaseAnalytics */,
 			);
 			productName = Skarnik;
 			productReference = B20ABAB628EEBF6F00AA2FC9 /* Skarnik.app */;
@@ -375,6 +401,7 @@
 			packageReferences = (
 				B20ABAD328EF215200AA2FC9 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
 				B2FEFEF028F4E7A400675E49 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				F268C3CF2D50DD4B004B7BE4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = B20ABAB728EEBF6F00AA2FC9 /* Products */;
 			projectDirPath = "";
@@ -393,6 +420,7 @@
 			files = (
 				B20ABAC628EEBF8400AA2FC9 /* LaunchScreen.storyboard in Resources */,
 				B20ABAD728EF21CC00AA2FC9 /* vocabulary.db in Resources */,
+				F268C3D32D50DF5F004B7BE4 /* GoogleService-Info.plist in Resources */,
 				B20ABAC328EEBF8400AA2FC9 /* Assets.xcassets in Resources */,
 				B20ABAC128EEBF6F00AA2FC9 /* Main.storyboard in Resources */,
 			);
@@ -436,6 +464,10 @@
 				B20ABAD928EF22AD00AA2FC9 /* SKVocabularyIndex.swift in Sources */,
 				B2C557DC2908991300FEB28A /* Array+Skarnik.swift in Sources */,
 				B25728E92AFD9631007ADCF5 /* SKWordStressView.swift in Sources */,
+				F229B9CF2D5134B000B2463E /* SKAnalyticsService.swift in Sources */,
+				F229B9D02D5134B000B2463E /* SKAnalyticsManager.swift in Sources */,
+				F229B9D12D5134B000B2463E /* SKFirebaseAnalytics.swift in Sources */,
+				F229B9D22D5134B000B2463E /* SKDebugAnalytics.swift in Sources */,
 				B251A34B2AE9932800E78923 /* SKLevenshtein.swift in Sources */,
 				B251A3832AF1AFCB00E78923 /* SKSwiftUiViewController.swift in Sources */,
 				B20ABAD228EED10D00AA2FC9 /* SKSplitViewController.swift in Sources */,
@@ -631,7 +663,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -649,7 +681,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.1.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -674,7 +707,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -692,7 +725,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.1.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -718,7 +752,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -735,7 +769,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik.WordWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -763,7 +797,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -780,7 +814,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.1.1;
+				MARKETING_VERSION = 3.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik.WordWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -845,6 +879,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		F268C3CF2D50DD4B004B7BE4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -867,6 +909,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B2FEFEF028F4E7A400675E49 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		F268C3D02D50DD4B004B7BE4 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F268C3CF2D50DD4B004B7BE4 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
