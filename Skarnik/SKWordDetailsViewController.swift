@@ -146,6 +146,16 @@ class SKWordDetailsViewController: UIViewController, UITextViewDelegate {
                 self?.textView.text = SKLocalization.errorWordNotFound
                 return
             }
+
+            SKAnalyticsManager.logTranslation(
+                uri: translation.url,
+                word: translation.word.word,
+                word_id: word.word_id,
+                lang_id: word.lang_id.rawValue,
+                dict_name: word.lang_id.name ?? "unknown",
+                dict_path: word.lang_id.skarnikId ?? "unknown"
+            )
+
             if self?.word?.word_id == translation.word.word_id {
                 self?.showLoadingIndicator = false
                 self?.translation = translation
@@ -171,6 +181,8 @@ class SKWordDetailsViewController: UIViewController, UITextViewDelegate {
     
     func openSpellingWord(_ word: String) {
         self.showLoadingIndicator = true
+        
+        SKAnalyticsManager.logStressClicked(word: word)
 
         Task { @MainActor [weak self] in
             guard let word = await SKStarnikByController.spellingWordSuggestions(belWord: word)?.first else {
