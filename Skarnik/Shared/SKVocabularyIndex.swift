@@ -36,6 +36,29 @@ extension ESKVocabularyType {
             return typeStr
         }
     }
+    
+    var skarnikId: String? {
+        if self == .rus_bel { return "rusbel" }
+        if self == .bel_rus { return "belrus" }
+        if self == .bel_definition { return "tsbm" }
+        return nil
+    }
+
+    var wordDetailsSubtitle: String? {
+        if self == .rus_bel { return SKLocalization.wordDetailsSubtitleRusBel }
+        if self == .bel_rus { return SKLocalization.wordDetailsSubtitleBelRus }
+        if self == .bel_definition { return SKLocalization.wordDetailsSubtitleDenifition }
+        return nil
+    }
+
+    static func from(vocabularyPath pathValue: String) -> ESKVocabularyType? {
+        switch pathValue {
+        case "tsbm": return .bel_definition
+        case "belrus": return .bel_rus
+        case "rusbel": return .rus_bel
+        default: return nil
+        }
+    }
 }
 
 struct SKWord: Codable {

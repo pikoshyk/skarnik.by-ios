@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -69,10 +69,13 @@
 		B2FEFEED28F43DFF00675E49 /* SKStorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */; };
 		B2FEFEEF28F4E53600675E49 /* SKWordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */; };
 		B2FEFEF228F4E7A500675E49 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B2FEFEF128F4E7A500675E49 /* SwiftSoup */; };
+		F2005D262F5CF009003A032C /* SKWordDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2005D242F5CF009003A032C /* SKWordDetailsViewModel.swift */; };
 		F229B9CF2D5134B000B2463E /* SKAnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CB2D5134B000B2463E /* SKAnalyticsService.swift */; };
 		F229B9D02D5134B000B2463E /* SKAnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CA2D5134B000B2463E /* SKAnalyticsManager.swift */; };
 		F229B9D12D5134B000B2463E /* SKFirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CD2D5134B000B2463E /* SKFirebaseAnalytics.swift */; };
 		F229B9D22D5134B000B2463E /* SKDebugAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CC2D5134B000B2463E /* SKDebugAnalytics.swift */; };
+		F26469152F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26469132F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift */; };
+		F26469162F6F5EB200BEBF1F /* SkarnikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */; };
 		F268C3D12D50DD4B004B7BE4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F268C3D02D50DD4B004B7BE4 /* FirebaseAnalytics */; };
 		F268C3D32D50DF5F004B7BE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -84,6 +87,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = B284FE542AE0A455009CA21D;
 			remoteInfo = WordWidgetExtension;
+		};
+		F26469092F6F5DE600BEBF1F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B20ABAAE28EEBF6F00AA2FC9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B20ABAB528EEBF6F00AA2FC9;
+			remoteInfo = Skarnik;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -154,12 +164,20 @@
 		B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSearchWordsTableViewController.swift; sourceTree = "<group>"; };
 		B2FEFEEC28F43DFE00675E49 /* SKStorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStorageController.swift; sourceTree = "<group>"; };
 		B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewController.swift; sourceTree = "<group>"; };
+		F2005D242F5CF009003A032C /* SKWordDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewModel.swift; sourceTree = "<group>"; };
 		F229B9CA2D5134B000B2463E /* SKAnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAnalyticsManager.swift; sourceTree = "<group>"; };
 		F229B9CB2D5134B000B2463E /* SKAnalyticsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKAnalyticsService.swift; sourceTree = "<group>"; };
 		F229B9CC2D5134B000B2463E /* SKDebugAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDebugAnalytics.swift; sourceTree = "<group>"; };
 		F229B9CD2D5134B000B2463E /* SKFirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFirebaseAnalytics.swift; sourceTree = "<group>"; };
+		F26469052F6F5DE600BEBF1F /* SkarnikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkarnikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkarnikTests.swift; sourceTree = "<group>"; };
+		F26469132F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSkarnikByControllerTests.swift; sourceTree = "<group>"; };
 		F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F26469062F6F5DE600BEBF1F /* SkarnikTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SkarnikTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B20ABAB328EEBF6F00AA2FC9 /* Frameworks */ = {
@@ -185,14 +203,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F26469022F6F5DE600BEBF1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		B20ABAAD28EEBF6F00AA2FC9 = {
 			isa = PBXGroup;
 			children = (
+				F26469142F6F5EB200BEBF1F /* SkarnikTests */,
 				B20ABAB828EEBF6F00AA2FC9 /* Skarnik */,
 				B284FE5B2AE0A455009CA21D /* WordWidget */,
+				F26469062F6F5DE600BEBF1F /* SkarnikTests */,
 				B284FE562AE0A455009CA21D /* Frameworks */,
 				B20ABAB728EEBF6F00AA2FC9 /* Products */,
 				F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */,
@@ -204,6 +231,7 @@
 			children = (
 				B20ABAB628EEBF6F00AA2FC9 /* Skarnik.app */,
 				B284FE552AE0A455009CA21D /* WordWidgetExtension.appex */,
+				F26469052F6F5DE600BEBF1F /* SkarnikTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -220,6 +248,7 @@
 				B20ABACD28EEC39D00AA2FC9 /* SKVocabulariesTableViewController.swift */,
 				B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */,
 				B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */,
+				F2005D242F5CF009003A032C /* SKWordDetailsViewModel.swift */,
 				B2FEFEE828F3634800675E49 /* SKAdditionalKeyboardView.swift */,
 				B27D996428FB341F0047CCBF /* SKAboutViewController.swift */,
 				B2362A8F290697E50059B13C /* SKAppstoreReviewController.swift */,
@@ -321,6 +350,15 @@
 			path = Analytics;
 			sourceTree = "<group>";
 		};
+		F26469142F6F5EB200BEBF1F /* SkarnikTests */ = {
+			isa = PBXGroup;
+			children = (
+				F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */,
+				F26469132F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift */,
+			);
+			path = SkarnikTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -369,6 +407,29 @@
 			productReference = B284FE552AE0A455009CA21D /* WordWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		F26469042F6F5DE600BEBF1F /* SkarnikTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F264690B2F6F5DE600BEBF1F /* Build configuration list for PBXNativeTarget "SkarnikTests" */;
+			buildPhases = (
+				F26469012F6F5DE600BEBF1F /* Sources */,
+				F26469022F6F5DE600BEBF1F /* Frameworks */,
+				F26469032F6F5DE600BEBF1F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F264690A2F6F5DE600BEBF1F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				F26469062F6F5DE600BEBF1F /* SkarnikTests */,
+			);
+			name = SkarnikTests;
+			packageProductDependencies = (
+			);
+			productName = SkarnikTests;
+			productReference = F26469052F6F5DE600BEBF1F /* SkarnikTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -377,8 +438,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				CLASSPREFIX = SK;
-				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1620;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2620;
 				ORGANIZATIONNAME = Skarnik;
 				TargetAttributes = {
 					B20ABAB528EEBF6F00AA2FC9 = {
@@ -386,6 +447,10 @@
 					};
 					B284FE542AE0A455009CA21D = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					F26469042F6F5DE600BEBF1F = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = B20ABAB528EEBF6F00AA2FC9;
 					};
 				};
 			};
@@ -409,6 +474,7 @@
 			targets = (
 				B20ABAB528EEBF6F00AA2FC9 /* Skarnik */,
 				B284FE542AE0A455009CA21D /* WordWidgetExtension */,
+				F26469042F6F5DE600BEBF1F /* SkarnikTests */,
 			);
 		};
 /* End PBXProject section */
@@ -432,6 +498,13 @@
 			files = (
 				B2BE6DDC2AE132AB00EE7A25 /* Assets.xcassets in Resources */,
 				B2BE6DDD2AE1349200EE7A25 /* vocabulary.db in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F26469032F6F5DE600BEBF1F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +548,7 @@
 				B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */,
 				B2FEFEEB28F3776E00675E49 /* SKSearchWordsTableViewController.swift in Sources */,
 				B2C81E042AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift in Sources */,
+				F2005D262F5CF009003A032C /* SKWordDetailsViewModel.swift in Sources */,
 				B27D996828FC92910047CCBF /* SKStarnikByController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +577,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F26469012F6F5DE600BEBF1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F26469152F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift in Sources */,
+				F26469162F6F5EB200BEBF1F /* SkarnikTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -510,6 +593,11 @@
 			isa = PBXTargetDependency;
 			target = B284FE542AE0A455009CA21D /* WordWidgetExtension */;
 			targetProxy = B284FE632AE0A456009CA21D /* PBXContainerItemProxy */;
+		};
+		F264690A2F6F5DE600BEBF1F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B20ABAB528EEBF6F00AA2FC9 /* Skarnik */;
+			targetProxy = F26469092F6F5DE600BEBF1F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -591,6 +679,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -646,6 +735,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -667,6 +757,8 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Skarnik/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skarnik;
@@ -711,6 +803,8 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Skarnik/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skarnik;
@@ -756,6 +850,8 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -801,6 +897,8 @@
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -830,6 +928,59 @@
 			};
 			name = Release;
 		};
+		F264690C2F6F5DE600BEBF1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EQFFWL4KZF;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = by.skarnik.SkarnikTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skarnik.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Skarnik";
+			};
+			name = Debug;
+		};
+		F264690D2F6F5DE600BEBF1F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EQFFWL4KZF;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = by.skarnik.SkarnikTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skarnik.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Skarnik";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -856,6 +1007,15 @@
 			buildConfigurations = (
 				B284FE682AE0A456009CA21D /* Debug */,
 				B284FE692AE0A456009CA21D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F264690B2F6F5DE600BEBF1F /* Build configuration list for PBXNativeTarget "SkarnikTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F264690C2F6F5DE600BEBF1F /* Debug */,
+				F264690D2F6F5DE600BEBF1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

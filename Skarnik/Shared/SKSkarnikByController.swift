@@ -68,15 +68,6 @@ struct SKSkarnikTranslation {
 
                 html = html.regexSub(pattern: "color=\"\(colorInitial)\"", template: "color=\"\(color)\"", options: [.caseInsensitive])
             }
-//            if [.bel_rus, .rus_bel].contains(word.lang_id) {
-//                html = html.regexSub(pattern: "color=\"831b03\"", template: "color=\"ff0000\"")
-//                html = html.regexSub(pattern: "color=\"008000\"", template: "color=\"5f5f5f\"")
-//            } else if word.lang_id == .bel_definition {
-//                html = html.regexSub(pattern: "color=\"0000A0\"", template: "color=\"00aaff\"")
-//                html = html.regexSub(pattern: "color=\"151B54\"", template: "color=\"880000\"")
-//                html = html.regexSub(pattern: "color=\"5f5f5f\"", template: "color=\"aa0000\"")
-//                html = html.regexSub(pattern: "color=\"A52A2A\"", template: "color=\"5f5f5f\"")
-//            }
             return html
         }
     }
@@ -206,7 +197,7 @@ class SKSkarnikByController: Any {
         return translation
     }
     
-    class private func url(vocabularyType: ESKVocabularyType, wordId: Int64) -> String? {
+    class func url(vocabularyType: ESKVocabularyType, wordId: Int64) -> String? {
         guard let vocabularySkarnikId = vocabularyType.skarnikId else {
             return nil
         }
@@ -214,7 +205,7 @@ class SKSkarnikByController: Any {
         return urlStr
     }
 
-    class private func parseHtml(data: Data) throws -> String? {
+    class func parseHtml(data: Data) throws -> String? {
         var rawHtmlText: String?
 
         let html = String(data: data, encoding: .utf8) ?? ""
@@ -229,16 +220,5 @@ class SKSkarnikByController: Any {
         }
 
         return rawHtmlText
-    }
-}
-
-extension ESKVocabularyType {
-    var skarnikId: String? {
-        get {
-            if self == .rus_bel { return "rusbel" }
-            if self == .bel_rus { return "belrus" }
-            if self == .bel_definition { return "tsbm" }
-            return nil
-        }
     }
 }
