@@ -40,21 +40,18 @@ class SKWordDetailsViewController: UIViewController, UITextViewDelegate {
     
     private func setupBindings() {
         viewModel.$state
-            .receive(on: RunLoop.main)
             .sink { [weak self] state in
                 self?.handleStateChange(state)
             }
             .store(in: &cancellables)
             
         viewModel.$word
-            .receive(on: RunLoop.main)
             .sink { [weak self] word in
                 self?.updateWordUI(word)
             }
             .store(in: &cancellables)
             
         viewModel.effectSubject
-            .receive(on: RunLoop.main)
             .sink { [weak self] effect in
                 self?.handleEffect(effect)
             }
