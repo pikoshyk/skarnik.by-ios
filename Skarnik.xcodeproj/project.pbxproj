@@ -78,6 +78,7 @@
 		F26469162F6F5EB200BEBF1F /* SkarnikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */; };
 		F268C3D12D50DD4B004B7BE4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F268C3D02D50DD4B004B7BE4 /* FirebaseAnalytics */; };
 		F268C3D32D50DF5F004B7BE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */; };
+		F27C3F2D2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C3F2C2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift */; };
 		F2A652A02F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */; };
 		F2A652A12F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */; };
 /* End PBXBuildFile section */
@@ -175,6 +176,7 @@
 		F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkarnikTests.swift; sourceTree = "<group>"; };
 		F26469132F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSkarnikByControllerTests.swift; sourceTree = "<group>"; };
 		F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F27C3F2C2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKVocabularyIndexTests.swift; sourceTree = "<group>"; };
 		F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -357,6 +359,7 @@
 		F26469142F6F5EB200BEBF1F /* SkarnikTests */ = {
 			isa = PBXGroup;
 			children = (
+				F27C3F2C2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift */,
 				F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */,
 				F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */,
 				F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */,
@@ -591,6 +594,7 @@
 				F2A652A12F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift in Sources */,
 				F26469152F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift in Sources */,
 				F26469162F6F5EB200BEBF1F /* SkarnikTests.swift in Sources */,
+				F27C3F2D2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

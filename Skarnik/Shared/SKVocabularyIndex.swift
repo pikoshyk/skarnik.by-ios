@@ -208,10 +208,10 @@ class SKVocabularyIndex {
                 }
             } else {
                 if preprocessedQuery.count == 1 {
-                    rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? ORDER BY lword LIMIT 1 OFFSET ?", vocabularyType.rawValue, "\(preprocessedQuery)", index)
+                    rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? ORDER BY lword LIMIT ? OFFSET ?", vocabularyType.rawValue, "\(preprocessedQuery)", limit, index)
                 } else {
                     let firstChar = String(preprocessedQuery.prefix(1))
-                    rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? AND word_mask LIKE ? ORDER BY lword LIMIT 1 OFFSET ?", vocabularyType.rawValue, firstChar, "\(preprocessedQuery)%",  index)
+                    rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? AND word_mask LIKE ? ORDER BY lword LIMIT ? OFFSET ?", vocabularyType.rawValue, firstChar, "\(preprocessedQuery)%",  limit, index)
                 }
             }
         } catch {
