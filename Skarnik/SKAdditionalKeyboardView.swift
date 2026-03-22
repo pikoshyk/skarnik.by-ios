@@ -12,14 +12,22 @@ protocol SKAdditionalKeyboardViewDelegate {
 }
 
 class SKAdditionalKeyboardView: UIView {
-    
+
     var delegate: SKAdditionalKeyboardViewDelegate?
-    
+
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        feedbackGenerator.prepare()
+    }
+
     @IBAction func onButton(_ button: UIButton) {
+        feedbackGenerator.impactOccurred()
         let keyIndex = button.tag
         var char: String?
         switch keyIndex {
