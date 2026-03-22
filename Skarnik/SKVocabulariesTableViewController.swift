@@ -319,6 +319,15 @@ extension SKVocabulariesTableViewController: SKAdditionalKeyboardViewDelegate {
             let keyboardFrameValue = notification.userInfo![frameKey] as! NSValue
             let keyboardScreenEndFrame = keyboardFrameValue.cgRectValue
             keyboardHeight = keyboardScreenEndFrame.size.height
+
+            // In iOS 26+, the search bar moved to the bottom of the screen.
+            // When the keyboard appears, the search bar sits on top of the keyboard
+            // panel but its height is not included in the keyboard frame notification.
+            if #available(iOS 26, *) {
+                if let searchBar = self.navigationItem.searchController?.searchBar {
+                    keyboardHeight += searchBar.bounds.height
+                }
+            }
         }
 
         let curveKey = UIResponder.keyboardAnimationCurveUserInfoKey
