@@ -110,9 +110,7 @@
                             <constraint firstItem="u3T-dg-jeL" firstAttribute="bottom" secondItem="s9p-eZ-hv5" secondAttribute="bottom" id="tU8-s8-bvX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ohB-ok-e3Y">
-                        <barButtonItem key="backBarButtonItem" title=" " id="GOW-V7-y6f"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" backButtonDisplayMode="minimal" id="ohB-ok-e3Y"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="nem-Ud-UFq" id="kN1-8O-ayq"/>
@@ -353,9 +351,7 @@
                             <constraint firstItem="Kah-6X-79V" firstAttribute="trailing" secondItem="obM-pP-E2w" secondAttribute="trailing" constant="16" id="zPf-jS-ybE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SKARNIK" id="nVT-Eq-S4Y">
-                        <barButtonItem key="backBarButtonItem" title=" " id="BfV-a8-nAC"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="SKARNIK" backButtonDisplayMode="minimal" id="nVT-Eq-S4Y"/>
                     <connections>
                         <outlet property="labelDescription" destination="pY2-KY-eGF" id="cXJ-ep-MFf"/>
                         <outlet property="labelSubscriptionCreator" destination="QQc-OI-wCi" id="zuG-0O-p9r"/>
@@ -481,8 +477,7 @@
                             <constraint firstItem="7C4-Jh-bAP" firstAttribute="top" secondItem="uZV-Cn-fdd" secondAttribute="top" id="tpe-VA-4mz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SKARNIK" largeTitleDisplayMode="never" id="JHs-lj-9dC">
-                        <barButtonItem key="backBarButtonItem" title=" " id="VIY-ST-z80"/>
+                    <navigationItem key="navigationItem" title="SKARNIK" largeTitleDisplayMode="never" backButtonDisplayMode="minimal" id="JHs-lj-9dC">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="info.circle" catalog="system" id="V2I-1d-30X">
                             <connections>
                                 <segue destination="erb-gm-9WE" kind="presentation" modalPresentationStyle="formSheet" id="Rdv-W0-727"/>
