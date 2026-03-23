@@ -9,10 +9,12 @@
 import Foundation
 
 class SKWordFetchService: Any {
-    
+
     private var storage = SKWordFetchStorage()
-    
-    init() {
+    private let translationSource: any SKTranslationSource
+
+    init(translationSource: any SKTranslationSource = SKFallbackTranslationSource.shared) {
+        self.translationSource = translationSource
     }
     
     public func fetchRandomWord(_ vocabulary: ESKVocabularyType, maxTries: Int = 30) async -> SKWordFetchEntry? {
@@ -39,7 +41,7 @@ class SKWordFetchService: Any {
     }
     
     public func fetchWord(_ word: SKWord) async -> SKWordFetchEntry? {
-        guard let wordTranslation = try? await SKSkarnikByController.wordTranslation(word)?.attributedString?.string else {
+        guard let wordTranslation = try? await translationSource.wordTranslation(word)?.attributedString?.string else {
             return nil
         }
         let newWordEntry = SKWordFetchEntry(word: word, translation: wordTranslation, createdAt: Date())

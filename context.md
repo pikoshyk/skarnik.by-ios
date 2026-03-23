@@ -16,10 +16,11 @@ The project uses a hybrid architecture combining established UIKit patterns with
     - **Supplementary Data:** Pronunciation (word stress) and spelling suggestions are retrieved from `starnik.by`.
 - **Services & Managers:**
     - **SKVocabularyIndex:** The primary interface for querying the local SQLite database.
-    - **SKSkarnikByController / SKStarnikByController:** Handle remote API/HTML data fetching and parsing.
+    - **SKTranslationSource (protocol):** Defines the interface for all translation data sources. Concrete implementations: `SKHtmlTranslationSource` (HTML scraping via SwiftSoup), `SKApiTranslationSource` (JSON API, stub), `SKSupabaseTranslationSource` (Supabase, stub). `SKFallbackTranslationSource` composes them into a priority chain (API → Supabase → HTML). All defined in `SKTranslationSource.swift`. `SKSkarnikByController` is kept as a `typealias` for `SKHtmlTranslationSource` for backward compatibility.
+    - **SKStarnikByController:** Handles word stress/spelling data fetching and parsing.
     - **SKStorageController:** Manages user search history using `UserDefaults`.
     - **SKAnalyticsManager:** A wrapper for Firebase and debug analytics.
-    - **SKWordFetchService:** Orchestrates word retrieval for features like the "Word of the Day" widget.
+    - **SKWordFetchService:** Orchestrates word retrieval for features like the "Word of the Day" widget. Accepts `SKTranslationSource` via init (defaults to `SKFallbackTranslationSource.shared`).
 
 ## Tech Stack
 - **Language:** Swift
@@ -34,14 +35,14 @@ The project uses a hybrid architecture combining established UIKit patterns with
 
 ## Key Files & Directories
 - `Skarnik/Shared/SKVocabularyIndex.swift`: Local database queries.
-- `Skarnik/Shared/SKSkarnikByController.swift`: Main translation fetching logic.
+- `Skarnik/Shared/SKTranslationSource.swift`: Main translation fetching logic.
 - `Skarnik/SKSearchWordsTableViewController.swift`: Search UI.
 - `Skarnik/SKWordDetailsViewController.swift`: Word entry display (MVVM).
 - `WordWidget/`: iOS Widget implementation.
 - `Skarnik/vocabulary.db`: The core search index.
-- `SkarnikTests/SKSkarnikByControllerTests.swift`: Unit tests for translation logic and HTML parsing.
+- `SkarnikTests/SKTranslationSourceTests.swift`: Unit tests for translation logic and HTML parsing.
 
 ## Testing Strategy
 - **Unit Tests:** Focus on testing core business logic, such as HTML parsing, URL generation, and color conversion.
-- **Mocking:** Currently, the project requires `@testable import` to access internal methods. Future improvements could include Dependency Injection to allow easier mocking of `URLSession` and `SKVocabularyIndex`.
+- **Mocking:** Currently, the project requires `@testable import` to access internal methods. `SKTranslationSource` protocol enables injecting mock sources into `SKWordDetailsViewModel` and `SKWordFetchService` via their `init(translationSource:)` parameter. Future improvements could include Dependency Injection to allow easier mocking of `URLSession` and `SKVocabularyIndex`.
 - **Async Tests:** Modern Swift concurrency (`async/await`) is used in tests for methods like `attributedString`.

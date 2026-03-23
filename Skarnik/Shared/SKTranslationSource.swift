@@ -7,6 +7,17 @@
 
 import SwiftSoup
 import UIKit
+import os.log
+
+private let translationLog = OSLog(subsystem: "by.skarnik", category: "TranslationSource")
+
+private func skLog(_ message: @autoclosure () -> String, type: OSLogType = .debug) {
+    #if DEBUG
+    os_log("%{public}@", log: translationLog, type: type, "🪲 " + message())
+    #endif
+}
+
+// MARK: - Domain Types
 
 struct SKSkarnikTranslation {
     let word: SKWord
@@ -15,17 +26,17 @@ struct SKSkarnikTranslation {
 
     static let colorConversions = [
         ["initial": "FFFFFF", "light": "F2F2F7", "dark": "1C1C1E"],
-        
+
         ["initial": "831b03", "light": "F44C3E", "dark": "F44C3E"],
         ["initial": "0000A0", "light": "F44C3E", "dark": "F44C3E"],
         ["initial": "4863A0", "light": "F44C3E", "dark": "F44C3E"],
-        
+
         ["initial": "008000", "light": "5856D6", "dark": "5E5CE6"],
         ["initial": "A52A2A", "light": "5856D6", "dark": "5E5CE6"],
         ["initial": "CC33FF", "light": "5856D6", "dark": "5E5CE6"],
-        
+
         ["initial": "000000", "light": "000000", "dark": "FFFFFF"],
-        
+
         ["initial": "5f5f5f", "light": "68686E", "dark": "98989F"],
         ["initial": "151B54", "light": "68686E", "dark": "98989F"]
     ]
@@ -42,23 +53,21 @@ struct SKSkarnikTranslation {
                 color = colorDark
             }
         }
-        
+
         return color
     }
-
 
     var recoloredHtml: String {
         get {
             var html = self.html
-            
-            
+
             for colorPair in Self.colorConversions {
                 guard let colorInitial = colorPair["initial"],
                       let colorLight = colorPair["light"],
                       let colorDark = colorPair["dark"] else {
                     continue
                 }
-                
+
                 var color = colorLight
                 if #available(iOS 13.0, macCatalyst 13.0, *) {
                     if UITraitCollection.current.userInterfaceStyle == .dark {
@@ -71,7 +80,7 @@ struct SKSkarnikTranslation {
             return html
         }
     }
-    
+
     var attributedString: NSAttributedString? {
         get async {
             await withCheckedContinuation { continuation in
@@ -93,7 +102,7 @@ struct SKSkarnikTranslation {
             }
         }
     }
-    
+
     var belWords: [String] {
         get {
 
@@ -116,9 +125,9 @@ struct SKSkarnikTranslation {
                 return true
             }
             let word = self.word
-            
+
             var words: [String] = []
-            
+
             if word.lang_id == .bel_rus || word.lang_id == .bel_definition {
                 if isCorrectWord(word.word) {
                     words = [word.word]
@@ -149,7 +158,7 @@ struct SKSkarnikTranslation {
                     }
                     words = foundWords
                 } catch {
-                    
+
                 }
 
             }
@@ -166,22 +175,35 @@ enum SKSkarnikError: Error {
     case networkError
 }
 
-class SKSkarnikByController: Any {
+// MARK: - Protocol
 
-    class func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation? {
-        guard let urlStr = self.url(vocabularyType: word.lang_id, wordId: word.word_id) else {
+protocol SKTranslationSource {
+    func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation?
+}
+
+// MARK: - HTML Source
+
+struct SKHtmlTranslationSource: SKTranslationSource {
+
+    func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation? {
+        guard let urlStr = Self.url(vocabularyType: word.lang_id, wordId: word.word_id) else {
             return nil
         }
 
+        skLog("[HTML] Fetching word: \"\(word.word)\" (id: \(word.word_id), lang: \(word.lang_id.rawValue)) url: \(urlStr)")
+
         guard let data = await URLSession.skarnikDownload(urlStr: urlStr) else {
+            skLog("[HTML] Network error for url: \(urlStr)", type: .error)
             throw SKSkarnikError.networkError
         }
 
         var html: String?
         do {
-            html = try self.parseHtml(data: data)
+            html = try Self.parseHtml(data: data)
         } catch SKSkarnikError.nextWordIndexRequired {
-            guard let nextWord = SKVocabularyIndex.shared.word(id: word.word_id + 1, vocabularyType: word.lang_id) else {
+            let nextId = word.word_id + 1
+            skLog("[HTML] Redirect — retrying with next word id: \(nextId)")
+            guard let nextWord = SKVocabularyIndex.shared.word(id: nextId, vocabularyType: word.lang_id) else {
                 return nil
             }
             return try await self.wordTranslation(nextWord)
@@ -192,20 +214,18 @@ class SKSkarnikByController: Any {
             return nil
         }
 
-        let translation = SKSkarnikTranslation(word: word, url: urlStr, html: html)
-
-        return translation
+        skLog("[HTML] Parsed successfully for word: \"\(word.word)\" (id: \(word.word_id))")
+        return SKSkarnikTranslation(word: word, url: urlStr, html: html)
     }
-    
-    class func url(vocabularyType: ESKVocabularyType, wordId: Int64) -> String? {
+
+    static func url(vocabularyType: ESKVocabularyType, wordId: Int64) -> String? {
         guard let vocabularySkarnikId = vocabularyType.skarnikId else {
             return nil
         }
-        let urlStr = "https://www.skarnik.by/\(vocabularySkarnikId)/\(wordId)"
-        return urlStr
+        return "https://www.skarnik.by/\(vocabularySkarnikId)/\(wordId)"
     }
 
-    class func parseHtml(data: Data) throws -> String? {
+    static func parseHtml(data: Data) throws -> String? {
         var rawHtmlText: String?
 
         let html = String(data: data, encoding: .utf8) ?? ""
@@ -222,3 +242,61 @@ class SKSkarnikByController: Any {
         return rawHtmlText
     }
 }
+
+// MARK: - API Source
+
+struct SKApiTranslationSource: SKTranslationSource {
+    func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation? {
+        skLog("[API] wordTranslation called for word: \"\(word.word)\" (id: \(word.word_id), lang: \(word.lang_id.rawValue)) — not implemented, returning nil")
+        // TODO: Implement JSON API fetching
+        return nil
+    }
+}
+
+// MARK: - Supabase Source
+
+struct SKSupabaseTranslationSource: SKTranslationSource {
+    func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation? {
+        skLog("[Supabase] wordTranslation called for word: \"\(word.word)\" (id: \(word.word_id), lang: \(word.lang_id.rawValue)) — not implemented, returning nil")
+        // TODO: Implement Supabase fetching
+        return nil
+    }
+}
+
+// MARK: - Fallback Chain
+
+struct SKFallbackTranslationSource: SKTranslationSource {
+    let sources: [any SKTranslationSource]
+
+    func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation? {
+        skLog("[Fallback] Starting fetch for word: \"\(word.word)\" (id: \(word.word_id), lang: \(word.lang_id.rawValue)) — \(sources.count) source(s) available")
+        var lastError: Error?
+        for source in sources {
+            let sourceName = String(describing: type(of: source))
+            skLog("[Fallback] Trying \(sourceName)")
+            do {
+                if let result = try await source.wordTranslation(word) {
+                    skLog("[Fallback] \(sourceName) succeeded")
+                    return result
+                }
+                skLog("[Fallback] \(sourceName) returned nil, trying next")
+            } catch {
+                skLog("[Fallback] \(sourceName) failed with error: \(error), trying next", type: .error)
+                lastError = error
+            }
+        }
+        skLog("[Fallback] All sources exhausted for word: \"\(word.word)\"", type: lastError == nil ? .default : .error)
+        if let lastError { throw lastError }
+        return nil
+    }
+
+    static let shared = SKFallbackTranslationSource(sources: [
+        SKApiTranslationSource(),
+        SKSupabaseTranslationSource(),
+        SKHtmlTranslationSource()
+    ])
+}
+
+// MARK: - Backward Compatibility
+
+typealias SKSkarnikByController = SKHtmlTranslationSource

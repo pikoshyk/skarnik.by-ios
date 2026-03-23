@@ -49,12 +49,12 @@
 		B284FE752AE0A565009CA21D /* URLSession+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */; };
 		B284FE762AE0A582009CA21D /* UIColor+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */; };
 		B284FE772AE0A589009CA21D /* String+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2462E6C2927AE9F005C8D33 /* String+Skarnik.swift */; };
-		B284FE782AE0A5A0009CA21D /* SKSkarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */; };
+		B284FE782AE0A5A0009CA21D /* SKTranslationSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKTranslationSource.swift */; };
 		B284FE792AE0A5A4009CA21D /* SKVocabularyIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */; };
 		B284FE7B2AE0A6AD009CA21D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B284FE7A2AE0A6AD009CA21D /* UIKit.framework */; };
 		B284FE7D2AE0A6B1009CA21D /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = B284FE7C2AE0A6B1009CA21D /* SwiftSoup */; };
 		B284FE7F2AE0A6B6009CA21D /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B284FE7E2AE0A6B6009CA21D /* SQLite */; };
-		B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */; };
+		B2881B4D28F5DE9800649278 /* SKTranslationSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKTranslationSource.swift */; };
 		B29000B62AF735780032532D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B29000B52AF735780032532D /* UIKit.framework */; platformFilter = ios; };
 		B2AF0839291482DD0005E3E6 /* NSAttributedString+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */; };
 		B2AF083B29148AF00005E3E6 /* URLSession+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */; };
@@ -151,7 +151,7 @@
 		B284FE6D2AE0A527009CA21D /* SKWordTimelineProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKWordTimelineProvider.swift; sourceTree = "<group>"; };
 		B284FE6E2AE0A527009CA21D /* SKWordWidgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKWordWidgetView.swift; sourceTree = "<group>"; };
 		B284FE7A2AE0A6AD009CA21D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSkarnikByController.swift; sourceTree = "<group>"; };
+		B2881B4C28F5DE9800649278 /* SKTranslationSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTranslationSource.swift; sourceTree = "<group>"; };
 		B29000B52AF735780032532D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Skarnik.swift"; sourceTree = "<group>"; };
 		B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Skarnik.swift"; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		F229B9CD2D5134B000B2463E /* SKFirebaseAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFirebaseAnalytics.swift; sourceTree = "<group>"; };
 		F26469052F6F5DE600BEBF1F /* SkarnikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkarnikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkarnikTests.swift; sourceTree = "<group>"; };
-		F26469132F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSkarnikByControllerTests.swift; sourceTree = "<group>"; };
+		F26469132F6F5EB200BEBF1F /* SKTranslationSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTranslationSourceTests.swift; sourceTree = "<group>"; };
 		F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F27C3F2C2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKVocabularyIndexTests.swift; sourceTree = "<group>"; };
 		F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewControllerTests.swift; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				B20ABAD828EF22AC00AA2FC9 /* SKVocabularyIndex.swift */,
-				B2881B4C28F5DE9800649278 /* SKSkarnikByController.swift */,
+				B2881B4C28F5DE9800649278 /* SKTranslationSource.swift */,
 				B2462E6C2927AE9F005C8D33 /* String+Skarnik.swift */,
 				B2C557DD2908996500FEB28A /* UIColor+Skarnik.swift */,
 				B27D996228FB11E60047CCBF /* SKLocalization.swift */,
@@ -369,7 +369,7 @@
 				F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */,
 				F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */,
 				F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */,
-				F26469132F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift */,
+				F26469132F6F5EB200BEBF1F /* SKTranslationSourceTests.swift */,
 			);
 			path = SkarnikTests;
 			sourceTree = "<group>";
@@ -560,7 +560,7 @@
 				B251A3832AF1AFCB00E78923 /* SKSwiftUiViewController.swift in Sources */,
 				B20ABAD228EED10D00AA2FC9 /* SKSplitViewController.swift in Sources */,
 				B2462E6D2927AE9F005C8D33 /* String+Skarnik.swift in Sources */,
-				B2881B4D28F5DE9800649278 /* SKSkarnikByController.swift in Sources */,
+				B2881B4D28F5DE9800649278 /* SKTranslationSource.swift in Sources */,
 				B2FEFEEB28F3776E00675E49 /* SKSearchWordsTableViewController.swift in Sources */,
 				B2C81E042AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift in Sources */,
 				F2005D262F5CF009003A032C /* SKWordDetailsViewModel.swift in Sources */,
@@ -576,7 +576,7 @@
 				B251A34D2AE9939300E78923 /* SKLevenshtein.swift in Sources */,
 				B284FE792AE0A5A4009CA21D /* SKVocabularyIndex.swift in Sources */,
 				B284FE6F2AE0A527009CA21D /* SKWordWidgetEntry.swift in Sources */,
-				B284FE782AE0A5A0009CA21D /* SKSkarnikByController.swift in Sources */,
+				B284FE782AE0A5A0009CA21D /* SKTranslationSource.swift in Sources */,
 				B284FE742AE0A556009CA21D /* NSAttributedString+Skarnik.swift in Sources */,
 				B251A34F2AE9939300E78923 /* SKWordFetchEntry.swift in Sources */,
 				B284FE752AE0A565009CA21D /* URLSession+Skarnik.swift in Sources */,

@@ -24,9 +24,14 @@ enum SKWordDetailsEffect {
 class SKWordDetailsViewModel: ObservableObject {
     @Published private(set) var state: SKWordDetailsState = .idle
     @Published var word: SKWord?
-    
+
     private var fetchTask: Task<Void, Never>?
     let effectSubject = PassthroughSubject<SKWordDetailsEffect, Never>()
+    private let translationSource: any SKTranslationSource
+
+    init(translationSource: any SKTranslationSource = SKFallbackTranslationSource.shared) {
+        self.translationSource = translationSource
+    }
     
     var translation: SKSkarnikTranslation? {
         if case .success(let translation) = state {
@@ -69,7 +74,7 @@ class SKWordDetailsViewModel: ObservableObject {
         
         fetchTask = Task {
             do {
-                guard let translation = try await SKSkarnikByController.wordTranslation(word) else {
+                guard let translation = try await translationSource.wordTranslation(word) else {
                     if !Task.isCancelled {
                         self.state = .error(SKLocalization.errorWordNotFound)
                     }

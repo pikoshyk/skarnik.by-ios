@@ -100,8 +100,119 @@ final class SKSkarnikByControllerTests: XCTestCase {
         let word = SKWord(word_id: 1, word: "test", lang_id: .rus_bel)
         let html = "<b>Bold</b>"
         let translation = SKSkarnikTranslation(word: word, url: "http://example.com", html: html)
-        
+
         let attrString = await translation.attributedString
         XCTAssertNotNil(attrString)
+    }
+
+    // MARK: - SKFallbackTranslationSource Tests
+
+    private let sampleWord = SKWord(word_id: 42, word: "тэст", lang_id: .bel_rus)
+
+    private func sampleTranslation(for word: SKWord) -> SKSkarnikTranslation {
+        SKSkarnikTranslation(word: word, url: "https://example.com", html: "<b>тэст</b>")
+    }
+
+    func testFallback_returnsFirstSuccessfulResult() async throws {
+        let translation = sampleTranslation(for: sampleWord)
+        var secondSourceCalled = false
+
+        let source = SKFallbackTranslationSource(sources: [
+            MockTranslationSource { translation },
+            MockTranslationSource { secondSourceCalled = true; return nil }
+        ])
+
+        let result = try await source.wordTranslation(sampleWord)
+
+        XCTAssertNotNil(result)
+        XCTAssertFalse(secondSourceCalled, "Second source should not be called when first succeeds")
+    }
+
+    func testFallback_skipsNilAndUsesNextSource() async throws {
+        let translation = sampleTranslation(for: sampleWord)
+
+        let source = SKFallbackTranslationSource(sources: [
+            MockTranslationSource { nil },
+            MockTranslationSource { translation }
+        ])
+
+        let result = try await source.wordTranslation(sampleWord)
+
+        XCTAssertNotNil(result)
+    }
+
+    func testFallback_skipsErrorAndUsesNextSource() async throws {
+        let translation = sampleTranslation(for: sampleWord)
+
+        let source = SKFallbackTranslationSource(sources: [
+            MockTranslationSource { throw SKSkarnikError.networkError },
+            MockTranslationSource { translation }
+        ])
+
+        let result = try await source.wordTranslation(sampleWord)
+
+        XCTAssertNotNil(result)
+    }
+
+    func testFallback_throwsLastErrorWhenAllSourcesFail() async {
+        let source = SKFallbackTranslationSource(sources: [
+            MockTranslationSource { throw SKSkarnikError.networkError },
+            MockTranslationSource { throw SKSkarnikError.networkError }
+        ])
+
+        do {
+            _ = try await source.wordTranslation(sampleWord)
+            XCTFail("Expected an error to be thrown")
+        } catch let error as SKSkarnikError {
+            XCTAssertEqual(error, .networkError)
+        } catch {
+            XCTFail("Unexpected error type: \(error)")
+        }
+    }
+
+    func testFallback_returnsNilWhenAllSourcesReturnNil() async throws {
+        let source = SKFallbackTranslationSource(sources: [
+            MockTranslationSource { nil },
+            MockTranslationSource { nil }
+        ])
+
+        let result = try await source.wordTranslation(sampleWord)
+        XCTAssertNil(result)
+    }
+
+    func testFallback_usesSourcesInOrder() async throws {
+        var callOrder: [Int] = []
+
+        let source = SKFallbackTranslationSource(sources: [
+            MockTranslationSource { callOrder.append(1); return nil },
+            MockTranslationSource { callOrder.append(2); return nil },
+            MockTranslationSource { callOrder.append(3); return nil }
+        ])
+
+        _ = try await source.wordTranslation(sampleWord)
+
+        XCTAssertEqual(callOrder, [1, 2, 3])
+    }
+
+    // MARK: - Stub Source Tests
+
+    func testApiTranslationSource_returnsNil() async throws {
+        let result = try await SKApiTranslationSource().wordTranslation(sampleWord)
+        XCTAssertNil(result)
+    }
+
+    func testSupabaseTranslationSource_returnsNil() async throws {
+        let result = try await SKSupabaseTranslationSource().wordTranslation(sampleWord)
+        XCTAssertNil(result)
+    }
+}
+
+// MARK: - Mock
+
+private struct MockTranslationSource: SKTranslationSource {
+    let handler: () async throws -> SKSkarnikTranslation?
+
+    func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation? {
+        try await handler()
     }
 }
