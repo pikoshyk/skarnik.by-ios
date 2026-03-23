@@ -74,13 +74,9 @@
 		F229B9D02D5134B000B2463E /* SKAnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CA2D5134B000B2463E /* SKAnalyticsManager.swift */; };
 		F229B9D12D5134B000B2463E /* SKFirebaseAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CD2D5134B000B2463E /* SKFirebaseAnalytics.swift */; };
 		F229B9D22D5134B000B2463E /* SKDebugAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229B9CC2D5134B000B2463E /* SKDebugAnalytics.swift */; };
-		F26469152F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26469132F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift */; };
-		F26469162F6F5EB200BEBF1F /* SkarnikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26469122F6F5EB200BEBF1F /* SkarnikTests.swift */; };
 		F268C3D12D50DD4B004B7BE4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F268C3D02D50DD4B004B7BE4 /* FirebaseAnalytics */; };
 		F268C3D32D50DF5F004B7BE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */; };
-		F27C3F2D2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27C3F2C2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift */; };
 		F2A652A02F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */; };
-		F2A652A12F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,8 +177,18 @@
 		F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F2FE25562F7140D8009126F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SKWordDetailsViewControllerTests.swift,
+			);
+			target = F26469042F6F5DE600BEBF1F /* SkarnikTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F26469062F6F5DE600BEBF1F /* SkarnikTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = SkarnikTests; sourceTree = "<group>"; };
+		F26469062F6F5DE600BEBF1F /* SkarnikTests */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (F2FE25562F7140D8009126F4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = SkarnikTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,7 +454,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				CLASSPREFIX = SK;
 				LastSwiftUpdateCheck = 2630;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 2630;
 				ORGANIZATIONNAME = Skarnik;
 				TargetAttributes = {
 					B20ABAB528EEBF6F00AA2FC9 = {
@@ -591,10 +597,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A652A02F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift in Sources */,
-				F2A652A12F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift in Sources */,
-				F26469152F6F5EB200BEBF1F /* SKSkarnikByControllerTests.swift in Sources */,
-				F26469162F6F5EB200BEBF1F /* SkarnikTests.swift in Sources */,
-				F27C3F2D2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,7 +879,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik.WordWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -924,7 +926,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 3.1.2;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = by.mazokaleh.Skarnik.WordWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

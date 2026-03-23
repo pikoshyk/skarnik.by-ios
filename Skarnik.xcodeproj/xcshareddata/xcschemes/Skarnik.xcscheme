@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1620"
+   LastUpgradeVersion = "2630"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -33,7 +33,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B251A3532AE9940B00E78923"
+               BlueprintIdentifier = "F26469042F6F5DE600BEBF1F"
                BuildableName = "SkarnikTests.xctest"
                BlueprintName = "SkarnikTests"
                ReferencedContainer = "container:Skarnik.xcodeproj">
