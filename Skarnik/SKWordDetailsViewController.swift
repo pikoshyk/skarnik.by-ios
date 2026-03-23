@@ -93,8 +93,8 @@ class SKWordDetailsViewController: UIViewController, UITextViewDelegate {
     }
     
     private func updateWordUI(_ word: SKWord?) {
-        navigationItem.title = viewModel.navigationTitle
-        labelVocabulary.text = viewModel.vocabularySubtitle
+        navigationItem.title = word.map { "«\u{200E}\($0.word)»" }
+        labelVocabulary.text = word?.lang_id.wordDetailsSubtitle?.uppercased()
     }
     
     private func setLoading(_ isLoading: Bool) {

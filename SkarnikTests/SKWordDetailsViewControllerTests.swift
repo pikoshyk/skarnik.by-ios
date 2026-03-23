@@ -44,6 +44,27 @@ final class SKWordDetailsViewControllerTests: XCTestCase {
         XCTAssertTrue(sut.activityIndicatorView.isAnimating)
     }
     
+    // Regression test: navigation title must reflect the word passed to the $word publisher,
+    // not viewModel.word read back inside the sink (which would still be the old value due
+    // to @Published using willSet semantics).
+    @MainActor
+    func testNavigationTitle_ShowsOnFirstWord() {
+        let word = SKWord(word_id: 1, word: "тэст", lang_id: .bel_rus)
+        sut.word = word
+        XCTAssertEqual(sut.navigationItem.title, "«\u{200E}тэст»")
+    }
+
+    @MainActor
+    func testNavigationTitle_UpdatesImmediatelyOnWordChange() {
+        let word1 = SKWord(word_id: 1, word: "першы", lang_id: .bel_rus)
+        let word2 = SKWord(word_id: 2, word: "другі", lang_id: .bel_rus)
+
+        sut.word = word1
+        sut.word = word2
+
+        XCTAssertEqual(sut.navigationItem.title, "«\u{200E}другі»")
+    }
+
     @MainActor
     func testNilWord_ResetsUI() {
         sut.word = nil
