@@ -11,7 +11,9 @@ protocol SKAdditionalKeyboardViewDelegate {
     func onAdditionalKeyboardCharPressed(char: String)
 }
 
-class SKAdditionalKeyboardView: UIView {
+class SKAdditionalKeyboardView: UIView, UIInputViewAudioFeedback {
+
+    var enableInputClicksWhenVisible: Bool { true }
 
     var delegate: SKAdditionalKeyboardViewDelegate?
 
@@ -27,6 +29,7 @@ class SKAdditionalKeyboardView: UIView {
     }
 
     @IBAction func onButton(_ button: UIButton) {
+        UIDevice.current.playInputClick()
         feedbackGenerator.impactOccurred()
         let keyIndex = button.tag
         var char: String?
