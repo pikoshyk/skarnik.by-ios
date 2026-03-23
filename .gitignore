@@ -97,3 +97,6 @@ iOSInjectionProject/
 # Firebase
 GoogleService-Info.plist
 
+# Claude
+CLAUDE.md
+
