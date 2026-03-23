@@ -246,10 +246,46 @@ struct SKHtmlTranslationSource: SKTranslationSource {
 // MARK: - API Source
 
 struct SKApiTranslationSource: SKTranslationSource {
+
+    private struct APIResponse: Decodable {
+        let translation: String?
+        let redirect_to: Int64?
+    }
+
+    static func url(vocabularyType: ESKVocabularyType, wordId: Int64) -> String? {
+        guard let skarnikId = vocabularyType.skarnikId else { return nil }
+        return "https://skarnik.play.of.by/api/words/\(skarnikId)/\(wordId)/"
+    }
+
     func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation? {
-        skLog("[API] wordTranslation called for word: \"\(word.word)\" (id: \(word.word_id), lang: \(word.lang_id.rawValue)) — not implemented, returning nil")
-        // TODO: Implement JSON API fetching
-        return nil
+        guard let urlStr = Self.url(vocabularyType: word.lang_id, wordId: word.word_id) else {
+            return nil
+        }
+
+        skLog("[API] Fetching word: \"\(word.word)\" (id: \(word.word_id), lang: \(word.lang_id.rawValue)) url: \(urlStr)")
+
+        guard let data = await URLSession.skarnikDownload(urlStr: urlStr) else {
+            skLog("[API] Network error for url: \(urlStr)", type: .error)
+            throw SKSkarnikError.networkError
+        }
+
+        let response = try JSONDecoder().decode(APIResponse.self, from: data)
+
+        if let redirectId = response.redirect_to {
+            skLog("[API] Redirect — retrying with word id: \(redirectId)")
+            guard let nextWord = SKVocabularyIndex.shared.word(id: redirectId, vocabularyType: word.lang_id) else {
+                return nil
+            }
+            return try await self.wordTranslation(nextWord)
+        }
+
+        guard let html = response.translation else {
+            return nil
+        }
+
+        let displayUrl = SKHtmlTranslationSource.url(vocabularyType: word.lang_id, wordId: word.word_id) ?? urlStr
+        skLog("[API] Parsed successfully for word: \"\(word.word)\" (id: \(word.word_id))")
+        return SKSkarnikTranslation(word: word, url: displayUrl, html: html)
     }
 }
 
