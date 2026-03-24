@@ -141,18 +141,32 @@ struct SKSkarnikTranslation {
                 var foundWords: [String] = []
                 do {
                     let doc = try SwiftSoup.parse(html)
-                    let fonts: Elements = try doc.select("font")
-                    for fontContent in fonts {
-                        if let colorValue = try? fontContent.attr("color") {
-                            if colorValue.lowercased() == "831b03".lowercased() {
-                                if let word = try? fontContent.text().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
-                                    let parsedWords = parseWord(word)
-                                    for parsedWord in parsedWords {
-                                        if foundWords.contains(parsedWord) == false {
-                                            if SKVocabularyIndex.shared.word(parsedWord, vocabularyType: .bel_definition) != nil {
-                                                foundWords.append(parsedWord)
-                                            } else if SKVocabularyIndex.shared.word(parsedWord, vocabularyType: .bel_rus) != nil {
-                                                foundWords.append(parsedWord)
+
+                    let dataWordElements: Elements = try doc.select("[data-word]")
+                    if !dataWordElements.isEmpty {
+                        for element in dataWordElements {
+                            let candidate = (try? element.attr("data-word").trimmingCharacters(in: .whitespacesAndNewlines)) ?? ""
+                            guard !candidate.isEmpty, !candidate.contains(" "),
+                                  !foundWords.contains(candidate) else { continue }
+                            if SKVocabularyIndex.shared.word(candidate, vocabularyType: .bel_definition) != nil ||
+                               SKVocabularyIndex.shared.word(candidate, vocabularyType: .bel_rus) != nil {
+                                foundWords.append(candidate)
+                            }
+                        }
+                    } else {
+                        let fonts: Elements = try doc.select("font")
+                        for fontContent in fonts {
+                            if let colorValue = try? fontContent.attr("color") {
+                                if colorValue.lowercased() == "831b03".lowercased() {
+                                    if let word = try? fontContent.text().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
+                                        let parsedWords = parseWord(word)
+                                        for parsedWord in parsedWords {
+                                            if foundWords.contains(parsedWord) == false {
+                                                if SKVocabularyIndex.shared.word(parsedWord, vocabularyType: .bel_definition) != nil {
+                                                    foundWords.append(parsedWord)
+                                                } else if SKVocabularyIndex.shared.word(parsedWord, vocabularyType: .bel_rus) != nil {
+                                                    foundWords.append(parsedWord)
+                                                }
                                             }
                                         }
                                     }
@@ -160,6 +174,7 @@ struct SKSkarnikTranslation {
                             }
                         }
                     }
+
                     words = foundWords
                 } catch {
 
