@@ -30,4 +30,8 @@ class SKFirebaseAnalytics: SKAnalyticsService {
         Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
     }
 
+    func logStarnikByOpened() {
+        Analytics.logEvent(SKAnalyticsEvent.starnikByOpened.rawValue, parameters: [:])
+    }
+
 }

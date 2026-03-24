@@ -68,6 +68,7 @@ class SKVocabulariesTableViewController: UIViewController {
             return
         }
 
+        SKAnalyticsManager.logStarnikByOpened()
         UIApplication.shared.open(url)
     }
     

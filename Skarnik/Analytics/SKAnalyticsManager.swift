@@ -28,4 +28,8 @@ class SKAnalyticsManager {
     static func logStressClicked(word: String) {
         shared.service.logStressClicked(word: word)
     }
+
+    static func logStarnikByOpened() {
+        shared.service.logStarnikByOpened()
+    }
 }
