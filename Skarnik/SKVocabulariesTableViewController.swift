@@ -48,10 +48,26 @@ class SKVocabulariesTableViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        updateEmptyState()
         if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
            let word = sceneDelegate.pendingWord {
             sceneDelegate.pendingWord = nil
             openWord(word, fromHistory: false, entryPoint: "widget")
+        }
+    }
+
+    func updateEmptyState() {
+        let isEmpty = selectedVocabularyType == .history && SKStorageController.shared.words.isEmpty
+        if isEmpty {
+            let label = UILabel()
+            label.text = SKLocalization.historyEmptyPlaceholder
+            label.textColor = .secondaryLabel
+            label.textAlignment = .center
+            label.numberOfLines = 0
+            label.font = .preferredFont(forTextStyle: .body)
+            tableView.backgroundView = label
+        } else {
+            tableView.backgroundView = nil
         }
     }
     
@@ -140,6 +156,7 @@ extension SKVocabulariesTableViewController { // SegmentedControl
     
     @IBAction func onSelectedSegment(_ sender: UISegmentedControl) {
         self.tableView.reloadData()
+        self.updateEmptyState()
     }
 }
 
@@ -175,6 +192,7 @@ extension SKVocabulariesTableViewController: UITableViewDataSource {
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .middle)
             tableView.endUpdates()
+            updateEmptyState()
         }
     }
 

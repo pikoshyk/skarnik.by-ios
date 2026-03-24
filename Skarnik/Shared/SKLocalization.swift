@@ -46,6 +46,8 @@ class SKLocalization: Any {
     class var wordStressTitle: String { "Націск" }
     class var wordStressError: String { "Нешта пайшло не так, мо праблемы з інтэрнэтам ці серверам. Паспрабуйце яшчэ раз." }
 
+    class var historyEmptyPlaceholder: String { "Тут з'явяцца словы, якія вы адкрывалі.\nПашукайце альбо абярыце слова ў слоўніку." }
+
     class var widgetWordTitle: String { "Слова дня" }
     class var widgetWordDescriptioon: String { "Выпадковае слова і яго пераклад." }
     class var widgetWordSampleWord: String { "халэмус" }
