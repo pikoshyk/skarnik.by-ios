@@ -76,6 +76,9 @@ class SKWordDetailsViewController: UIViewController, UITextViewDelegate {
             translation.attributedString { [weak self] attributedString in
                 self?.textView.attributedText = attributedString
             }
+            if let stress = translation.stress {
+                navigationItem.title = "«\u{200E}\(stress)»"
+            }
             updateSpellingButtonVisibility(spellingWords: translation.belWords)
         case .error(let message):
             setLoading(false)

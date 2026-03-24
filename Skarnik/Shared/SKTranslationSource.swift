@@ -23,6 +23,7 @@ struct SKSkarnikTranslation {
     let word: SKWord
     let url: String
     let html: String
+    var stress: String? = nil
 
     static let colorConversions = [
         ["initial": "FFFFFF", "light": "F2F2F7", "dark": "1C1C1E"],
@@ -253,6 +254,7 @@ struct SKApiTranslationSource: SKTranslationSource {
     private struct APIResponse: Decodable {
         let translation: String?
         let redirect_to: Int64?
+        let stress: String?
     }
 
     static func url(vocabularyType: ESKVocabularyType, wordId: Int64) -> String? {
@@ -288,7 +290,7 @@ struct SKApiTranslationSource: SKTranslationSource {
 
         let displayUrl = SKHtmlTranslationSource.url(vocabularyType: word.lang_id, wordId: word.word_id) ?? urlStr
         skLog("[API] Parsed successfully for word: \"\(word.word)\" (id: \(word.word_id))")
-        return SKSkarnikTranslation(word: word, url: displayUrl, html: html)
+        return SKSkarnikTranslation(word: word, url: displayUrl, html: html, stress: response.stress)
     }
 }
 
