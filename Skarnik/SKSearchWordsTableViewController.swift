@@ -28,10 +28,25 @@ class SKSearchWordsTableViewController: UITableViewController, UISearchResultsUp
         self.labelSearchHeaderAdditionalRulesHeader.text = SKLocalization.searchHeaderAdditionalRules
 
         self.tableView.contentInset.bottom = 60.0 // Additional Keyboard Size
+        self.labelSearchHeaderAdditionalRulesHeader.numberOfLines = 0
 
         if #available(iOS 15.0, *) {
             self.tableView.sectionHeaderTopPadding = 0
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateAdditionalRulesHeader()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard let header = self.tableView.tableHeaderView else { return }
+        let width = self.tableView.bounds.width
+        guard width > 0, header.frame.width != width else { return }
+        header.frame = CGRect(x: 0, y: 0, width: width, height: headerHeight(forWidth: width))
+        self.tableView.tableHeaderView = header
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,28 +58,25 @@ class SKSearchWordsTableViewController: UITableViewController, UISearchResultsUp
     }
 
     // MARK: - Table view data source
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let text = self.searchText else {
-            return nil
-        }
 
-        if SKVocabularyIndex.shared.requiredAdditionalSearchRules(queryLength: text.count, vocabularyType: .all) {
-            return self.viewSearchHeaderAdditionalRules
-        }
-
-        return nil
+    private func headerHeight(forWidth width: CGFloat) -> CGFloat {
+        let labelWidth = width - 32 // leading 16 + trailing 16
+        return labelSearchHeaderAdditionalRulesHeader.sizeThatFits(
+            CGSize(width: labelWidth, height: .greatestFiniteMagnitude)
+        ).height + 16 // top 8 + bottom 8
     }
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard let text = self.searchText else {
-            return 0
-        }
 
-        if SKVocabularyIndex.shared.requiredAdditionalSearchRules(queryLength: text.count, vocabularyType: .all) {
-            return 60.0
+    private func updateAdditionalRulesHeader() {
+        guard self.words.isEmpty else {
+            self.tableView.tableHeaderView = nil
+            return
         }
-        return 0
+        let header = self.viewSearchHeaderAdditionalRules!
+        guard self.tableView.tableHeaderView !== header else { return }
+        let width = max(self.tableView.bounds.width, UIScreen.main.bounds.width)
+        header.translatesAutoresizingMaskIntoConstraints = true
+        header.frame = CGRect(x: 0, y: 0, width: width, height: headerHeight(forWidth: width))
+        self.tableView.tableHeaderView = header
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -108,6 +120,7 @@ class SKSearchWordsTableViewController: UITableViewController, UISearchResultsUp
                 self.searchText = myText
                 self.words = words
                 self.tableView.reloadData()
+                self.updateAdditionalRulesHeader()
             }
         }
     }

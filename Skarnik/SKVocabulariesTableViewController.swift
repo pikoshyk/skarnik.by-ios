@@ -399,9 +399,8 @@ extension SKVocabulariesTableViewController: UISearchControllerDelegate {
         searchController.automaticallyShowsCancelButton = true
         searchController.searchResultsUpdater = searchResultsTableViewController
 //        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.showsSearchResultsController = true
         self.updateSearchBar(searchController.searchBar)
         self.navigationItem.searchController = searchController
-//        searchController.showsSearchResultsController = true
-//        self.definesPresentationContext = true
     }
 }
