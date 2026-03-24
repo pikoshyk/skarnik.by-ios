@@ -48,7 +48,7 @@ class SKAboutViewController: UIViewController {
     }
     
     func openTwitterAccount(account: String) {
-        let urlStr = "https://twitter.com/\(account)"
+        let urlStr = "https://x.com/\(account)"
         if let url = URL(string: urlStr) {
             UIApplication.shared.open(url)
         }
@@ -58,8 +58,12 @@ class SKAboutViewController: UIViewController {
         self.openTwitterAccount(account: "skarnikby")
     }
     
-    @IBAction func onDeveloper() {
+    @IBAction func onDeveloper1() {
         self.openTwitterAccount(account: "pikoshyk")
+    }
+    
+    @IBAction func onDeveloper2() {
+        self.openTwitterAccount(account: "alehm666")
     }
     
     @IBAction func onDesigner() {
