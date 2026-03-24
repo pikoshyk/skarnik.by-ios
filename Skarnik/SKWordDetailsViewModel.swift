@@ -25,6 +25,8 @@ class SKWordDetailsViewModel: ObservableObject {
     @Published private(set) var state: SKWordDetailsState = .idle
     @Published var word: SKWord?
 
+    var entryPoint: String = ""
+
     private var fetchTask: Task<Void, Never>?
     let effectSubject = PassthroughSubject<SKWordDetailsEffect, Never>()
     private let translationSource: any SKTranslationSource
@@ -91,7 +93,8 @@ class SKWordDetailsViewModel: ObservableObject {
                     lang_id: word.lang_id.rawValue,
                     dict_name: word.lang_id.name ?? "unknown",
                     dict_path: word.lang_id.skarnikId ?? "unknown",
-                    source_name: translation.sourceName
+                    source_name: translation.sourceName,
+                    entry_point: self.entryPoint
                 )
                 
                 if word.word_id == translation.word.word_id && word.lang_id == translation.word.lang_id {

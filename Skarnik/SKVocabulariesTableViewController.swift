@@ -73,7 +73,7 @@ class SKVocabulariesTableViewController: UIViewController {
         UIApplication.shared.open(url)
     }
     
-    func openWord(_ word: SKWord, fromHistory: Bool) {
+    func openWord(_ word: SKWord, fromHistory: Bool, entryPoint: String = "vocabulary") {
         if fromHistory == false {
             SKStorageController.shared.addWord(word)
             if self.selectedVocabularyType == .history {
@@ -96,6 +96,7 @@ class SKVocabulariesTableViewController: UIViewController {
         }
         if let wordDetailsViewController = wordDetailsViewController {
             self.splitViewController?.showDetailViewController(wordDetailsViewController, sender: self)
+            wordDetailsViewController.entryPoint = entryPoint
             wordDetailsViewController.word = word
         }
 
@@ -115,7 +116,7 @@ class SKVocabulariesTableViewController: UIViewController {
 
 extension SKVocabulariesTableViewController: SKSearchWordsTableViewControllerDelegate {
     func onSearchWordSelected(word: SKWord) {
-        self.openWord(word, fromHistory: false)
+        self.openWord(word, fromHistory: false, entryPoint: "search")
     }
 }
 
@@ -138,7 +139,7 @@ extension SKVocabulariesTableViewController: UITableViewDelegate {
         
         if let word = self.word(tableIndexPath: indexPath) {
             let isHistory = (self.selectedVocabularyType == .history)
-            self.openWord(word, fromHistory: isHistory)
+            self.openWord(word, fromHistory: isHistory, entryPoint: isHistory ? "history" : "vocabulary")
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
         }

@@ -11,7 +11,7 @@ class SKFirebaseAnalytics: SKAnalyticsService {
     }
     
     func logTranslation(
-        uri: String, word: String, word_id: Int64, lang_id: Int, dict_name: String, dict_path: String, source_name: String
+        uri: String, word: String, word_id: Int64, lang_id: Int, dict_name: String, dict_path: String, source_name: String, entry_point: String
     ) {
         Analytics.logEvent(
             SKAnalyticsEvent.translation.rawValue,
@@ -23,6 +23,7 @@ class SKFirebaseAnalytics: SKAnalyticsService {
                 "dict_name": dict_name,
                 "dict_path": dict_path,
                 "source_name": source_name,
+                "entry_point": entry_point,
             ])
     }
 

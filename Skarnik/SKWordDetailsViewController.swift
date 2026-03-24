@@ -32,6 +32,11 @@ class SKWordDetailsViewController: UIViewController, UITextViewDelegate {
         get { viewModel.word }
         set { viewModel.updateWord(newValue) }
     }
+
+    var entryPoint: String {
+        get { viewModel.entryPoint }
+        set { viewModel.entryPoint = newValue }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
