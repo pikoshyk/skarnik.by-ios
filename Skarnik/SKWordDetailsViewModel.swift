@@ -90,7 +90,8 @@ class SKWordDetailsViewModel: ObservableObject {
                     word_id: word.word_id,
                     lang_id: word.lang_id.rawValue,
                     dict_name: word.lang_id.name ?? "unknown",
-                    dict_path: word.lang_id.skarnikId ?? "unknown"
+                    dict_path: word.lang_id.skarnikId ?? "unknown",
+                    source_name: translation.sourceName
                 )
                 
                 if word.word_id == translation.word.word_id && word.lang_id == translation.word.lang_id {

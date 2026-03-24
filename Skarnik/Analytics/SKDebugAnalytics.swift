@@ -10,8 +10,8 @@ class SKDebugAnalytics: SKAnalyticsService {
     }
 
     func logTranslation(
-        uri: String, word: String, word_id: Int64, lang_id: Int, dict_name: String, dict_path: String
+        uri: String, word: String, word_id: Int64, lang_id: Int, dict_name: String, dict_path: String, source_name: String
     ) {
-        print("📊 Translation: \(uri), \(word), \(word_id), \(lang_id), \(dict_name), \(dict_path)")
+        print("📊 Translation: \(uri), \(word), \(word_id), \(lang_id), \(dict_name), \(dict_path), \(source_name)")
     }
 }
