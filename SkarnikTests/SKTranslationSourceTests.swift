@@ -194,17 +194,6 @@ final class SKSkarnikByControllerTests: XCTestCase {
         XCTAssertEqual(callOrder, [1, 2, 3])
     }
 
-    // MARK: - Stub Source Tests
-
-    func testApiTranslationSource_returnsNil() async throws {
-        let result = try await SKApiTranslationSource().wordTranslation(sampleWord)
-        XCTAssertNil(result)
-    }
-
-    func testSupabaseTranslationSource_returnsNil() async throws {
-        let result = try await SKSupabaseTranslationSource().wordTranslation(sampleWord)
-        XCTAssertNil(result)
-    }
 }
 
 // MARK: - Mock
