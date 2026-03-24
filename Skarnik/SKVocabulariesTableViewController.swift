@@ -36,6 +36,7 @@ class SKVocabulariesTableViewController: UIViewController {
         self.segmentedControl.setTitle(SKLocalization.segmentRusBel, forSegmentAt: 1)
         self.segmentedControl.setTitle(SKLocalization.segmentBelRus, forSegmentAt: 2)
         self.segmentedControl.setTitle(SKLocalization.segmentDefinition, forSegmentAt: 3)
+        self.segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
     }
     
     override func viewWillAppear(_ animated: Bool) {
