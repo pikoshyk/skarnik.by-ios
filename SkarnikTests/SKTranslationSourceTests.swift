@@ -6,17 +6,59 @@ final class SKSkarnikByControllerTests: XCTestCase {
 
     // MARK: - SKSkarnikTranslation Tests
 
-    func testSKSkarnikTranslation_recoloredHtml() {
+    func testSKSkarnikTranslation_recoloredHtml_attributeFormat() {
         let word = SKWord(word_id: 1, word: "test", lang_id: .rus_bel)
-        let html = "<html><body><font color=\"831b03\">Беларускае слова</font></body></html>"
+        let html = "<font color=\"831b03\">Беларускае слова</font>"
         let translation = SKSkarnikTranslation(word: word, url: "http://example.com", html: html)
-        
+
         let recoloredHtml = translation.recoloredHtml
-        
-        // "831b03" is defined in colorConversions and should be replaced.
-        // In the colorConversions table, 831b03 maps to F44C3E for both light and dark.
+
+        // 831b03 maps to F44C3E for both light and dark
         XCTAssertTrue(recoloredHtml.contains("color=\"F44C3E\""))
         XCTAssertFalse(recoloredHtml.contains("color=\"831b03\""))
+    }
+
+    func testSKSkarnikTranslation_recoloredHtml_attributeWithHashFormat() {
+        let word = SKWord(word_id: 1, word: "test", lang_id: .rus_bel)
+        let html = "<font color=\"#831b03\">Беларускае слова</font>"
+        let translation = SKSkarnikTranslation(word: word, url: "http://example.com", html: html)
+
+        let recoloredHtml = translation.recoloredHtml
+
+        XCTAssertTrue(recoloredHtml.contains("color=\"#F44C3E\""))
+        XCTAssertFalse(recoloredHtml.contains("color=\"#831b03\""))
+    }
+
+    func testSKSkarnikTranslation_recoloredHtml_cssStyleFormat() {
+        let word = SKWord(word_id: 1, word: "test", lang_id: .rus_bel)
+        let html = "<span style=\"color: #831b03;\">Беларускае слова</span>"
+        let translation = SKSkarnikTranslation(word: word, url: "http://example.com", html: html)
+
+        let recoloredHtml = translation.recoloredHtml
+
+        XCTAssertTrue(recoloredHtml.contains("color: #F44C3E"))
+        XCTAssertFalse(recoloredHtml.contains("color: #831b03"))
+    }
+
+    func testSKSkarnikTranslation_recoloredHtml_removesFontSizeSmall() {
+        let word = SKWord(word_id: 1, word: "test", lang_id: .rus_bel)
+        let html = "<span style=\"font-size: small; color: red;\">Тэкст</span>"
+        let translation = SKSkarnikTranslation(word: word, url: "http://example.com", html: html)
+
+        let recoloredHtml = translation.recoloredHtml
+
+        XCTAssertFalse(recoloredHtml.contains("font-size: small"))
+        XCTAssertTrue(recoloredHtml.contains("color: red"))
+    }
+
+    func testSKSkarnikTranslation_recoloredHtml_unknownColorUnchanged() {
+        let word = SKWord(word_id: 1, word: "test", lang_id: .rus_bel)
+        let html = "<font color=\"123456\">Тэкст</font>"
+        let translation = SKSkarnikTranslation(word: word, url: "http://example.com", html: html)
+
+        let recoloredHtml = translation.recoloredHtml
+
+        XCTAssertTrue(recoloredHtml.contains("color=\"123456\""))
     }
 
     func testSKSkarnikTranslation_belWords_bel_rus() {
