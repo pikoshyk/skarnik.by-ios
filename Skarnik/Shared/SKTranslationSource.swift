@@ -312,10 +312,56 @@ struct SKApiTranslationSource: SKTranslationSource {
 // MARK: - Supabase Source
 
 struct SKSupabaseTranslationSource: SKTranslationSource {
+    private static let projectURL = "https://cxblykicbulwcilncgxd.supabase.co"
+    private static let apiKey = "sb_publishable_aJ4mKd11QBgS0A3PG7P1HA_c8JOBqfo"
+    private static let headers = [
+        "apikey": apiKey,
+        "Authorization": "Bearer \(apiKey)"
+    ]
+
+    private struct SupabaseResponse: Decodable {
+        let translation: String?
+        let redirect_to: Int64?
+        let stress: String?
+    }
+
+    static func url(vocabularyType: ESKVocabularyType, wordId: Int64) -> String? {
+        guard let skarnikId = vocabularyType.skarnikId else { return nil }
+        return "\(projectURL)/rest/v1/main_word?external_id=eq.\(wordId)&direction=eq.\(skarnikId)"
+    }
+
     func wordTranslation(_ word: SKWord) async throws -> SKSkarnikTranslation? {
-        skLog("[Supabase] wordTranslation called for word: \"\(word.word)\" (id: \(word.word_id), lang: \(word.lang_id.rawValue)) — not implemented, returning nil")
-        // TODO: Implement Supabase fetching
-        return nil
+        guard let urlStr = Self.url(vocabularyType: word.lang_id, wordId: word.word_id) else {
+            return nil
+        }
+
+        skLog("[Supabase] Fetching word: \"\(word.word)\" (id: \(word.word_id), lang: \(word.lang_id.rawValue)) url: \(urlStr)")
+
+        guard let data = await URLSession.skarnikDownload(urlStr: urlStr, headers: Self.headers) else {
+            skLog("[Supabase] Network error for url: \(urlStr)", type: .error)
+            throw SKSkarnikError.networkError
+        }
+
+        let responses = try JSONDecoder().decode([SupabaseResponse].self, from: data)
+        guard let response = responses.first else {
+            return nil
+        }
+
+        if let redirectId = response.redirect_to {
+            skLog("[Supabase] Redirect — retrying with word id: \(redirectId)")
+            guard let nextWord = SKVocabularyIndex.shared.word(id: redirectId, vocabularyType: word.lang_id) else {
+                return nil
+            }
+            return try await self.wordTranslation(nextWord)
+        }
+
+        guard let html = response.translation else {
+            return nil
+        }
+
+        let displayUrl = SKHtmlTranslationSource.url(vocabularyType: word.lang_id, wordId: word.word_id) ?? urlStr
+        skLog("[Supabase] Parsed successfully for word: \"\(word.word)\" (id: \(word.word_id))")
+        return SKSkarnikTranslation(word: word, url: displayUrl, html: html, stress: response.stress)
     }
 }
 
@@ -347,8 +393,8 @@ struct SKFallbackTranslationSource: SKTranslationSource {
     }
 
     static let shared = SKFallbackTranslationSource(sources: [
-        SKApiTranslationSource(),
         SKSupabaseTranslationSource(),
+        SKApiTranslationSource(),
         SKHtmlTranslationSource()
     ])
 }
