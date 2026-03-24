@@ -18,4 +18,8 @@ class SKDebugAnalytics: SKAnalyticsService {
     ) {
         print("📊 Translation: \(uri), \(word), \(word_id), \(lang_id), \(dict_name), \(dict_path), \(source_name), \(entry_point)")
     }
+
+    func logWidgetDeepLink(word: SKWord, appState: SKWidgetDeepLinkAppState) {
+        print("📊 Widget deep link: word=\(word.word), word_id=\(word.word_id), lang_id=\(word.lang_id.rawValue), app_state=\(appState.rawValue)")
+    }
 }

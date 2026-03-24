@@ -35,4 +35,13 @@ class SKFirebaseAnalytics: SKAnalyticsService {
         Analytics.logEvent(SKAnalyticsEvent.starnikByOpened.rawValue, parameters: [:])
     }
 
+    func logWidgetDeepLink(word: SKWord, appState: SKWidgetDeepLinkAppState) {
+        Analytics.logEvent(SKAnalyticsEvent.widgetDeepLink.rawValue, parameters: [
+            "word": word.word,
+            "word_id": word.word_id,
+            "lang_id": word.lang_id.rawValue,
+            "app_state": appState.rawValue,
+        ])
+    }
+
 }

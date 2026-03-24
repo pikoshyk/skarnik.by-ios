@@ -14,10 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
-        if let url = connectionOptions.urlContexts.first?.url {
+        if let url = connectionOptions.urlContexts.first?.url,
+           let word = SceneDelegate.word(from: url) {
             // UI is not presented yet on cold launch — store and let the
             // primary VC pick it up in viewDidAppear once the screen is ready.
-            pendingWord = SceneDelegate.word(from: url)
+            pendingWord = word
+            SKAnalyticsManager.logWidgetDeepLink(word: word, appState: .coldStart)
         }
     }
 
@@ -29,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private func handleDeepLink(_ url: URL) {
         guard let word = SceneDelegate.word(from: url) else { return }
+        SKAnalyticsManager.logWidgetDeepLink(word: word, appState: .background)
         openWord(word)
     }
 
