@@ -45,6 +45,15 @@ class SKVocabulariesTableViewController: UIViewController {
             self.tableView.deselectRow(at: indexPath, animated: false)
         }
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let sceneDelegate = view.window?.windowScene?.delegate as? SceneDelegate,
+           let word = sceneDelegate.pendingWord {
+            sceneDelegate.pendingWord = nil
+            openWord(word, fromHistory: false, entryPoint: "widget")
+        }
+    }
     
     func sectionTitle(tableSection: Int) -> String {
         let abc = SKVocabularyIndex.shared.wordsIndexes(vocabularyType: self.selectedVocabularyType)

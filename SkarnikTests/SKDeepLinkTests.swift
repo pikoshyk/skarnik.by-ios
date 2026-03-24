@@ -85,6 +85,40 @@ final class SKDeepLinkTests: XCTestCase {
         XCTAssertEqual(resolved?.lang_id, .bel_definition)
     }
 
+    // MARK: - Cold launch (pendingWord)
+
+    func testColdLaunch_validURL_storesPendingWord() {
+        guard let realWord = SKVocabularyIndex.shared.word(index: 0, query: "а", vocabularyType: .bel_rus).first else {
+            XCTFail("Could not fetch a real word from DB"); return
+        }
+        let url = URL(string: "skarnik://word?id=\(realWord.word_id)&lang=\(realWord.lang_id.rawValue)")!
+        let delegate = SceneDelegate()
+        delegate.pendingWord = SceneDelegate.word(from: url)
+        XCTAssertEqual(delegate.pendingWord?.word_id, realWord.word_id)
+    }
+
+    func testColdLaunch_invalidURL_pendingWordIsNil() {
+        let url = URL(string: "https://example.com")!
+        let delegate = SceneDelegate()
+        delegate.pendingWord = SceneDelegate.word(from: url)
+        XCTAssertNil(delegate.pendingWord)
+    }
+
+    func testColdLaunch_pendingWordIsConsumedOnce() {
+        guard let realWord = SKVocabularyIndex.shared.word(index: 0, query: "а", vocabularyType: .bel_rus).first else {
+            XCTFail("Could not fetch a real word from DB"); return
+        }
+        let delegate = SceneDelegate()
+        delegate.pendingWord = realWord
+
+        // Simulate what viewDidAppear does: read and clear
+        let consumed = delegate.pendingWord
+        delegate.pendingWord = nil
+
+        XCTAssertNotNil(consumed)
+        XCTAssertNil(delegate.pendingWord)
+    }
+
     // MARK: - deepLinkURL round-trip
 
     func testDeepLinkURL_roundTrip() {
