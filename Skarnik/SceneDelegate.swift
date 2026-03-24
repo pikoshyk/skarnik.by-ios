@@ -13,10 +13,57 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        if let url = connectionOptions.urlContexts.first?.url {
+            handleDeepLink(url)
+        }
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let url = URLContexts.first?.url {
+            handleDeepLink(url)
+        }
+    }
+
+    private func handleDeepLink(_ url: URL) {
+        guard let word = SceneDelegate.word(from: url) else { return }
+        openWord(word)
+    }
+
+    static func word(from url: URL) -> SKWord? {
+        guard url.scheme == "skarnik",
+              url.host == "word",
+              let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let idStr = components.queryItems?.first(where: { $0.name == "id" })?.value,
+              let langStr = components.queryItems?.first(where: { $0.name == "lang" })?.value,
+              let wordId = Int64(idStr),
+              let langRaw = Int(langStr),
+              let lang = ESKVocabularyType(rawValue: langRaw)
+        else { return nil }
+
+        return SKVocabularyIndex.shared.word(id: wordId, vocabularyType: lang)
+    }
+
+    private func openWord(_ word: SKWord) {
+        guard let splitVC = window?.rootViewController as? SKSplitViewController else { return }
+
+        var wordDetailsVC: SKWordDetailsViewController?
+        if #available(iOS 14.0, *) {
+            wordDetailsVC = splitVC.viewController(for: .secondary) as? SKWordDetailsViewController
+        } else {
+            let controllers = splitVC.viewControllers
+            if controllers.count >= 2 {
+                wordDetailsVC = controllers.last as? SKWordDetailsViewController
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                wordDetailsVC = storyboard.instantiateViewController(withIdentifier: "SKWordDetailsViewController") as? SKWordDetailsViewController
+            }
+        }
+
+        guard let wordDetailsVC = wordDetailsVC else { return }
+        wordDetailsVC.entryPoint = "widget"
+        wordDetailsVC.word = word
+        splitVC.showDetailViewController(wordDetailsVC, sender: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

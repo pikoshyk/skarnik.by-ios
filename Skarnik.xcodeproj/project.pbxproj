@@ -77,6 +77,7 @@
 		F268C3D12D50DD4B004B7BE4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F268C3D02D50DD4B004B7BE4 /* FirebaseAnalytics */; };
 		F268C3D32D50DF5F004B7BE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */; };
 		F2A652A02F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */; };
+		F2BB0CF42F7304F7006352AB /* SKDeepLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB0CF32F7304F7006352AB /* SKDeepLinkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,7 @@
 		F27C3F2C2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKVocabularyIndexTests.swift; sourceTree = "<group>"; };
 		F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		F2BB0CF32F7304F7006352AB /* SKDeepLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepLinkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -365,6 +367,7 @@
 		F26469142F6F5EB200BEBF1F /* SkarnikTests */ = {
 			isa = PBXGroup;
 			children = (
+				F2BB0CF32F7304F7006352AB /* SKDeepLinkTests.swift */,
 				F27C3F2C2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift */,
 				F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */,
 				F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */,
@@ -623,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A652A02F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift in Sources */,
+				F2BB0CF42F7304F7006352AB /* SKDeepLinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,7 +797,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
@@ -803,6 +807,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Skarnik/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skarnik;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -840,7 +845,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -849,6 +854,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Skarnik/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Skarnik;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -887,7 +893,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -934,7 +940,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 29;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;

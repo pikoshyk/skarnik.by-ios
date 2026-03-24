@@ -24,16 +24,19 @@ struct SKWordWidgetView : View {
     var entry: SKWordTimelineProvider.Entry
 
     var body: some View {
-        HStack(alignment: .top, spacing: 0) {
-            VStack(alignment: .leading, spacing: 6) {
-                self.textWord
-                    .universalForeground(Color.accent)
-                self.textTranslation
-                    .universalForeground(.secondary)
+        VStack(spacing: 0) {
+            HStack(alignment: .top, spacing: 0) {
+                VStack(alignment: .leading, spacing: 6) {
+                    self.textWord
+                        .universalForeground(Color.accent)
+                    self.textTranslation
+                        .universalForeground(.secondary)
+                }
+                Spacer(minLength: 0)
             }
             Spacer(minLength: 0)
         }
-        Spacer(minLength: 0)
+        .widgetURL(entry.deepLinkURL)
     }
     
     var textWord: some View {

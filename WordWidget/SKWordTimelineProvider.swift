@@ -38,7 +38,9 @@ struct SKWordAppIntentTimelineProvider: AppIntentTimelineProvider {
         let entry = SKWordWidgetEntry(date: date,
                                       configuration: configuration,
                                       word: word.word,
-                                      wordTranslation: word.translation)
+                                      wordTranslation: word.translation,
+                                      wordId: word.wordId,
+                                      language: word.language)
 
         return Timeline(entries: [entry], policy: .atEnd)
     }
@@ -62,7 +64,9 @@ struct SKWordTimelineProvider: TimelineProvider {
             let date = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
             let entry = SKWordWidgetEntry(date: date,
                                           word: word.word,
-                                          wordTranslation: word.translation)
+                                          wordTranslation: word.translation,
+                                          wordId: word.wordId,
+                                          language: word.language)
             
             timeline = Timeline<SKWordWidgetEntry>(entries: [entry], policy: .atEnd)
             completion(timeline)
