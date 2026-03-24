@@ -76,7 +76,10 @@ struct SKSkarnikTranslation {
                 }
 
                 html = html.regexSub(pattern: "color=\"\(colorInitial)\"", template: "color=\"\(color)\"", options: [.caseInsensitive])
+                html = html.regexSub(pattern: "color=\"#\(colorInitial)\"", template: "color=\"#\(color)\"", options: [.caseInsensitive])
+                html = html.regexSub(pattern: "color:\\s*#\(colorInitial)(?=[\\s;\"'])", template: "color: #\(color)", options: [.caseInsensitive])
             }
+            html = html.regexSub(pattern: "font-size:\\s*small;?\\s*", template: "", options: [.caseInsensitive])
             return html
         }
     }
