@@ -157,8 +157,10 @@ struct SKSkarnikTranslation {
                     } else {
                         let fonts: Elements = try doc.select("font")
                         for fontContent in fonts {
-                            if let colorValue = try? fontContent.attr("color") {
-                                if colorValue.lowercased() == "831b03".lowercased() {
+                            let colorAttr = (try? fontContent.attr("color"))?.lowercased().trimmingCharacters(in: CharacterSet(charactersIn: "#")) ?? ""
+                            let styleAttr = (try? fontContent.attr("style")) ?? ""
+                            let styleColorMatch = styleAttr.range(of: "color:\\s*#?831b03", options: [.regularExpression, .caseInsensitive]) != nil
+                            if colorAttr == "831b03" || styleColorMatch {
                                     if let word = try? fontContent.text().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) {
                                         let parsedWords = parseWord(word)
                                         for parsedWord in parsedWords {
@@ -172,7 +174,6 @@ struct SKSkarnikTranslation {
                                         }
                                     }
                                 }
-                            }
                         }
                     }
 
