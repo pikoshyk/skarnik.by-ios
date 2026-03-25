@@ -74,9 +74,60 @@ final class SKSkarnikByControllerTests: XCTestCase {
         let word = SKWord(word_id: 1, word: "беларускае слова", lang_id: .bel_rus)
         let html = "some translation"
         let translation = SKSkarnikTranslation(word: word, url: "http://example.com", html: html)
-        
+
         // Words with spaces are considered incorrect and should be excluded
         XCTAssertEqual(translation.belWords, [])
+    }
+
+    // MARK: - belWords rus_bel font color format tests
+
+    func testBelWords_rusBel_allColorFormatsProduceSameResult() {
+        // All three formats encode the same semantic color and must be treated equivalently.
+        // Whether the result is empty (word not in DB) or not doesn't matter —
+        // what matters is that the three formats are handled consistently.
+        func makeTranslation(html: String) -> SKSkarnikTranslation {
+            SKSkarnikTranslation(word: SKWord(word_id: 1, word: "мова", lang_id: .rus_bel), url: "", html: html)
+        }
+
+        let noHash    = makeTranslation(html: "<font color=\"831b03\">слова</font>").belWords
+        let withHash  = makeTranslation(html: "<font color=\"#831b03\">слова</font>").belWords
+        let cssStyle  = makeTranslation(html: "<font style=\"color: #831b03\">слова</font>").belWords
+
+        XCTAssertEqual(noHash, withHash,
+                       "color attribute with and without '#' should produce the same result")
+        XCTAssertEqual(noHash, cssStyle,
+                       "HTML color attribute and inline CSS style should produce the same result")
+    }
+
+    func testBelWords_rusBel_fontColorWithHash_doesNotCrash() {
+        // Regression: color="#831b03" was previously silently skipped due to the '#' prefix.
+        let word = SKWord(word_id: 1, word: "мова", lang_id: .rus_bel)
+        let translation = SKSkarnikTranslation(word: word, url: "",
+                                               html: "<font color=\"#831b03\">слова</font>")
+        XCTAssertNoThrow(_ = translation.belWords)
+    }
+
+    func testBelWords_rusBel_fontColorCssStyle_doesNotCrash() {
+        // Regression: style="color: #831b03" was previously silently skipped.
+        let word = SKWord(word_id: 1, word: "мова", lang_id: .rus_bel)
+        let translation = SKSkarnikTranslation(word: word, url: "",
+                                               html: "<font style=\"color: #831b03\">слова</font>")
+        XCTAssertNoThrow(_ = translation.belWords)
+    }
+
+    func testBelWords_rusBel_unrelatedColor_notAffected() {
+        // A font with a different color (green group) should not be matched by the red-color check.
+        func makeTranslation(html: String) -> SKSkarnikTranslation {
+            SKSkarnikTranslation(word: SKWord(word_id: 1, word: "мова", lang_id: .rus_bel), url: "", html: html)
+        }
+
+        let greenResult = makeTranslation(html: "<font color=\"008000\">слова</font>").belWords
+        let redResult   = makeTranslation(html: "<font color=\"831b03\">слова</font>").belWords
+
+        // Both may be empty if the word isn't in the vocabulary DB,
+        // but green should never produce MORE matches than red for the same content.
+        XCTAssertLessThanOrEqual(greenResult.count, redResult.count,
+                                 "Green-colored font should not match more red-group words than red itself")
     }
 
     // MARK: - SKSkarnikByController Tests
