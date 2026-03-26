@@ -130,6 +130,70 @@ final class SKSkarnikByControllerTests: XCTestCase {
                                  "Green-colored font should not match more red-group words than red itself")
     }
 
+    // MARK: - belWords rus_bel span tag tests
+
+    func testBelWords_rusBel_spanColorAttribute_treatedLikeFontColorAttribute() {
+        // span with color attribute should behave the same as font with color attribute
+        func makeTranslation(html: String) -> SKSkarnikTranslation {
+            SKSkarnikTranslation(word: SKWord(word_id: 1, word: "мова", lang_id: .rus_bel), url: "", html: html)
+        }
+
+        let fontResult = makeTranslation(html: "<font color=\"831b03\">слова</font>").belWords
+        let spanResult = makeTranslation(html: "<span color=\"831b03\">слова</span>").belWords
+
+        XCTAssertEqual(fontResult, spanResult,
+                       "<span color=\"831b03\"> should produce the same result as <font color=\"831b03\">")
+    }
+
+    func testBelWords_rusBel_spanCssStyle_treatedLikeFontCssStyle() {
+        // span with inline CSS color should behave the same as font with inline CSS color
+        func makeTranslation(html: String) -> SKSkarnikTranslation {
+            SKSkarnikTranslation(word: SKWord(word_id: 1, word: "мова", lang_id: .rus_bel), url: "", html: html)
+        }
+
+        let fontResult = makeTranslation(html: "<font style=\"color: #831b03\">слова</font>").belWords
+        let spanResult = makeTranslation(html: "<span style=\"color: #831b03\">слова</span>").belWords
+
+        XCTAssertEqual(fontResult, spanResult,
+                       "<span style=\"color: #831b03\"> should produce the same result as <font style=\"color: #831b03\">")
+    }
+
+    func testBelWords_rusBel_spanAllColorFormatsProduceSameResult() {
+        // All three color encoding formats on span tags must be treated equivalently.
+        func makeTranslation(html: String) -> SKSkarnikTranslation {
+            SKSkarnikTranslation(word: SKWord(word_id: 1, word: "мова", lang_id: .rus_bel), url: "", html: html)
+        }
+
+        let noHash   = makeTranslation(html: "<span color=\"831b03\">слова</span>").belWords
+        let withHash = makeTranslation(html: "<span color=\"#831b03\">слова</span>").belWords
+        let cssStyle = makeTranslation(html: "<span style=\"color: #831b03\">слова</span>").belWords
+
+        XCTAssertEqual(noHash, withHash,
+                       "span color attribute with and without '#' should produce the same result")
+        XCTAssertEqual(noHash, cssStyle,
+                       "span HTML color attribute and inline CSS style should produce the same result")
+    }
+
+    func testBelWords_rusBel_spanUnrelatedColor_notAffected() {
+        // A span with a non-red color should not be matched by the red-color check.
+        func makeTranslation(html: String) -> SKSkarnikTranslation {
+            SKSkarnikTranslation(word: SKWord(word_id: 1, word: "мова", lang_id: .rus_bel), url: "", html: html)
+        }
+
+        let greenResult = makeTranslation(html: "<span color=\"008000\">слова</span>").belWords
+        let redResult   = makeTranslation(html: "<span color=\"831b03\">слова</span>").belWords
+
+        XCTAssertLessThanOrEqual(greenResult.count, redResult.count,
+                                 "Green-colored span should not match more red-group words than red itself")
+    }
+
+    func testBelWords_rusBel_spanDoesNotCrash() {
+        let word = SKWord(word_id: 1, word: "мова", lang_id: .rus_bel)
+        let translation = SKSkarnikTranslation(word: word, url: "",
+                                               html: "<span style=\"color: #831b03\">слова</span>")
+        XCTAssertNoThrow(_ = translation.belWords)
+    }
+
     // MARK: - SKSkarnikByController Tests
 
     func testSKSkarnikByController_url_rus_bel() {

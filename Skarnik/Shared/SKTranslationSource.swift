@@ -155,7 +155,7 @@ struct SKSkarnikTranslation {
                             }
                         }
                     } else {
-                        let fonts: Elements = try doc.select("font")
+                        let fonts: Elements = try doc.select("font, span")
                         for fontContent in fonts {
                             let colorAttr = (try? fontContent.attr("color"))?.lowercased().trimmingCharacters(in: CharacterSet(charactersIn: "#")) ?? ""
                             let styleAttr = (try? fontContent.attr("style")) ?? ""
