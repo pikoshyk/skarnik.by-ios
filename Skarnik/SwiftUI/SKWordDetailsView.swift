@@ -424,8 +424,6 @@ private let previewTranslation = SKSkarnikTranslation(
     stress: "сло́ва",
     sourceName: "mock"
 )
-#endif
-
 #Preview("Loading") {
     NavigationView {
         SKWordDetailsView(viewModel: SKWordDetailsViewModel())
@@ -449,3 +447,4 @@ private let previewTranslation = SKSkarnikTranslation(
             .onAppear { vm.updateWord(previewWord) }
     }
 }
+#endif
