@@ -70,9 +70,6 @@
                                                 <rect key="frame" x="171.66666666666666" y="8" width="28.666666666666657" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title=" "/>
-                                                <connections>
-                                                    <action selector="onOpenUrl" destination="MHc-pe-7fZ" eventType="touchUpInside" id="VVL-Cs-JgG"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -112,14 +109,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="ohB-ok-e3Y"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="nem-Ud-UFq" id="kN1-8O-ayq"/>
-                        <outlet property="buttonUrl" destination="ecc-tE-ZDo" id="R4C-qD-61a"/>
-                        <outlet property="labelUrl" destination="jl4-4s-jMv" id="0gB-6v-XuY"/>
-                        <outlet property="labelUrlIcon" destination="32A-YQ-Dq5" id="FXz-Be-Gii"/>
-                        <outlet property="labelVocabulary" destination="2OW-hc-PKe" id="eGp-iP-wx6"/>
-                        <outlet property="textView" destination="Pte-mP-RzY" id="ZEq-3q-4le"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swq-LH-19M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
