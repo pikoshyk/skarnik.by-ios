@@ -44,9 +44,12 @@ struct SKHtmlLabelView: UIViewRepresentable {
         let data = html.data(using: .utf8) ?? Data()
         let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
 
-        DispatchQueue.main.async {
-            uiView.attributedText = attributedString
-            self.dynamicHeight = uiView.sizeThatFits(CGSize(width: uiView.bounds.width, height: CGFloat.greatestFiniteMagnitude)).height
+        uiView.attributedText = attributedString
+        Task { @MainActor in
+            let newHeight = uiView.sizeThatFits(CGSize(width: uiView.bounds.width, height: .greatestFiniteMagnitude)).height
+            if dynamicHeight != newHeight {
+                dynamicHeight = newHeight
+            }
         }
     }
 }
