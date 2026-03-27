@@ -30,6 +30,7 @@
 		B251A3812AF1AE5C00E78923 /* SKWidgetIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B251A3802AF1AE5C00E78923 /* SKWidgetIntroView.swift */; };
 		B251A3832AF1AFCB00E78923 /* SKSwiftUiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B251A3822AF1AFCB00E78923 /* SKSwiftUiViewController.swift */; };
 		B25728E92AFD9631007ADCF5 /* SKWordStressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25728E82AFD9631007ADCF5 /* SKWordStressView.swift */; };
+		B2AA11223344556677880002 /* SKReportIssueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AA11223344556677880001 /* SKReportIssueView.swift */; };
 		B25728EB2AFD9682007ADCF5 /* SKWordStressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25728EA2AFD9682007ADCF5 /* SKWordStressViewModel.swift */; };
 		B25728F22AFDA1D2007ADCF5 /* SKHtmlTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25728F12AFDA1D2007ADCF5 /* SKHtmlTextView.swift */; };
 		B27D996328FB11E60047CCBF /* SKLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D996228FB11E60047CCBF /* SKLocalization.swift */; };
@@ -134,6 +135,7 @@
 		B255CD5D2AE71EF60086F5A0 /* SKWordFetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordFetchService.swift; sourceTree = "<group>"; };
 		B255CD622AE745E90086F5A0 /* SKLevenshtein.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLevenshtein.swift; sourceTree = "<group>"; };
 		B25728E82AFD9631007ADCF5 /* SKWordStressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordStressView.swift; sourceTree = "<group>"; };
+		B2AA11223344556677880001 /* SKReportIssueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKReportIssueView.swift; sourceTree = "<group>"; };
 		B25728EA2AFD9682007ADCF5 /* SKWordStressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordStressViewModel.swift; sourceTree = "<group>"; };
 		B25728F12AFDA1D2007ADCF5 /* SKHtmlTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHtmlTextView.swift; sourceTree = "<group>"; };
 		B27D996228FB11E60047CCBF /* SKLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKLocalization.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				B251A3822AF1AFCB00E78923 /* SKSwiftUiViewController.swift */,
 				B25728F12AFDA1D2007ADCF5 /* SKHtmlTextView.swift */,
 				B2C81E032AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift */,
+				B2AA11223344556677880001 /* SKReportIssueView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				B20ABAD928EF22AD00AA2FC9 /* SKVocabularyIndex.swift in Sources */,
 				B2C557DC2908991300FEB28A /* Array+Skarnik.swift in Sources */,
 				B25728E92AFD9631007ADCF5 /* SKWordStressView.swift in Sources */,
+				B2AA11223344556677880002 /* SKReportIssueView.swift in Sources */,
 				F229B9CF2D5134B000B2463E /* SKAnalyticsService.swift in Sources */,
 				F229B9D02D5134B000B2463E /* SKAnalyticsManager.swift in Sources */,
 				F229B9D12D5134B000B2463E /* SKFirebaseAnalytics.swift in Sources */,
