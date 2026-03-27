@@ -139,6 +139,26 @@ class SKWordDetailsViewController: UIViewController, UITextViewDelegate {
         }
     }
 
+    func onReport() {
+        if #available(iOS 14, *) {
+            let reportView = SKReportIssueView(
+                word: viewModel.word,
+                translationUrl: viewModel.translation?.url
+            )
+            let hostingController = UIHostingController(rootView: reportView)
+            if #available(iOS 15, *) {
+                if let sheet = hostingController.sheetPresentationController {
+                    sheet.detents = [.medium(), .large()]
+                    sheet.prefersGrabberVisible = true
+                    if #available(iOS 16, *) {
+                        sheet.preferredCornerRadius = 20
+                    }
+                }
+            }
+            present(hostingController, animated: true)
+        }
+    }
+
     @IBAction func onOpenUrl() {
         guard let urlStr = viewModel.translation?.url, 
               let url = URL(string: urlStr) else { return }
