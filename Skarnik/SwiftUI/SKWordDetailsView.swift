@@ -155,9 +155,7 @@ struct SKWordDetailsView: View {
                 }
                 .disabled(viewModel.translation == nil)
                 Spacer()
-                Button(action: onReport) {
-                    Image(systemName: "exclamationmark.bubble")
-                }
+                // TODO: re-enable report button when ready
             }
         }
         .sheet(isPresented: $showShareSheet) {
