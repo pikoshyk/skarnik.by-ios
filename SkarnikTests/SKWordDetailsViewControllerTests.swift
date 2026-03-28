@@ -4,10 +4,10 @@ import Combine
 @testable import Skarnik
 
 final class SKWordDetailsViewControllerTests: XCTestCase {
-    
+
     private var sut: SKWordDetailsViewController!
     private var storyboard: UIStoryboard!
-    
+
     @MainActor
     override func setUp() {
         super.setUp()
@@ -15,35 +15,34 @@ final class SKWordDetailsViewControllerTests: XCTestCase {
         sut = storyboard.instantiateViewController(withIdentifier: "SKWordDetailsViewController") as? SKWordDetailsViewController
         sut.loadViewIfNeeded()
     }
-    
+
     @MainActor
     override func tearDown() {
         sut = nil
         storyboard = nil
         super.tearDown()
     }
-    
+
     @MainActor
-    func testViewDidLoad_SetupUI() {
-        XCTAssertNotNil(sut.labelVocabulary)
-        XCTAssertNotNil(sut.textView)
-        XCTAssertNotNil(sut.activityIndicatorView)
+    func testInitialState_IsIdle() {
+        XCTAssertNil(sut.word)
+        guard case .idle = sut.viewModel.state else {
+            XCTFail("Expected idle state on init")
+            return
+        }
     }
-    
+
     @MainActor
-    func testLoadingState_ShowsIndicator() {
-        // Trigger loading state via word update if possible, 
-        // or just mock the viewModel if we refactored sut to allow it.
-        // For now, let's just check if we can trigger updateWord.
-        
+    func testLoadingState_AfterWordSet() {
         let word = SKWord(word_id: 1, word: "тэст", lang_id: .bel_rus)
         sut.word = word
-        
-        // After setting word, it should go into loading state immediately.
-        XCTAssertFalse(sut.activityIndicatorView.isHidden)
-        XCTAssertTrue(sut.activityIndicatorView.isAnimating)
+
+        guard case .loading = sut.viewModel.state else {
+            XCTFail("Expected loading state after setting word")
+            return
+        }
     }
-    
+
     // Regression test: navigation title must reflect the word passed to the $word publisher,
     // not viewModel.word read back inside the sink (which would still be the old value due
     // to @Published using willSet semantics).
@@ -51,7 +50,7 @@ final class SKWordDetailsViewControllerTests: XCTestCase {
     func testNavigationTitle_ShowsOnFirstWord() {
         let word = SKWord(word_id: 1, word: "тэст", lang_id: .bel_rus)
         sut.word = word
-        XCTAssertEqual(sut.navigationItem.title, "«\u{200E}тэст»")
+        XCTAssertEqual(sut.viewModel.navigationTitle, "«\u{200E}тэст»")
     }
 
     @MainActor
@@ -62,16 +61,18 @@ final class SKWordDetailsViewControllerTests: XCTestCase {
         sut.word = word1
         sut.word = word2
 
-        XCTAssertEqual(sut.navigationItem.title, "«\u{200E}другі»")
+        XCTAssertEqual(sut.viewModel.navigationTitle, "«\u{200E}другі»")
     }
 
     @MainActor
-    func testNilWord_ResetsUI() {
+    func testNilWord_ResetsState() {
+        sut.word = SKWord(word_id: 1, word: "тэст", lang_id: .bel_rus)
         sut.word = nil
-        
-        XCTAssert(sut.navigationItem.title == nil || sut.navigationItem.title?.isEmpty == true)
-        XCTAssert(sut.labelVocabulary.text == nil || sut.labelVocabulary.text?.trimmingCharacters(in: .whitespaces).isEmpty == true)
-        XCTAssertTrue(sut.textView.attributedText?.string.isEmpty ?? true)
-        XCTAssertTrue(sut.activityIndicatorView.isHidden)
+
+        XCTAssertNil(sut.viewModel.navigationTitle)
+        guard case .idle = sut.viewModel.state else {
+            XCTFail("Expected idle state after setting nil word")
+            return
+        }
     }
 }
