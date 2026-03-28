@@ -56,6 +56,7 @@
 		B284FE7F2AE0A6B6009CA21D /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = B284FE7E2AE0A6B6009CA21D /* SQLite */; };
 		B2881B4D28F5DE9800649278 /* SKTranslationSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2881B4C28F5DE9800649278 /* SKTranslationSource.swift */; };
 		B29000B62AF735780032532D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B29000B52AF735780032532D /* UIKit.framework */; platformFilter = ios; };
+		B2AA11223344556677880002 /* SKReportIssueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AA11223344556677880001 /* SKReportIssueView.swift */; };
 		B2AF0839291482DD0005E3E6 /* NSAttributedString+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */; };
 		B2AF083B29148AF00005E3E6 /* URLSession+Skarnik.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */; };
 		B2BE6DDC2AE132AB00EE7A25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20ABAC228EEBF8400AA2FC9 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		F268C3D12D50DD4B004B7BE4 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F268C3D02D50DD4B004B7BE4 /* FirebaseAnalytics */; };
 		F268C3D32D50DF5F004B7BE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */; };
 		F2A652A02F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */; };
+		F2A652A32F7B000000A8ACBE /* SKWordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A652A42F7B000000A8ACBE /* SKWordDetailsView.swift */; };
 		F2BB0CF42F7304F7006352AB /* SKDeepLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB0CF32F7304F7006352AB /* SKDeepLinkTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +156,7 @@
 		B284FE7A2AE0A6AD009CA21D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B2881B4C28F5DE9800649278 /* SKTranslationSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTranslationSource.swift; sourceTree = "<group>"; };
 		B29000B52AF735780032532D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B2AA11223344556677880001 /* SKReportIssueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKReportIssueView.swift; sourceTree = "<group>"; };
 		B2AF0838291482DD0005E3E6 /* NSAttributedString+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Skarnik.swift"; sourceTree = "<group>"; };
 		B2AF083A29148AEF0005E3E6 /* URLSession+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Skarnik.swift"; sourceTree = "<group>"; };
 		B2C557D9290898A700FEB28A /* Task+Skarnik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Skarnik.swift"; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		F27C3F2C2F707D2F00FE5A75 /* SKVocabularyIndexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKVocabularyIndexTests.swift; sourceTree = "<group>"; };
 		F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		F2A652A42F7B000000A8ACBE /* SKWordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsView.swift; sourceTree = "<group>"; };
 		F2BB0CF32F7304F7006352AB /* SKDeepLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepLinkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -314,6 +318,8 @@
 				B251A3822AF1AFCB00E78923 /* SKSwiftUiViewController.swift */,
 				B25728F12AFDA1D2007ADCF5 /* SKHtmlTextView.swift */,
 				B2C81E032AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift */,
+				B2AA11223344556677880001 /* SKReportIssueView.swift */,
+				F2A652A42F7B000000A8ACBE /* SKWordDetailsView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -581,6 +587,8 @@
 				B20ABAD928EF22AD00AA2FC9 /* SKVocabularyIndex.swift in Sources */,
 				B2C557DC2908991300FEB28A /* Array+Skarnik.swift in Sources */,
 				B25728E92AFD9631007ADCF5 /* SKWordStressView.swift in Sources */,
+				B2AA11223344556677880002 /* SKReportIssueView.swift in Sources */,
+				F2A652A32F7B000000A8ACBE /* SKWordDetailsView.swift in Sources */,
 				F229B9CF2D5134B000B2463E /* SKAnalyticsService.swift in Sources */,
 				F229B9D02D5134B000B2463E /* SKAnalyticsManager.swift in Sources */,
 				F229B9D12D5134B000B2463E /* SKFirebaseAnalytics.swift in Sources */,
@@ -718,7 +726,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -775,7 +783,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -797,7 +805,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 35;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
@@ -814,7 +822,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -845,7 +853,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -861,7 +869,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -893,7 +901,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -940,7 +948,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;

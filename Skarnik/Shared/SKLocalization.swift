@@ -48,6 +48,14 @@ class SKLocalization: Any {
 
     class var historyEmptyPlaceholder: String { "Тут з'явяцца словы, якія вы адкрывалі.\nПашукайце альбо абярыце слова ў слоўніку." }
 
+    class var reportIssueButtonTitle: String { "Паведаміць пра памылку" }
+    class var reportIssueTitle: String { "Паведаміць пра памылку" }
+    class var reportIssueTypeTranslation: String { "Памылка ў перакладзе" }
+    class var reportIssueTypeSpelling: String { "Памылка ў напісанні" }
+    class var reportIssueTypeOther: String { "Іншая праблема" }
+    class var reportIssueDetailsPlaceholder: String { "Апішыце праблему (неабавязкова)" }
+
+
     class var widgetWordTitle: String { "Слова дня" }
     class var widgetWordDescriptioon: String { "Выпадковае слова і яго пераклад." }
     class var widgetWordSampleWord: String { "халэмус" }
