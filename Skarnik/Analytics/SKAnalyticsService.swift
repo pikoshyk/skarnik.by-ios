@@ -12,6 +12,8 @@ protocol SKAnalyticsService {
     func logStarnikByOpened()
 
     func logWidgetDeepLink(word: SKWord, appState: SKWidgetDeepLinkAppState)
+
+    func logShareClicked(word: SKWord, url: String)
 }
 
 enum SKAnalyticsEvent: String {
@@ -19,6 +21,7 @@ enum SKAnalyticsEvent: String {
     case translation = "translation"
     case starnikByOpened = "starnik_by_opened"
     case widgetDeepLink = "widget_deep_link"
+    case shareClicked = "share"
 }
 
 enum SKWidgetDeepLinkAppState: String {

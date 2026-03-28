@@ -44,4 +44,13 @@ class SKFirebaseAnalytics: SKAnalyticsService {
         ])
     }
 
+    func logShareClicked(word: SKWord, url: String) {
+        Analytics.logEvent(SKAnalyticsEvent.shareClicked.rawValue, parameters: [
+            "word": word.word,
+            "word_id": word.word_id,
+            "lang_id": word.lang_id.rawValue,
+            "url": url,
+        ])
+    }
+
 }

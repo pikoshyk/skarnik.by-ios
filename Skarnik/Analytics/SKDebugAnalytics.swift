@@ -22,4 +22,8 @@ class SKDebugAnalytics: SKAnalyticsService {
     func logWidgetDeepLink(word: SKWord, appState: SKWidgetDeepLinkAppState) {
         print("📊 Widget deep link: word=\(word.word), word_id=\(word.word_id), lang_id=\(word.lang_id.rawValue), app_state=\(appState.rawValue)")
     }
+
+    func logShareClicked(word: SKWord, url: String) {
+        print("📊 Share clicked: word=\(word.word), word_id=\(word.word_id), lang_id=\(word.lang_id.rawValue), url=\(url)")
+    }
 }

@@ -36,4 +36,8 @@ class SKAnalyticsManager {
     static func logWidgetDeepLink(word: SKWord, appState: SKWidgetDeepLinkAppState) {
         shared.service.logWidgetDeepLink(word: word, appState: appState)
     }
+
+    static func logShareClicked(word: SKWord, url: String) {
+        shared.service.logShareClicked(word: word, url: url)
+    }
 }

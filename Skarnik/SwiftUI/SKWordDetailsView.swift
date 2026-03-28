@@ -145,7 +145,12 @@ struct SKWordDetailsView: View {
                 }
             }
             ToolbarItemGroup(placement: .bottomBar) {
-                Button(action: { showShareSheet = true }) {
+                Button(action: {
+                    if let translation = viewModel.translation {
+                        SKAnalyticsManager.logShareClicked(word: translation.word, url: translation.sharingUrl)
+                    }
+                    showShareSheet = true
+                }) {
                     Image(systemName: "square.and.arrow.up")
                 }
                 .disabled(viewModel.translation == nil)
