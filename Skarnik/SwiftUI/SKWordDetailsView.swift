@@ -284,11 +284,11 @@ private struct ErrorTranslationSource: SKTranslationSource {
     }
 }
 
-private let previewWord = SKWord(word_id: 1, word: "слова", lang_id: .rus_bel)
+private let previewWord = SKWord(word_id: 1, word: "слова", lang_id: .bel_definition)
 
 private let previewTranslation = SKSkarnikTranslation(
     word: previewWord,
-    url: "https://skarnik.by/rusbel/1",
+    url: "https://skarnik.app/r/rusbel/1",
     html: """
     <p>
      <strong>
@@ -421,12 +421,15 @@ private let previewTranslation = SKSkarnikTranslation(
      глядзі абрасці.
     </p>
     """,
-    stress: "сло́ва",
+//    stress: "сло́ва",
+    stress: "добразычлівасць",
     sourceName: "mock"
 )
 #Preview("Loading") {
     NavigationView {
-        SKWordDetailsView(viewModel: SKWordDetailsViewModel())
+        NavigationLink(isActive: .constant(true)) {
+            SKWordDetailsView(viewModel: SKWordDetailsViewModel())
+        } label: { EmptyView() }
     }
 }
 
@@ -435,16 +438,20 @@ private let previewTranslation = SKSkarnikTranslation(
         translationSource: MockTranslationSource(translation: previewTranslation)
     )
     return NavigationView {
-        SKWordDetailsView(viewModel: vm)
-            .onAppear { vm.updateWord(previewWord) }
+        NavigationLink(isActive: .constant(true)) {
+            SKWordDetailsView(viewModel: vm)
+                .onAppear { vm.updateWord(previewWord) }
+        } label: { EmptyView() }
     }
 }
 
 #Preview("Error") {
     let vm = SKWordDetailsViewModel(translationSource: ErrorTranslationSource())
     return NavigationView {
-        SKWordDetailsView(viewModel: vm)
-            .onAppear { vm.updateWord(previewWord) }
+        NavigationLink(isActive: .constant(true)) {
+            SKWordDetailsView(viewModel: vm)
+                .onAppear { vm.updateWord(previewWord) }
+        } label: { EmptyView() }
     }
 }
 #endif
