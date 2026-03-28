@@ -26,6 +26,11 @@ struct SKSkarnikTranslation {
     var stress: String? = nil
     var sourceName: String = ""
 
+    var sharingUrl: String {
+        guard let path = word.lang_id.skarnikId else { return url }
+        return "https://skarnik.app/r/\(path)/\(word.word_id)"
+    }
+
     static let colorConversions = [
         ["initial": "FFFFFF", "light": "F2F2F7", "dark": "1C1C1E"],
 

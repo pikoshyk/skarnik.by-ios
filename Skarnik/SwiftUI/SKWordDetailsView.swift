@@ -156,7 +156,7 @@ struct SKWordDetailsView: View {
             }
         }
         .sheet(isPresented: $showShareSheet) {
-            if let urlStr = viewModel.translation?.url, let url = URL(string: urlStr) {
+            if let urlStr = viewModel.translation?.sharingUrl, let url = URL(string: urlStr) {
                 ShareSheet(url: url)
             }
         }
@@ -176,9 +176,9 @@ struct SKWordDetailsView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
 
             if case .success(let translation) = viewModel.state {
-                Button(action: { openUrl(translation.url) }) {
+                Button(action: { openUrl(translation.sharingUrl) }) {
                     HStack(spacing: 3) {
-                        Text(translation.url)
+                        Text(translation.sharingUrl)
                             .font(.system(size: 10.5))
                             .foregroundColor(.secondary)
                         Image("external-link-icon")
