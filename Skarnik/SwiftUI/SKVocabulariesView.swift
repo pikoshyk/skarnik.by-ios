@@ -32,8 +32,10 @@ final class SKVocabulariesViewModel: ObservableObject {
     @Published private(set) var searchResults: [SKWord] = []
     @Published private(set) var historyWords: [SKWord] = []
     @Published private(set) var sectionTitles: [String] = []
+    @Published private(set) var sectionWords: [String: [SKWord]] = [:]
 
     private var searchTask: Task<Void, Never>?
+    private var loadWordsTask: Task<Void, Never>?
 
     init() {
         reloadHistory()
@@ -45,11 +47,28 @@ final class SKVocabulariesViewModel: ObservableObject {
     }
 
     func updateSectionTitles() {
+        loadWordsTask?.cancel()
         guard selectedType != .history else {
             sectionTitles = []
+            sectionWords = [:]
             return
         }
         sectionTitles = SKVocabularyIndex.shared.wordsIndexes(vocabularyType: selectedType)
+        sectionWords = [:]
+        loadSectionWords()
+    }
+
+    private func loadSectionWords() {
+        let type = selectedType
+        let titles = sectionTitles
+        loadWordsTask = Task.detached(priority: .userInitiated) { [weak self] in
+            for title in titles {
+                guard !Task.isCancelled else { return }
+                let words = SKVocabularyIndex.shared.word(index: 0, query: title, vocabularyType: type, limit: 10_000)
+                guard !words.isEmpty else { continue }
+                await MainActor.run { self?.sectionWords[title] = words }
+            }
+        }
     }
 
     func updateSearch(_ text: String) {
@@ -78,56 +97,6 @@ final class SKVocabulariesViewModel: ObservableObject {
             SKStorageController.shared.removeWord(index: index)
         }
         reloadHistory()
-    }
-}
-
-// MARK: - Lazy section content
-
-private struct LazySectionContent: View {
-    let sectionTitle: String
-    let vocabularyType: ESKVocabularyType
-    let onSelect: (SKWord) -> Void
-    @State private var words: [SKWord] = []
-    @State private var loadTask: Task<Void, Never>?
-
-    var body: some View {
-        if words.isEmpty {
-            Color.clear.frame(height: 0)
-                .onAppear(perform: load)
-                .onDisappear {
-                    loadTask?.cancel()
-                    loadTask = nil
-                }
-        } else {
-            ForEach(words, id: \.word_id) { word in
-                Button {
-                    onSelect(word)
-                } label: {
-                    Text(word.word)
-                        .foregroundColor(.primary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                .listRowBackground(Color.appBackground)
-            }
-        }
-    }
-
-    private func load() {
-        guard loadTask == nil else { return }
-        let section = sectionTitle
-        let type = vocabularyType
-        loadTask = Task.detached(priority: .userInitiated) {
-            let count = SKVocabularyIndex.shared.wordsCount(query: section, vocabularyType: type)
-            guard count > 0, !Task.isCancelled else { return }
-            let loaded = SKVocabularyIndex.shared.word(
-                index: 0,
-                query: section,
-                vocabularyType: type,
-                limit: count
-            )
-            guard !Task.isCancelled else { return }
-            await MainActor.run { words = loaded }
-        }
     }
 }
 
@@ -290,18 +259,23 @@ private struct SKVocabulariesContentView: View {
                 List {
                     ForEach(titles, id: \.self) { section in
                         Section(section) {
-                            LazySectionContent(
-                                sectionTitle: section,
-                                vocabularyType: viewModel.selectedType,
-                                onSelect: { onWordSelected($0, "vocabulary") }
-                            )
+                            ForEach(viewModel.sectionWords[section] ?? [], id: \.word_id) { word in
+                                Button {
+                                    onWordSelected(word, "vocabulary")
+                                } label: {
+                                    Text(word.word)
+                                        .foregroundColor(.primary)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .listRowBackground(Color.appBackground)
+                            }
                         }
-                        .id(section)
                     }
                 }
                 .listStyle(.plain)
                 .vocabularyListBackground()
                 .id(viewModel.selectedType)
+                .transition(.identity)
 
                 if !titles.isEmpty {
                     SectionScrubber(titles: titles, proxy: proxy)
