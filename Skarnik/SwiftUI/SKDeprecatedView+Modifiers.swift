@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+extension Color {
+    static let appBackground = Color("BackgroundColor")
+}
+
 extension View {
     @ViewBuilder
     func combinedNavigationTitle(_ title: String) -> some View {

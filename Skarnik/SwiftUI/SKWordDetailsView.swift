@@ -135,7 +135,7 @@ struct SKWordDetailsView: View {
                 }
             }
         }
-        .background(Color("BackgroundColor").ignoresSafeArea())
+        .background(Color.appBackground.ignoresSafeArea())
         .navigationTitle(displayTitle)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -234,7 +234,7 @@ struct SKWordDetailsView: View {
         if words.count == 1 {
             Button(action: { onSpellingWord(words[0]) }) {
                 Text(SKLocalization.wordDetailsSpelling)
-                    .foregroundColor(Color("AccentColor"))
+                    .foregroundColor(Color.accentColor)
             }
         } else {
             Menu {
@@ -243,7 +243,7 @@ struct SKWordDetailsView: View {
                 }
             } label: {
                 Text(SKLocalization.wordDetailsSpelling)
-                    .foregroundColor(Color("AccentColor"))
+                    .foregroundColor(Color.accentColor)
             }
         }
     }

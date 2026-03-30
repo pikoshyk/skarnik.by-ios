@@ -5,14 +5,30 @@
 
 import SwiftUI
 
+extension View {
+    @ViewBuilder
+    fileprivate func vocabularyListBackground() -> some View {
+        if #available(iOS 16, *) {
+            self.scrollContentBackground(.hidden).background(Color.appBackground)
+        } else {
+            self.background(Color.appBackground)
+        }
+    }
+}
+
 // MARK: - ViewModel
 
 @MainActor
 final class SKVocabulariesViewModel: ObservableObject {
     @Published var selectedType: ESKVocabularyType = .history {
-        didSet { reloadHistory(); updateSectionTitles() }
+        didSet {
+            reloadHistory()
+            updateSectionTitles()
+        }
     }
-    @Published var searchText: String = ""
+    @Published var searchText: String = "" {
+        didSet { updateSearch(searchText) }
+    }
     @Published private(set) var searchResults: [SKWord] = []
     @Published private(set) var historyWords: [SKWord] = []
     @Published private(set) var sectionTitles: [String] = []
@@ -38,12 +54,20 @@ final class SKVocabulariesViewModel: ObservableObject {
 
     func updateSearch(_ text: String) {
         searchTask?.cancel()
-        guard !text.isEmpty else { searchResults = []; return }
+        guard !text.isEmpty else {
+            searchResults = []
+            return
+        }
         let query = text.lowercased()
         searchTask = Task {
-            let results = await Task.detached(priority: .userInitiated) {
+            let detachedTask = Task.detached(priority: .userInitiated) {
                 SKVocabularyIndex.shared.word(index: 0, query: query, vocabularyType: .all, limit: 20)
-            }.value
+            }
+            let results = await withTaskCancellationHandler {
+                await detachedTask.value
+            } onCancel: {
+                detachedTask.cancel()
+            }
             guard !Task.isCancelled else { return }
             searchResults = results
         }
@@ -64,10 +88,16 @@ private struct LazySectionContent: View {
     let vocabularyType: ESKVocabularyType
     let onSelect: (SKWord) -> Void
     @State private var words: [SKWord] = []
+    @State private var loadTask: Task<Void, Never>?
 
     var body: some View {
         if words.isEmpty {
-            Color.clear.frame(height: 0).onAppear(perform: load)
+            Color.clear.frame(height: 0)
+                .onAppear(perform: load)
+                .onDisappear {
+                    loadTask?.cancel()
+                    loadTask = nil
+                }
         } else {
             ForEach(words, id: \.word_id) { word in
                 Button {
@@ -77,19 +107,25 @@ private struct LazySectionContent: View {
                         .foregroundColor(.primary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .listRowBackground(Color.appBackground)
             }
         }
     }
 
     private func load() {
+        guard loadTask == nil else { return }
         let section = sectionTitle
         let type = vocabularyType
-        Task.detached(priority: .userInitiated) {
+        loadTask = Task.detached(priority: .userInitiated) {
             let count = SKVocabularyIndex.shared.wordsCount(query: section, vocabularyType: type)
-            guard count > 0 else { return }
+            guard count > 0, !Task.isCancelled else { return }
             let loaded = SKVocabularyIndex.shared.word(
-                index: 0, query: section, vocabularyType: type, limit: count
+                index: 0,
+                query: section,
+                vocabularyType: type,
+                limit: count
             )
+            guard !Task.isCancelled else { return }
             await MainActor.run { words = loaded }
         }
     }
@@ -107,7 +143,7 @@ private struct SectionScrubber: View {
                 ForEach(titles, id: \.self) { title in
                     Text(title)
                         .font(.system(size: 11, weight: .medium))
-                        .foregroundColor(Color("AccentColor"))
+                        .foregroundColor(Color.accentColor)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
@@ -133,6 +169,9 @@ private struct SKVocabulariesContentView: View {
     @Environment(\.isSearching) private var isSearching
     var onWordSelected: (SKWord, String) -> Void
 
+    private static let rusKeyboardChars = ["и", "щ", "ъ"]
+    private static let belKeyboardChars = ["і", "ў", "'"]
+
     var body: some View {
         VStack(spacing: 0) {
             if !isSearching {
@@ -140,6 +179,48 @@ private struct SKVocabulariesContentView: View {
                 Divider()
             }
             mainContent
+        }
+        .frame(maxWidth: .infinity)
+        .background(Color.appBackground.ignoresSafeArea())
+        .overlay(alignment: .bottom) {
+            if isSearching {
+                belarusianKeyboardRow
+            }
+        }
+    }
+
+    // MARK: Belarusian character row
+
+    private var belarusianKeyboardRow: some View {
+        HStack(spacing: 0) {
+            ForEach(Self.rusKeyboardChars, id: \.self) { keyboardKey($0, tint: .secondary) }
+            Spacer()
+            ForEach(Self.belKeyboardChars, id: \.self) { keyboardKey($0, tint: .accentColor) }
+        }
+        .padding(.horizontal, 6)
+        .frame(height: 52)
+        .padding(.bottom, 6)
+    }
+
+    private var buttonBorderShape: ButtonBorderShape {
+        if #available(iOS 17, *) { return .circle }
+        return .roundedRectangle
+    }
+
+    @ViewBuilder
+    private func keyboardKey(_ char: String, tint: Color) -> some View {
+        let button = Button(action: { viewModel.searchText += char }) {
+            Text(char)
+                .font(.system(size: 17))
+                .frame(width: 24, height: 24)
+        }
+        .buttonBorderShape(buttonBorderShape)
+        .tint(tint)
+
+        if #available(iOS 26.0, *) {
+            button.buttonStyle(.glass)
+        } else {
+            button.buttonStyle(.borderedProminent)
         }
     }
 
@@ -191,10 +272,12 @@ private struct SKVocabulariesContentView: View {
                     } label: {
                         wordCell(word)
                     }
+                    .listRowBackground(Color.appBackground)
                 }
                 .onDelete { viewModel.deleteHistoryWord(at: $0) }
             }
             .listStyle(.plain)
+            .vocabularyListBackground()
         }
     }
 
@@ -217,6 +300,7 @@ private struct SKVocabulariesContentView: View {
                     }
                 }
                 .listStyle(.plain)
+                .vocabularyListBackground()
                 .id(viewModel.selectedType)
 
                 if !titles.isEmpty {
@@ -247,8 +331,10 @@ private struct SKVocabulariesContentView: View {
                 } label: {
                     wordCell(word)
                 }
+                .listRowBackground(Color.appBackground)
             }
             .listStyle(.plain)
+            .vocabularyListBackground()
         }
     }
 
@@ -274,7 +360,12 @@ struct SKVocabulariesView: View {
     var onWordSelected: (SKWord, String) -> Void = { _, _ in }
     var onOpenStarnikBy: () -> Void = {}
 
-    private let keyboardChars = ["'", "ў", "і", "ъ", "щ", "и"]
+    private var searchPlacement: SearchFieldPlacement {
+        if #available(iOS 26, *) {
+            return .automatic  // bottom bar per iOS 26 guidelines
+        }
+        return .navigationBarDrawer(displayMode: .always)
+    }
 
     var body: some View {
         SKVocabulariesContentView(viewModel: viewModel, onWordSelected: onWordSelected)
@@ -284,47 +375,36 @@ struct SKVocabulariesView: View {
                     Button(SKLocalization.vocabulariesAdvancedSearch, action: onOpenStarnikBy)
                 }
             }
-            .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    ForEach(keyboardChars, id: \.self) { char in
-                        Button(char) { viewModel.searchText += char }
-                            .font(.system(size: 17))
-                    }
-                }
-            }
             .searchable(
                 text: $viewModel.searchText,
-                placement: .navigationBarDrawer(displayMode: .always),
+                placement: searchPlacement,
                 prompt: SKLocalization.searchbarSearchWords
             )
-            .onChange(of: viewModel.searchText) { text in
-                viewModel.updateSearch(text)
-            }
     }
 }
 
 // MARK: - Previews
 
 #if DEBUG
-#Preview("History (empty)") {
-    NavigationView {
-        SKVocabulariesView(viewModel: SKVocabulariesViewModel())
+    #Preview("History (empty)") {
+        NavigationView {
+            SKVocabulariesView(viewModel: SKVocabulariesViewModel())
+        }
     }
-}
 
-#Preview("Russian–Belarusian") {
-    let vm = SKVocabulariesViewModel()
-    vm.selectedType = .rus_bel
-    return NavigationView {
-        SKVocabulariesView(viewModel: vm)
+    #Preview("Russian–Belarusian") {
+        let vm = SKVocabulariesViewModel()
+        vm.selectedType = .rus_bel
+        return NavigationView {
+            SKVocabulariesView(viewModel: vm)
+        }
     }
-}
 
-#Preview("Belarusian–Russian") {
-    let vm = SKVocabulariesViewModel()
-    vm.selectedType = .bel_rus
-    return NavigationView {
-        SKVocabulariesView(viewModel: vm)
+    #Preview("Belarusian–Russian") {
+        let vm = SKVocabulariesViewModel()
+        vm.selectedType = .bel_rus
+        return NavigationView {
+            SKVocabulariesView(viewModel: vm)
+        }
     }
-}
 #endif

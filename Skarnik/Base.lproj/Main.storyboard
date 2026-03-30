@@ -378,7 +378,7 @@
             </objects>
             <point key="canvasLocation" x="-626" y="-467"/>
         </scene>
-        <!--SKARNIK-->
+        <!--Vocabularies Table View Controller-->
         <scene sceneID="IdQ-hM-Fxh">
             <objects>
                 <viewController id="c9U-m8-TRc" customClass="SKVocabulariesTableViewController" customModule="Skarnik" customModuleProvider="target" sceneMemberID="viewController">
@@ -465,7 +465,7 @@
                             <constraint firstItem="7C4-Jh-bAP" firstAttribute="top" secondItem="uZV-Cn-fdd" secondAttribute="top" id="tpe-VA-4mz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SKARNIK" largeTitleDisplayMode="never" id="JHs-lj-9dC">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="JHs-lj-9dC">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="info.circle" catalog="system" id="V2I-1d-30X">
                             <connections>
                                 <segue destination="erb-gm-9WE" kind="presentation" modalPresentationStyle="formSheet" id="Rdv-W0-727"/>
@@ -506,14 +506,8 @@
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="quaternarySystemFillColor">
-            <color red="0.4549019608" green="0.4549019608" blue="0.50196078430000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="secondaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
