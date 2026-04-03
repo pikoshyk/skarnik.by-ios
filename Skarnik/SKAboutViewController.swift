@@ -18,7 +18,20 @@ class SKAboutViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: SKLocalization.aboutDone, style: .done, target: self, action: #selector(self.onDismiss))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: SKLocalization.vocabulariesAdvancedSearch,
+            style: .plain,
+            target: self,
+            action: #selector(onOpenStarnikBy)
+        )
+        if presentingViewController != nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(
+                title: SKLocalization.aboutDone,
+                style: .done,
+                target: self,
+                action: #selector(onDismiss)
+            )
+        }
 
         self.labelSubscriptionCreator.text = SKLocalization.aboutSubscriptionCreator
         self.labelSubscriptionDeveloper.text = SKLocalization.aboutSubscriptionDeveloper
@@ -45,6 +58,12 @@ class SKAboutViewController: UIViewController {
     
     @objc func onDismiss() {
         self.dismiss(animated: true)
+    }
+
+    @objc private func onOpenStarnikBy() {
+        guard let url = URL(string: "https://starnik.by") else { return }
+        SKAnalyticsManager.logStarnikByOpened()
+        UIApplication.shared.open(url)
     }
     
     func openTwitterAccount(account: String) {
