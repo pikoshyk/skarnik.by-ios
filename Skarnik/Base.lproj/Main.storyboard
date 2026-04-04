@@ -346,7 +346,7 @@
         <!--Split View Controller-->
         <scene sceneID="vlO-fb-u0p">
             <objects>
-                <splitViewController allowDoubleColumnStyle="YES" preferredDisplayMode="beside" behavior="tile" presentsWithGesture="NO" primaryBackgroundStyle="sidebar" id="jJM-JY-GBU" customClass="SKSplitViewController" customModule="Skarnik" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController preferredDisplayMode="beside" presentsWithGesture="NO" id="jJM-JY-GBU" customClass="SKSplitViewController" customModule="Skarnik" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="SKTab-VC-001" kind="relationship" relationship="masterViewController" id="jta-qw-BdR"/>
                         <segue destination="MHc-pe-7fZ" kind="relationship" relationship="detailViewController" id="w97-kh-SOe"/>
