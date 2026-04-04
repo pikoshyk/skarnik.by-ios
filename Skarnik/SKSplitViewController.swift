@@ -43,7 +43,13 @@ extension UIViewController {
             vc.hidesBottomBarWhenPushed = true
             vc.entryPoint = entryPoint
             vc.word = word
-            navigationController?.pushViewController(vc, animated: true)
+            // `self` may be the split VC (e.g. called from SceneDelegate on a warm
+            // launch), which has no navigationController. Resolve via the tab bar
+            // instead so the push always lands on the selected tab's nav stack.
+            let navController = (splitVC.viewControllers.first as? UITabBarController)?
+                .selectedViewController as? UINavigationController
+                ?? self.navigationController
+            navController?.pushViewController(vc, animated: true)
         } else {
             // iPad: update the existing secondary column VC and show it.
             let wordDetailsVC: SKWordDetailsViewController
