@@ -98,7 +98,7 @@ private struct SKHistoryContentView: View {
     // MARK: History list
 
     private var wordList: some View {
-        let list = List {
+        List {
             ForEach(viewModel.words, id: \.word_id) { word in
                 Button {
                     onWordSelected(word, "history")
@@ -110,12 +110,7 @@ private struct SKHistoryContentView: View {
             .onDelete { viewModel.deleteWord(at: $0) }
         }
         .listStyle(.plain)
-
-        if #available(iOS 16, *) {
-            return AnyView(list.scrollContentBackground(.hidden).background(Color.appBackground))
-        } else {
-            return AnyView(list.background(Color.appBackground))
-        }
+        .modifier(ListBackgroundModifier())
     }
 
     // MARK: Search results
@@ -132,7 +127,7 @@ private struct SKHistoryContentView: View {
                 Spacer()
             }
         } else {
-            let list = List(viewModel.searchResults, id: \.word_id) { word in
+            List(viewModel.searchResults, id: \.word_id) { word in
                 Button {
                     onWordSelected(word, "search")
                 } label: {
@@ -141,12 +136,7 @@ private struct SKHistoryContentView: View {
                 .listRowBackground(Color.appBackground)
             }
             .listStyle(.plain)
-
-            if #available(iOS 16, *) {
-                list.scrollContentBackground(.hidden).background(Color.appBackground)
-            } else {
-                list.background(Color.appBackground)
-            }
+            .modifier(ListBackgroundModifier())
         }
     }
 

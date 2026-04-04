@@ -8,6 +8,16 @@
 
 import SwiftUI
 
+struct ListBackgroundModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 16, *) {
+            content.scrollContentBackground(.hidden).background(Color.appBackground)
+        } else {
+            content.background(Color.appBackground)
+        }
+    }
+}
+
 extension Color {
     static let appBackground = Color("BackgroundColor")
 }

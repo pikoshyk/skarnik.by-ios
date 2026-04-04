@@ -5,17 +5,6 @@
 
 import SwiftUI
 
-extension View {
-    @ViewBuilder
-    fileprivate func vocabularyListBackground() -> some View {
-        if #available(iOS 16, *) {
-            self.scrollContentBackground(.hidden).background(Color.appBackground)
-        } else {
-            self.background(Color.appBackground)
-        }
-    }
-}
-
 // MARK: - ViewModel
 
 @MainActor
@@ -137,7 +126,7 @@ private struct SKVocabulariesContentView: View {
                     }
                 }
                 .listStyle(.plain)
-                .vocabularyListBackground()
+                .modifier(ListBackgroundModifier())
                 .id(viewModel.selectedType)
                 .transition(.identity)
 
