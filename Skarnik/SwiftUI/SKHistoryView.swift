@@ -35,17 +35,11 @@ final class SKHistoryViewModel: ObservableObject {
             return
         }
         let query = text.lowercased()
-        searchTask = Task {
-            let detachedTask = Task.detached(priority: .userInitiated) {
-                SKVocabularyIndex.shared.word(index: 0, query: query, vocabularyType: .all, limit: 20)
-            }
-            let results = await withTaskCancellationHandler {
-                await detachedTask.value
-            } onCancel: {
-                detachedTask.cancel()
-            }
+        searchTask = Task.detached(priority: .userInitiated) { [weak self] in
             guard !Task.isCancelled else { return }
-            searchResults = results
+            let results = SKVocabularyIndex.shared.word(index: 0, query: query, vocabularyType: .all, limit: 20)
+            guard !Task.isCancelled else { return }
+            await MainActor.run { self?.searchResults = results }
         }
     }
 }
