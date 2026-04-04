@@ -75,6 +75,7 @@ class SKVocabularyIndex {
     static let abcBe = "абвгдеёжзійклмнопрстуўфхцчшьыэюя".uppercased().map { String($0) }
     static let abcRu = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя".uppercased().map { String($0) }
     private var indexCountCache: [ESKVocabularyType: [String: Int]] = [:]
+    private let cacheLock = NSLock()
     
     private init() {
         let dbUrl = Bundle.main.url(forResource: "vocabulary", withExtension: "db")
@@ -105,7 +106,10 @@ class SKVocabularyIndex {
         if preprocessedQuery.isEmpty {
             return 0
         }
-        if let count = self.indexCountCache[vocabularyType]?[preprocessedQuery] {
+        cacheLock.lock()
+        let cached = self.indexCountCache[vocabularyType]?[preprocessedQuery]
+        cacheLock.unlock()
+        if let count = cached {
             return count
         }
 
@@ -141,12 +145,14 @@ class SKVocabularyIndex {
         }
 
         let intCount = Int(count)
-        if(preprocessedQuery.count == 1) {
+        if preprocessedQuery.count == 1 {
+            cacheLock.lock()
             if self.indexCountCache[vocabularyType] == nil {
-                self.indexCountCache[vocabularyType] = [preprocessedQuery:intCount]
+                self.indexCountCache[vocabularyType] = [preprocessedQuery: intCount]
             } else {
                 self.indexCountCache[vocabularyType]?[preprocessedQuery] = intCount
             }
+            cacheLock.unlock()
         }
         return intCount
     }

@@ -14,6 +14,9 @@ class SKLocalization: Any {
     class var searchHeaderAdditionalRules: String{ "Пошук з аўтаматычнай\nпадменай і|и, ў|щ, ‘|ъ|ь, е|ё" }
 
     class var vocabulariesAdvancedSearch: String { "Спецпошук" }
+    class var tabHistory: String { "Гісторыя" }
+    class var tabVocabularies: String { "Слоўнікі" }
+    class var tabAbout: String { "Пра" }
     class var segmentHistory: String { "Гісторыя" }
     class var segmentRusBel: String { "Рус-Бел" }
     class var segmentBelRus: String { "Бел-Рус" }

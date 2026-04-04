@@ -51,24 +51,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private func openWord(_ word: SKWord) {
         guard let splitVC = window?.rootViewController as? SKSplitViewController else { return }
-
-        var wordDetailsVC: SKWordDetailsViewController?
-        if #available(iOS 14.0, *) {
-            wordDetailsVC = splitVC.viewController(for: .secondary) as? SKWordDetailsViewController
-        } else {
-            let controllers = splitVC.viewControllers
-            if controllers.count >= 2 {
-                wordDetailsVC = controllers.last as? SKWordDetailsViewController
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                wordDetailsVC = storyboard.instantiateViewController(withIdentifier: "SKWordDetailsViewController") as? SKWordDetailsViewController
-            }
-        }
-
-        guard let wordDetailsVC = wordDetailsVC else { return }
-        wordDetailsVC.entryPoint = "widget"
-        wordDetailsVC.word = word
-        splitVC.showDetailViewController(wordDetailsVC, sender: nil)
+        splitVC.showWordInDetail(word, entryPoint: "widget")
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

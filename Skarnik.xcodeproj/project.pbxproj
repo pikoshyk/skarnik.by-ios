@@ -79,6 +79,10 @@
 		F268C3D32D50DF5F004B7BE4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F268C3D22D50DF5F004B7BE4 /* GoogleService-Info.plist */; };
 		F2A652A02F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */; };
 		F2A652A32F7B000000A8ACBE /* SKWordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A652A42F7B000000A8ACBE /* SKWordDetailsView.swift */; };
+		F2B743A22F8C000000A8ACBE /* SKVocabulariesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B743A12F8C000000A8ACBE /* SKVocabulariesView.swift */; };
+		F2B7CC012F8C000000A8ACBE /* SKHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7CC002F8C000000A8ACBE /* SKHistoryView.swift */; };
+		F2B7CC032F8C000000A8ACBE /* SKHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7CC022F8C000000A8ACBE /* SKHistoryViewController.swift */; };
+		F2B7CC052F8C000000A8ACBE /* SKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7CC042F8C000000A8ACBE /* SKTabBarController.swift */; };
 		F2BB0CF42F7304F7006352AB /* SKDeepLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB0CF32F7304F7006352AB /* SKDeepLinkTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -180,6 +184,10 @@
 		F2A6529E2F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewControllerTests.swift; sourceTree = "<group>"; };
 		F2A6529F2F6F658800A8ACBE /* SKWordDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		F2A652A42F7B000000A8ACBE /* SKWordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKWordDetailsView.swift; sourceTree = "<group>"; };
+		F2B743A12F8C000000A8ACBE /* SKVocabulariesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKVocabulariesView.swift; sourceTree = "<group>"; };
+		F2B7CC002F8C000000A8ACBE /* SKHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHistoryView.swift; sourceTree = "<group>"; };
+		F2B7CC022F8C000000A8ACBE /* SKHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKHistoryViewController.swift; sourceTree = "<group>"; };
+		F2B7CC042F8C000000A8ACBE /* SKTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTabBarController.swift; sourceTree = "<group>"; };
 		F2BB0CF32F7304F7006352AB /* SKDeepLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKDeepLinkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -264,6 +272,8 @@
 				B20ABABB28EEBF6F00AA2FC9 /* SceneDelegate.swift */,
 				B20ABAD128EED10D00AA2FC9 /* SKSplitViewController.swift */,
 				B20ABACD28EEC39D00AA2FC9 /* SKVocabulariesTableViewController.swift */,
+				F2B7CC022F8C000000A8ACBE /* SKHistoryViewController.swift */,
+				F2B7CC042F8C000000A8ACBE /* SKTabBarController.swift */,
 				B2FEFEEA28F3776E00675E49 /* SKSearchWordsTableViewController.swift */,
 				B2FEFEEE28F4E53500675E49 /* SKWordDetailsViewController.swift */,
 				F2005D242F5CF009003A032C /* SKWordDetailsViewModel.swift */,
@@ -320,6 +330,8 @@
 				B2C81E032AFECCF70057FD56 /* SKDeprecatedView+Modifiers.swift */,
 				B2AA11223344556677880001 /* SKReportIssueView.swift */,
 				F2A652A42F7B000000A8ACBE /* SKWordDetailsView.swift */,
+				F2B743A12F8C000000A8ACBE /* SKVocabulariesView.swift */,
+				F2B7CC002F8C000000A8ACBE /* SKHistoryView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -538,6 +550,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		F2C21C4D2F71627F007F5479 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -589,6 +602,10 @@
 				B25728E92AFD9631007ADCF5 /* SKWordStressView.swift in Sources */,
 				B2AA11223344556677880002 /* SKReportIssueView.swift in Sources */,
 				F2A652A32F7B000000A8ACBE /* SKWordDetailsView.swift in Sources */,
+				F2B743A22F8C000000A8ACBE /* SKVocabulariesView.swift in Sources */,
+				F2B7CC012F8C000000A8ACBE /* SKHistoryView.swift in Sources */,
+				F2B7CC032F8C000000A8ACBE /* SKHistoryViewController.swift in Sources */,
+				F2B7CC052F8C000000A8ACBE /* SKTabBarController.swift in Sources */,
 				F229B9CF2D5134B000B2463E /* SKAnalyticsService.swift in Sources */,
 				F229B9D02D5134B000B2463E /* SKAnalyticsManager.swift in Sources */,
 				F229B9D12D5134B000B2463E /* SKFirebaseAnalytics.swift in Sources */,
@@ -805,7 +822,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 40;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
@@ -853,7 +870,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -901,7 +918,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
@@ -948,7 +965,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = EQFFWL4KZF;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = EQFFWL4KZF;
