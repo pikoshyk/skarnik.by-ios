@@ -198,5 +198,6 @@ struct SKHistoryView: View {
                 placement: .navigationBarDrawer(displayMode: .always),
                 prompt: SKLocalization.searchbarSearchWords
             )
+            .modifier(OpaqueTabBarModifier())
     }
 }

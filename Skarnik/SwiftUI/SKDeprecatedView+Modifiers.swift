@@ -8,6 +8,16 @@
 
 import SwiftUI
 
+struct OpaqueTabBarModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 16, *) {
+            content.toolbarBackground(.visible, for: .tabBar)
+        } else {
+            content
+        }
+    }
+}
+
 struct ListBackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 16, *) {
