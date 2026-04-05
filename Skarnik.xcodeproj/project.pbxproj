@@ -83,7 +83,6 @@
 		F2B7CC012F8C000000A8ACBE /* SKHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7CC002F8C000000A8ACBE /* SKHistoryView.swift */; };
 		F2B7CC032F8C000000A8ACBE /* SKHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7CC022F8C000000A8ACBE /* SKHistoryViewController.swift */; };
 		F2B7CC052F8C000000A8ACBE /* SKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7CC042F8C000000A8ACBE /* SKTabBarController.swift */; };
-		F2BB0CF42F7304F7006352AB /* SKDeepLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2BB0CF32F7304F7006352AB /* SKDeepLinkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -476,7 +475,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				CLASSPREFIX = SK;
 				LastSwiftUpdateCheck = 2630;
-				LastUpgradeCheck = 2630;
+				LastUpgradeCheck = 2640;
 				ORGANIZATIONNAME = Skarnik;
 				TargetAttributes = {
 					B20ABAB528EEBF6F00AA2FC9 = {
@@ -651,7 +650,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A652A02F6F658800A8ACBE /* SKWordDetailsViewControllerTests.swift in Sources */,
-				F2BB0CF42F7304F7006352AB /* SKDeepLinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
