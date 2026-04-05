@@ -44,7 +44,7 @@ class SKLocalization: Any {
     class var aboutSubscriptionDeveloper: String { "Распрацоўшчыкі" }
     class var aboutSubscriptionDesigner: String { "UI/UX дапамога" }
     class var aboutDescription: String { "Skarnik - электронны руска-беларускі слоўнік. За аснову ўзяты акадэмічны слоўнік, які быў выпушчаны ў 1953 годзе (пад рэдакцыяй Я. Коласа, К. Крапівы і П. Глебкі) і затым некалькі разоў перавыдаваўся з выпраўленнямі і дапаўненнямі. Skarnik дапрацаваны з улікам сучаснай практыкі.\n\nСайт skarnik.by пачаў працаваць 7 жніўня 2012 года і праца вядзецца дагэтуль, штодня.\n\nТаксама ў слоўнікавых артыкулах савецкія прыклады прыбраныя ці замененыя на беларускія." }
-    class var aboutSupportHtml: String {"Праекту патрэбна дапамога: Dev, ML, PR, UX/UI. Прапановы пісаць <a href=\"mailto:belanghelp@gmail.com?bcc=skarnikapp@gmail.com\">сюды</a>."}
+    class var aboutSupport: String { "Праекту патрэбна дапамога: Dev, ML, PR, UX/UI. Прапановы пісаць [сюды](mailto:belanghelp@gmail.com?bcc=skarnikapp@gmail.com)." }
     class var wordStressLoadingLabel: String { "Пачакайце, калі ласка" }
     class var wordStressTitle: String { "Націск" }
     class var wordStressError: String { "Нешта пайшло не так, мо праблемы з інтэрнэтам ці серверам. Паспрабуйце яшчэ раз." }

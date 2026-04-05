@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SKTabBarController: UITabBarController {
 
@@ -13,8 +14,6 @@ class SKTabBarController: UITabBarController {
     }
 
     private func setupTabs() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
         // History tab
         let historyVC = SKHistoryViewController()
         historyVC.tabBarItem = UITabBarItem(
@@ -34,9 +33,7 @@ class SKTabBarController: UITabBarController {
         let vocabNav = UINavigationController(rootViewController: vocabVC)
 
         // About tab
-        let aboutVC = storyboard.instantiateViewController(
-            withIdentifier: "SKAboutViewController"
-        ) as! SKAboutViewController
+        let aboutVC = SKAboutViewController()
         aboutVC.tabBarItem = UITabBarItem(
             title: SKLocalization.tabAbout,
             image: UIImage(systemName: "info.circle"),
