@@ -39,6 +39,9 @@ class SKLocalization: Any {
     class var errorWordNotFound: String { "Слова не знойдзена." }
     class var errorNetworkErrorTryAgainLater: String { "Памылка сеткі. Паспрабуйце пазней." }
     
+    class var aboutUsefulLinks: String { "Карысныя спасылкі" }
+    class var aboutStarnikByDescription: String { "Спецпошук — спецыяльны пошук па базе слоў. Адваротны слоўнік беларускай мовы — падабраць рыфму або скласці крыжаванку." }
+    class var aboutDrukarnikDescription: String { "Друкарнік — праверка арфаграфіі, хуткія падказкі, моўны бот, прыгожая беларуская мова і добры настрой." }
     class var aboutDone: String { "Добра" }
     class var aboutSubscriptionCreator: String { "Cтваральнік Скарніка" }
     class var aboutSubscriptionDeveloper: String { "Распрацоўшчыкі" }

@@ -20,6 +20,10 @@ struct SKAboutView: View {
 
                 Divider()
 
+                linksSection
+
+                Divider()
+
                 creditsSection
 
                 Divider()
@@ -29,6 +33,47 @@ struct SKAboutView: View {
                     .foregroundStyle(Color(UIColor.secondaryLabel))
             }
             .padding()
+        }
+    }
+
+    private var linksSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(SKLocalization.aboutUsefulLinks)
+                .font(.system(size: 15, weight: .semibold))
+                .frame(maxWidth: .infinity, alignment: .center)
+
+            linkRow(
+                title: "starnik.by",
+                url: "https://starnik.by",
+                description: SKLocalization.aboutStarnikByDescription,
+                onTap: { SKAnalyticsManager.logStarnikByOpened() }
+            )
+            linkRow(
+                title: "drukarnik.app",
+                url: "https://drukarnik.app",
+                description: SKLocalization.aboutDrukarnikDescription,
+                onTap: { SKAnalyticsManager.logDrukarnikOpened() }
+            )
+        }
+    }
+
+    private func linkRow(title: String, url: String, description: String, onTap: (() -> Void)? = nil) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Button {
+                onTap?()
+                guard let url = URL(string: url) else { return }
+                UIApplication.shared.open(url)
+            } label: {
+                Text(title)
+                    .font(.system(size: 15, design: .monospaced))
+                    .underline()
+                    .foregroundStyle(Color.accentColor)
+            }
+            .buttonStyle(.plain)
+
+            Text(description)
+                .font(.system(size: 15))
+                .foregroundStyle(Color(UIColor.secondaryLabel))
         }
     }
 
@@ -102,18 +147,6 @@ class SKAboutViewController: UIHostingController<SKAboutView> {
         super.viewDidLoad()
         navigationItem.title = "Skarnik"
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: SKLocalization.vocabulariesAdvancedSearch,
-            style: .plain,
-            target: self,
-            action: #selector(openStarnikBy)
-        )
-    }
-
-    @objc private func openStarnikBy() {
-        guard let url = URL(string: "https://starnik.by") else { return }
-        SKAnalyticsManager.logStarnikByOpened()
-        UIApplication.shared.open(url)
     }
 }
 

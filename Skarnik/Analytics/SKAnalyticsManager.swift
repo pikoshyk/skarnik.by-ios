@@ -33,6 +33,10 @@ class SKAnalyticsManager {
         shared.service.logStarnikByOpened()
     }
 
+    static func logDrukarnikOpened() {
+        shared.service.logDrukarnikOpened()
+    }
+
     static func logWidgetDeepLink(word: SKWord, appState: SKWidgetDeepLinkAppState) {
         shared.service.logWidgetDeepLink(word: word, appState: appState)
     }
