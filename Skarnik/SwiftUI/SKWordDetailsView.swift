@@ -71,6 +71,7 @@ private struct SKWordDetailsTranslationView: View {
 
     var body: some View {
         SKAttributedTextView(attributedText: attributedText, onLinkTap: onLinkTap)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .task(id: "\(translation.url)-\(colorScheme)") {
                 translation.attributedString { text in
                     attributedText = text
