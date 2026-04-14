@@ -138,4 +138,61 @@ final class SKDeepLinkTests: XCTestCase {
         let url = URL(string: "skarnik://word?id=0&lang=\(ESKVocabularyType.bel_rus.rawValue)")!
         XCTAssertNil(SceneDelegate.word(from: url))
     }
+
+    // MARK: - Universal Link parsing
+
+    func testUniversalLink_belrus_roundTrip() {
+        guard let realWord = SKVocabularyIndex.shared.word(index: 0, query: "а", vocabularyType: .bel_rus).first else {
+            XCTFail("Could not fetch a bel_rus word"); return
+        }
+        let url = URL(string: "https://skarnik.app/r/belrus/\(realWord.word_id)")!
+        let resolved = SceneDelegate.word(fromUniversalLink: url)
+        XCTAssertNotNil(resolved)
+        XCTAssertEqual(resolved?.word_id, realWord.word_id)
+        XCTAssertEqual(resolved?.lang_id, .bel_rus)
+    }
+
+    func testUniversalLink_rusbel_roundTrip() {
+        guard let realWord = SKVocabularyIndex.shared.word(index: 0, query: "м", vocabularyType: .rus_bel).first else {
+            XCTFail("Could not fetch a rus_bel word"); return
+        }
+        let url = URL(string: "https://skarnik.app/r/rusbel/\(realWord.word_id)")!
+        let resolved = SceneDelegate.word(fromUniversalLink: url)
+        XCTAssertEqual(resolved?.lang_id, .rus_bel)
+    }
+
+    func testUniversalLink_tsbm_roundTrip() {
+        guard let realWord = SKVocabularyIndex.shared.word(index: 0, query: "а", vocabularyType: .bel_definition).first else {
+            XCTFail("Could not fetch a bel_definition word"); return
+        }
+        let url = URL(string: "https://skarnik.app/r/tsbm/\(realWord.word_id)")!
+        let resolved = SceneDelegate.word(fromUniversalLink: url)
+        XCTAssertEqual(resolved?.lang_id, .bel_definition)
+    }
+
+    func testUniversalLink_unknownVocabPath_returnsNil() {
+        let url = URL(string: "https://skarnik.app/r/unknown/1")!
+        XCTAssertNil(SceneDelegate.word(fromUniversalLink: url))
+    }
+
+    func testUniversalLink_missingWordId_returnsNil() {
+        let url = URL(string: "https://skarnik.app/r/belrus/")!
+        XCTAssertNil(SceneDelegate.word(fromUniversalLink: url))
+    }
+
+    func testUniversalLink_nonNumericWordId_returnsNil() {
+        let url = URL(string: "https://skarnik.app/r/belrus/abc")!
+        XCTAssertNil(SceneDelegate.word(fromUniversalLink: url))
+    }
+
+    func testUniversalLink_wrongPrefix_returnsNil() {
+        // Path must start with /r/
+        let url = URL(string: "https://skarnik.app/word/belrus/1")!
+        XCTAssertNil(SceneDelegate.word(fromUniversalLink: url))
+    }
+
+    func testUniversalLink_nonExistentWordId_returnsNil() {
+        let url = URL(string: "https://skarnik.app/r/belrus/999999999")!
+        XCTAssertNil(SceneDelegate.word(fromUniversalLink: url))
+    }
 }

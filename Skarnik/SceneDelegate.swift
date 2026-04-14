@@ -14,10 +14,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
+        // Custom URL scheme (widget deep link) — cold launch
         if let url = connectionOptions.urlContexts.first?.url,
            let word = SceneDelegate.word(from: url) {
-            // UI is not presented yet on cold launch — store and let the
-            // primary VC pick it up in viewDidAppear once the screen is ready.
+            pendingWord = word
+            SKAnalyticsManager.logWidgetDeepLink(word: word, appState: .coldStart)
+        }
+        // Universal Link — cold launch
+        if let activity = connectionOptions.userActivities.first(where: { $0.activityType == NSUserActivityTypeBrowsingWeb }),
+           let url = activity.webpageURL,
+           let word = SceneDelegate.word(fromUniversalLink: url) {
             pendingWord = word
             SKAnalyticsManager.logWidgetDeepLink(word: word, appState: .coldStart)
         }
@@ -27,6 +33,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let url = URLContexts.first?.url {
             handleDeepLink(url)
         }
+    }
+
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+              let url = userActivity.webpageURL,
+              let word = SceneDelegate.word(fromUniversalLink: url) else { return }
+        SKAnalyticsManager.logWidgetDeepLink(word: word, appState: .background)
+        openWord(word)
     }
 
     private func handleDeepLink(_ url: URL) {
@@ -44,6 +58,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
               let wordId = Int64(idStr),
               let langRaw = Int(langStr),
               let lang = ESKVocabularyType(rawValue: langRaw)
+        else { return nil }
+
+        return SKVocabularyIndex.shared.word(id: wordId, vocabularyType: lang)
+    }
+
+    /// Parses a Universal Link of the form `https://skarnik.app/r/{vocab}/{wordId}`.
+    static func word(fromUniversalLink url: URL) -> SKWord? {
+        // Expected path: /r/belrus/12345  →  components: ["", "r", "belrus", "12345"]
+        let parts = url.pathComponents
+        guard parts.count == 4,
+              parts[1] == "r",
+              let lang = ESKVocabularyType.from(vocabularyPath: parts[2]),
+              let wordId = Int64(parts[3])
         else { return nil }
 
         return SKVocabularyIndex.shared.word(id: wordId, vocabularyType: lang)
