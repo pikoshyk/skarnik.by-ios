@@ -52,13 +52,7 @@ extension UIViewController {
             navController?.pushViewController(vc, animated: true)
         } else {
             // iPad: update the existing secondary column VC and show it.
-            let wordDetailsVC: SKWordDetailsViewController
-            if #available(iOS 14.0, *),
-               let existing = splitVC.viewController(for: .secondary) as? SKWordDetailsViewController {
-                wordDetailsVC = existing
-            } else if let existing = splitVC.viewControllers.last as? SKWordDetailsViewController {
-                wordDetailsVC = existing
-            } else {
+            guard let wordDetailsVC = splitVC.viewControllers.last as? SKWordDetailsViewController else {
                 return
             }
             wordDetailsVC.entryPoint = entryPoint
