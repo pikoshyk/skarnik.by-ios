@@ -16,9 +16,14 @@ class SKSplitViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        
         self.preferredDisplayMode = .oneBesideSecondary
-        
+
+        // Storyboard sets detail VC directly (no UINavigationController), so .bottomBar
+        // toolbar spans full screen width and button position shifts per split ratio.
+        // Wrapping in a nav controller bounds the toolbar to the secondary column.
+        if let detail = viewControllers.last, !(detail is UINavigationController) {
+            viewControllers = [viewControllers[0], UINavigationController(rootViewController: detail)]
+        }
     }
     
 }
@@ -52,12 +57,12 @@ extension UIViewController {
             navController?.pushViewController(vc, animated: true)
         } else {
             // iPad: update the existing secondary column VC and show it.
-            guard let wordDetailsVC = splitVC.viewControllers.last as? SKWordDetailsViewController else {
-                return
-            }
+            let secondaryNav = splitVC.viewControllers.last as? UINavigationController
+            guard let wordDetailsVC = secondaryNav?.topViewController as? SKWordDetailsViewController
+                    ?? splitVC.viewControllers.last as? SKWordDetailsViewController else { return }
             wordDetailsVC.entryPoint = entryPoint
             wordDetailsVC.word = word
-            splitVC.showDetailViewController(wordDetailsVC, sender: self)
+            splitVC.showDetailViewController(secondaryNav ?? wordDetailsVC, sender: self)
         }
     }
 }
