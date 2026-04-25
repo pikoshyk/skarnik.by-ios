@@ -6,6 +6,7 @@
 //
 
 import SQLite
+import SQLite3
 import Foundation
 
 enum ESKVocabularyType: Int, Codable {
@@ -239,6 +240,39 @@ class SKVocabularyIndex {
         return words
     }
     
+    // Single bulk query via raw C SQLite API — avoids SQLite.swift per-row overhead (~5–7× faster).
+    // ORDER BY lword uses lword_lang_index: no temp B-TREE sort.
+    // Returns sections in alphabet order; filters by vocabularyType's alphabet to skip unexpected first_char values.
+    func allWords(vocabularyType: ESKVocabularyType) -> [(title: String, words: [SKWord])] {
+        guard vocabularyType != .history, vocabularyType != .all else { return [] }
+        let alphabet = wordsIndexes(vocabularyType: vocabularyType)
+        let alphabetSet = Set(alphabet)
+
+        let sql = "SELECT word_id, word, first_char FROM vocabulary WHERE lang_id=? ORDER BY lword"
+        var stmt: OpaquePointer?
+        guard sqlite3_prepare_v2(db.handle, sql, -1, &stmt, nil) == SQLITE_OK, let stmt else { return [] }
+        defer { sqlite3_finalize(stmt) }
+        sqlite3_bind_int(stmt, 1, Int32(vocabularyType.rawValue))
+
+        // Collect into a dictionary — SQL byte-order puts ё/і/ў after я (U+0451/0456/045E > U+044F).
+        // Reconstruct in linguistic order using the predefined alphabet array.
+        var byLetter: [String: [SKWord]] = [:]
+        byLetter.reserveCapacity(alphabet.count)
+
+        while sqlite3_step(stmt) == SQLITE_ROW {
+            let wordId = sqlite3_column_int64(stmt, 0)
+            let word = String(cString: sqlite3_column_text(stmt, 1)!)
+            let firstChar = String(cString: sqlite3_column_text(stmt, 2)!).uppercased()
+            guard alphabetSet.contains(firstChar) else { continue }
+            byLetter[firstChar, default: []].append(SKWord(word_id: wordId, word: word, lang_id: vocabularyType))
+        }
+
+        return alphabet.compactMap { letter in
+            guard let words = byLetter[letter], !words.isEmpty else { return nil }
+            return (title: letter, words: words)
+        }
+    }
+
     func randomWord(vocabularyType: ESKVocabularyType) -> SKWord? {
         var rows: Statement?
         do {

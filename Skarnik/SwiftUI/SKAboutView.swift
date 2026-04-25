@@ -34,6 +34,7 @@ struct SKAboutView: View {
             }
             .padding()
         }
+        .background(Color.appBackground.ignoresSafeArea())
     }
 
     private var linksSection: some View {
