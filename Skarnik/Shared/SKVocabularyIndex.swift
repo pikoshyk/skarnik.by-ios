@@ -84,7 +84,7 @@ class SKVocabularyIndex {
     }
     
     func preprocessQuery(_ query: String, vocabularyType: ESKVocabularyType) -> String {
-        var newQuery = query.lowercased()
+        var newQuery = query.lowercased().replacingOccurrences(of: "`", with: "'").replacingOccurrences(of: "‘", with: "'").replacingOccurrences(of: "’", with: "'")
         if self.requiredAdditionalSearchRules(queryLength: query.count, vocabularyType: vocabularyType) {
             let charPairs = ["и": "і", "е": "ё", "щ": "ў", "ъ": "‘", "'": "‘"]
             for (key, value) in charPairs {
