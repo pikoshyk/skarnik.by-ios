@@ -25,18 +25,28 @@ struct SKWordWidgetEntry: TimelineEntry {
     
     let word: String
     let wordTranslation: String
-    
-    init(date: Date, word: String, wordTranslation: String) {
+    let wordId: Int64
+    let language: ESKVocabularyType
+
+    var deepLinkURL: URL? {
+        URL(string: "skarnik://word?id=\(wordId)&lang=\(language.rawValue)")
+    }
+
+    init(date: Date, word: String, wordTranslation: String, wordId: Int64 = 0, language: ESKVocabularyType = .bel_rus) {
         self.date = date
         self.word = word
         self.wordTranslation = wordTranslation
+        self.wordId = wordId
+        self.language = language
     }
-    
+
     @available(iOSApplicationExtension 17.0, *)
-    init(date: Date, configuration: SKWordWidgetConfigurationIntent, word: String, wordTranslation: String) {
+    init(date: Date, configuration: SKWordWidgetConfigurationIntent, word: String, wordTranslation: String, wordId: Int64 = 0, language: ESKVocabularyType = .bel_rus) {
         self.date = date
         self._configuration = configuration
         self.word = word
         self.wordTranslation = wordTranslation
+        self.wordId = wordId
+        self.language = language
     }
 }

@@ -11,7 +11,7 @@ class SKFirebaseAnalytics: SKAnalyticsService {
     }
     
     func logTranslation(
-        uri: String, word: String, word_id: Int64, lang_id: Int, dict_name: String, dict_path: String
+        uri: String, word: String, word_id: Int64, lang_id: Int, dict_name: String, dict_path: String, source_name: String, entry_point: String
     ) {
         Analytics.logEvent(
             SKAnalyticsEvent.translation.rawValue,
@@ -22,11 +22,39 @@ class SKFirebaseAnalytics: SKAnalyticsService {
                 "lang_id": lang_id,
                 "dict_name": dict_name,
                 "dict_path": dict_path,
+                "source_name": source_name,
+                "entry_point": entry_point,
             ])
     }
 
     func logAppOpen() {
         Analytics.logEvent(AnalyticsEventAppOpen, parameters: [:])
+    }
+
+    func logStarnikByOpened() {
+        Analytics.logEvent(SKAnalyticsEvent.starnikByOpened.rawValue, parameters: [:])
+    }
+
+    func logDrukarnikOpened() {
+        Analytics.logEvent(SKAnalyticsEvent.drukarnikOpened.rawValue, parameters: [:])
+    }
+
+    func logWidgetDeepLink(word: SKWord, appState: SKWidgetDeepLinkAppState) {
+        Analytics.logEvent(SKAnalyticsEvent.widgetDeepLink.rawValue, parameters: [
+            "word": word.word,
+            "word_id": word.word_id,
+            "lang_id": word.lang_id.rawValue,
+            "app_state": appState.rawValue,
+        ])
+    }
+
+    func logShareClicked(word: SKWord, url: String) {
+        Analytics.logEvent(SKAnalyticsEvent.shareClicked.rawValue, parameters: [
+            "word": word.word,
+            "word_id": word.word_id,
+            "lang_id": word.lang_id.rawValue,
+            "url": url,
+        ])
     }
 
 }

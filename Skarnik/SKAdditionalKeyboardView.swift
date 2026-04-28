@@ -11,15 +11,26 @@ protocol SKAdditionalKeyboardViewDelegate {
     func onAdditionalKeyboardCharPressed(char: String)
 }
 
-class SKAdditionalKeyboardView: UIView {
-    
+class SKAdditionalKeyboardView: UIView, UIInputViewAudioFeedback {
+
+    var enableInputClicksWhenVisible: Bool { true }
+
     var delegate: SKAdditionalKeyboardViewDelegate?
-    
+
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+
     override class func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        feedbackGenerator.prepare()
+    }
+
     @IBAction func onButton(_ button: UIButton) {
+        UIDevice.current.playInputClick()
+        feedbackGenerator.impactOccurred()
         let keyIndex = button.tag
         var char: String?
         switch keyIndex {

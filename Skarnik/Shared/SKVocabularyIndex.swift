@@ -6,6 +6,7 @@
 //
 
 import SQLite
+import SQLite3
 import Foundation
 
 enum ESKVocabularyType: Int, Codable {
@@ -36,6 +37,29 @@ extension ESKVocabularyType {
             return typeStr
         }
     }
+    
+    var skarnikId: String? {
+        if self == .rus_bel { return "rusbel" }
+        if self == .bel_rus { return "belrus" }
+        if self == .bel_definition { return "tsbm" }
+        return nil
+    }
+
+    var wordDetailsSubtitle: String? {
+        if self == .rus_bel { return SKLocalization.wordDetailsSubtitleRusBel }
+        if self == .bel_rus { return SKLocalization.wordDetailsSubtitleBelRus }
+        if self == .bel_definition { return SKLocalization.wordDetailsSubtitleDenifition }
+        return nil
+    }
+
+    static func from(vocabularyPath pathValue: String) -> ESKVocabularyType? {
+        switch pathValue {
+        case "tsbm": return .bel_definition
+        case "belrus": return .bel_rus
+        case "rusbel": return .rus_bel
+        default: return nil
+        }
+    }
 }
 
 struct SKWord: Codable {
@@ -52,6 +76,7 @@ class SKVocabularyIndex {
     static let abcBe = "абвгдеёжзійклмнопрстуўфхцчшьыэюя".uppercased().map { String($0) }
     static let abcRu = "абвгдеёжзийклмнопрстуфхцчшщьыъэюя".uppercased().map { String($0) }
     private var indexCountCache: [ESKVocabularyType: [String: Int]] = [:]
+    private let cacheLock = NSLock()
     
     private init() {
         let dbUrl = Bundle.main.url(forResource: "vocabulary", withExtension: "db")
@@ -59,7 +84,7 @@ class SKVocabularyIndex {
     }
     
     func preprocessQuery(_ query: String, vocabularyType: ESKVocabularyType) -> String {
-        var newQuery = query.lowercased()
+        var newQuery = query.lowercased().replacingOccurrences(of: "`", with: "'").replacingOccurrences(of: "‘", with: "'").replacingOccurrences(of: "’", with: "'")
         if self.requiredAdditionalSearchRules(queryLength: query.count, vocabularyType: vocabularyType) {
             let charPairs = ["и": "і", "е": "ё", "щ": "ў", "ъ": "‘", "'": "‘"]
             for (key, value) in charPairs {
@@ -82,7 +107,10 @@ class SKVocabularyIndex {
         if preprocessedQuery.isEmpty {
             return 0
         }
-        if let count = self.indexCountCache[vocabularyType]?[preprocessedQuery] {
+        cacheLock.lock()
+        let cached = self.indexCountCache[vocabularyType]?[preprocessedQuery]
+        cacheLock.unlock()
+        if let count = cached {
             return count
         }
 
@@ -118,12 +146,14 @@ class SKVocabularyIndex {
         }
 
         let intCount = Int(count)
-        if(preprocessedQuery.count == 1) {
+        if preprocessedQuery.count == 1 {
+            cacheLock.lock()
             if self.indexCountCache[vocabularyType] == nil {
-                self.indexCountCache[vocabularyType] = [preprocessedQuery:intCount]
+                self.indexCountCache[vocabularyType] = [preprocessedQuery: intCount]
             } else {
                 self.indexCountCache[vocabularyType]?[preprocessedQuery] = intCount
             }
+            cacheLock.unlock()
         }
         return intCount
     }
@@ -185,10 +215,10 @@ class SKVocabularyIndex {
                 }
             } else {
                 if preprocessedQuery.count == 1 {
-                    rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? ORDER BY lword LIMIT 1 OFFSET ?", vocabularyType.rawValue, "\(preprocessedQuery)", index)
+                    rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? ORDER BY lword LIMIT ? OFFSET ?", vocabularyType.rawValue, "\(preprocessedQuery)", limit, index)
                 } else {
                     let firstChar = String(preprocessedQuery.prefix(1))
-                    rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? AND word_mask LIKE ? ORDER BY lword LIMIT 1 OFFSET ?", vocabularyType.rawValue, firstChar, "\(preprocessedQuery)%",  index)
+                    rows = try self.db.prepare("SELECT word_id, word FROM vocabulary WHERE lang_id=? AND first_char=? AND word_mask LIKE ? ORDER BY lword LIMIT ? OFFSET ?", vocabularyType.rawValue, firstChar, "\(preprocessedQuery)%",  limit, index)
                 }
             }
         } catch {
@@ -210,6 +240,39 @@ class SKVocabularyIndex {
         return words
     }
     
+    // Single bulk query via raw C SQLite API — avoids SQLite.swift per-row overhead (~5–7× faster).
+    // ORDER BY lword uses lword_lang_index: no temp B-TREE sort.
+    // Returns sections in alphabet order; filters by vocabularyType's alphabet to skip unexpected first_char values.
+    func allWords(vocabularyType: ESKVocabularyType) -> [(title: String, words: [SKWord])] {
+        guard vocabularyType != .history, vocabularyType != .all else { return [] }
+        let alphabet = wordsIndexes(vocabularyType: vocabularyType)
+        let alphabetSet = Set(alphabet)
+
+        let sql = "SELECT word_id, word, first_char FROM vocabulary WHERE lang_id=? ORDER BY lword"
+        var stmt: OpaquePointer?
+        guard sqlite3_prepare_v2(db.handle, sql, -1, &stmt, nil) == SQLITE_OK, let stmt else { return [] }
+        defer { sqlite3_finalize(stmt) }
+        sqlite3_bind_int(stmt, 1, Int32(vocabularyType.rawValue))
+
+        // Collect into a dictionary — SQL byte-order puts ё/і/ў after я (U+0451/0456/045E > U+044F).
+        // Reconstruct in linguistic order using the predefined alphabet array.
+        var byLetter: [String: [SKWord]] = [:]
+        byLetter.reserveCapacity(alphabet.count)
+
+        while sqlite3_step(stmt) == SQLITE_ROW {
+            let wordId = sqlite3_column_int64(stmt, 0)
+            let word = String(cString: sqlite3_column_text(stmt, 1)!)
+            let firstChar = String(cString: sqlite3_column_text(stmt, 2)!).uppercased()
+            guard alphabetSet.contains(firstChar) else { continue }
+            byLetter[firstChar, default: []].append(SKWord(word_id: wordId, word: word, lang_id: vocabularyType))
+        }
+
+        return alphabet.compactMap { letter in
+            guard let words = byLetter[letter], !words.isEmpty else { return nil }
+            return (title: letter, words: words)
+        }
+    }
+
     func randomWord(vocabularyType: ESKVocabularyType) -> SKWord? {
         var rows: Statement?
         do {

@@ -30,16 +30,20 @@ struct SKWordAppIntentTimelineProvider: AppIntentTimelineProvider {
     private var wordFetchService = SKWordFetchService()
     
     func timeline(for configuration: SKWordWidgetConfigurationIntent, in context: Context) async -> Timeline<SKWordWidgetEntry> {
-
-        guard let word = await self.wordFetchService.fetchRandomWord(.bel_rus) else {
-            return Timeline(entries: [], policy: .atEnd)
-        }
         let date = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
+        guard let word = await self.wordFetchService.fetchRandomWord(.bel_rus) else {
+            let fallback = SKWordWidgetEntry(date: date,
+                                             configuration: configuration,
+                                             word: SKLocalization.widgetWordSampleWord,
+                                             wordTranslation: SKLocalization.widgetWordSampleTranslation)
+            return Timeline(entries: [fallback], policy: .atEnd)
+        }
         let entry = SKWordWidgetEntry(date: date,
                                       configuration: configuration,
                                       word: word.word,
-                                      wordTranslation: word.translation)
-
+                                      wordTranslation: word.translation,
+                                      wordId: word.wordId,
+                                      language: word.language)
         return Timeline(entries: [entry], policy: .atEnd)
     }
 }
@@ -54,18 +58,20 @@ struct SKWordTimelineProvider: TimelineProvider {
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<SKWordWidgetEntry>) -> Void) {
         Task {
-            var timeline = Timeline<SKWordWidgetEntry>(entries: [], policy: .atEnd)
+            let date = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
             guard let word = await self.wordFetchService.fetchRandomWord(.bel_rus) else {
-                completion(timeline)
+                let fallback = SKWordWidgetEntry(date: date,
+                                                 word: SKLocalization.widgetWordSampleWord,
+                                                 wordTranslation: SKLocalization.widgetWordSampleTranslation)
+                completion(Timeline(entries: [fallback], policy: .atEnd))
                 return
             }
-            let date = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
             let entry = SKWordWidgetEntry(date: date,
                                           word: word.word,
-                                          wordTranslation: word.translation)
-            
-            timeline = Timeline<SKWordWidgetEntry>(entries: [entry], policy: .atEnd)
-            completion(timeline)
+                                          wordTranslation: word.translation,
+                                          wordId: word.wordId,
+                                          language: word.language)
+            completion(Timeline(entries: [entry], policy: .atEnd))
         }
     }
     

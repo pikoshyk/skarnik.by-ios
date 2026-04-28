@@ -14,6 +14,9 @@ class SKLocalization: Any {
     class var searchHeaderAdditionalRules: String{ "Пошук з аўтаматычнай\nпадменай і|и, ў|щ, ‘|ъ|ь, е|ё" }
 
     class var vocabulariesAdvancedSearch: String { "Спецпошук" }
+    class var tabHistory: String { "Гісторыя" }
+    class var tabVocabularies: String { "Слоўнікі" }
+    class var tabAbout: String { "Інфа" }
     class var segmentHistory: String { "Гісторыя" }
     class var segmentRusBel: String { "Рус-Бел" }
     class var segmentBelRus: String { "Бел-Рус" }
@@ -28,7 +31,7 @@ class SKLocalization: Any {
     class var wordDetailsSubtitleRusBel: String { "Пераклад на беларускую мову" }
     class var wordDetailsSubtitleBelRus: String { "Пераклад на рускую мову" }
     class var wordDetailsSubtitleDenifition: String { "Тлумачэнне слова" }
-    class var wordDetailsSpelling: String { "Націск" }
+    class var wordDetailsSpelling: String { "На́ціск" }
     class var wordDetailsSpellingTitle: String { "Націск і арфаграфія" }
     class var wordDetailsSpellingMessage: String { "для прагляду, калі ласка, абярыце слова" }
     class var wordDetailsSpellingCancel: String { "Адмена" }
@@ -36,15 +39,28 @@ class SKLocalization: Any {
     class var errorWordNotFound: String { "Слова не знойдзена." }
     class var errorNetworkErrorTryAgainLater: String { "Памылка сеткі. Паспрабуйце пазней." }
     
+    class var aboutUsefulLinks: String { "Карысныя спасылкі" }
+    class var aboutStarnikByDescription: String { "Спецпошук — спецыяльны пошук па базе слоў. Адваротны слоўнік беларускай мовы — падабраць рыфму або скласці крыжаванку." }
+    class var aboutDrukarnikDescription: String { "Друкарнік — праверка арфаграфіі, хуткія падказкі, моўны бот, прыгожая беларуская мова і добры настрой." }
     class var aboutDone: String { "Добра" }
     class var aboutSubscriptionCreator: String { "Cтваральнік Скарніка" }
-    class var aboutSubscriptionDeveloper: String { "Распрацоўшчык iOS аплікацыі" }
+    class var aboutSubscriptionDeveloper: String { "Распрацоўшчыкі" }
     class var aboutSubscriptionDesigner: String { "UI/UX дапамога" }
-    class var aboutDescription: String { "Skarnik - электронны руска-беларускі слоўнік. За аснову ўзяты акадэмічны слоўнік, які быў выпушчаны ў 1953 годзе (пад рэдакцыяй Я. Коласа, К. Крапівы і П. Глебкі) і затым некалькі разоў перавыдаваўся з выпраўленнямі і дапаўненнямі. Skarnik дапрацаваны з улікам сучаснай практыкі.\n\nСайт skarnik.by пачаў працаваць 7 жніўня 2012 года і праца вядзецца дагэтуль, штодня.\n\nТаксама ў слоўнікавых артыкулах савецкія прыклады прыбраныя ці замененыя на беларускія." }
-    class var aboutSupportHtml: String {"Праекту патрэбна дапамога: Dev, ML, PR, UX/UI. Прапановы пісаць <a href=\"mailto:belanghelp@gmail.com\">сюды</a>."}
+    class var aboutDescription: String { "Skarnik - электронны руска-беларускі слоўнік. За аснову ўзяты акадэмічны слоўнік, які быў выпушчаны ў 1953 годзе (пад рэдакцыяй Я. Коласа, К. Крапівы і П. Глебкі) і затым некалькі разоў перавыдаваўся з выпраўленнямі і дапаўненнямі.\n\nСайт skarnik.by пачаў працаваць 7 жніўня 2012 года." }
+    class var aboutSupport: String { "Праекту патрэбна дапамога: Dev, ML, PR, UX/UI. Прапановы пісаць [сюды](mailto:belanghelp@gmail.com?bcc=skarnikapp@gmail.com)." }
     class var wordStressLoadingLabel: String { "Пачакайце, калі ласка" }
     class var wordStressTitle: String { "Націск" }
     class var wordStressError: String { "Нешта пайшло не так, мо праблемы з інтэрнэтам ці серверам. Паспрабуйце яшчэ раз." }
+
+    class var historyEmptyPlaceholder: String { "Тут з'явяцца словы, якія вы адкрывалі.\nПашукайце альбо абярыце слова ў слоўніку." }
+
+    class var reportIssueButtonTitle: String { "Паведаміць пра памылку" }
+    class var reportIssueTitle: String { "Паведаміць пра памылку" }
+    class var reportIssueTypeTranslation: String { "Памылка ў перакладзе" }
+    class var reportIssueTypeSpelling: String { "Памылка ў напісанні" }
+    class var reportIssueTypeOther: String { "Іншая праблема" }
+    class var reportIssueDetailsPlaceholder: String { "Апішыце праблему (неабавязкова)" }
+
 
     class var widgetWordTitle: String { "Слова дня" }
     class var widgetWordDescriptioon: String { "Выпадковае слова і яго пераклад." }
